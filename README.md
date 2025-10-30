@@ -13,11 +13,24 @@ code .
 npm install
 ```
 
-To create a new feature, eg authentication run the following in the terminal:
-```bash
-git checkout -b ft/authentication
+To create a new role, eg admin:
 
-npm run create:feature authentication
+``` bash
+git checkout -b admin
+
+
+npm run create:role admin 
+
+```
+
+
+To create a new feature, eg authentication under the role folder admin run the following in the terminal:
+
+``` bash
+git checkout -b admin-ft/authentication
+
+
+npm run create:feature admin authentication
 
 ```
 
@@ -35,6 +48,10 @@ bun dev
 ```
 
 To push your changes to github:
+
+if working under a role folder such as admin:
+```bash
+
 
 ```bash
 git add .
