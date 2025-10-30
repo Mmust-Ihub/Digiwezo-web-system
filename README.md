@@ -50,14 +50,12 @@ bun dev
 To push your changes to github:
 
 if working under a role folder such as admin:
-```bash
-
 
 ```bash
 git add .
-git commit -m "ft/authentication => commit message"
+git commit -m "admin-ft/authentication => commit message"
 
-git push origin ft/authentication
+git push origin admin-ft/authentication
 ```
 
 ```bash
