@@ -1,6 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
 
 ## Getting Started
+
+First clone the repo:
+```bash
+git clone https://github.com/Mmust-Ihub/Digiwezo-web-system.git
+
+cd digiwezo
+
+code .
+
+npm install
+```
+
+To create a new feature, eg authentication run the following in the terminal:
+```bash
+npm run create:feature authentication
+```
+
 
 First, run the development server:
 
