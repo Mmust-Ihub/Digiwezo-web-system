@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "create:feature": "node scripts/create-feature.js"
+    "create:feature": "node scripts/create-feature.js",
+    "create:role": "node scripts/create-role.js"
 
 
   },
