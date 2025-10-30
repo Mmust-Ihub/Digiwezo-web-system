@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "create:feature": "node scripts/create-feature.js"
+
+
   },
   "dependencies": {
     "react": "19.2.0",
@@ -23,4 +26,5 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.1"
   }
+ 
 }
