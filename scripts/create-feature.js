@@ -5,7 +5,9 @@ const roleName = process.argv[2];
 const featureName = process.argv[3];
 
 if (!roleName || !featureName) {
-  console.error(" Please provide both role and feature name.\nUsage: npm run create:feature <role> <feature>");
+  console.error(
+    " Please provide both role and feature name.\nUsage: npm run create:feature <role> <feature>"
+  );
   process.exit(1);
 }
 
@@ -16,11 +18,12 @@ function capitalize(str) {
 const baseDir = path.join("app", roleName, "(features)", featureName);
 const folders = ["components", "data", "hooks", "types"];
 const pageFile = path.join(baseDir, "page.tsx");
-const layoutFile = path.join(baseDir, "layout.tsx");
 
 const rolePath = path.join("app", roleName, "(features)");
 if (!fs.existsSync(rolePath)) {
-  console.error(`Role "${roleName}" does not exist. Please create it first using "npm run create:role ${roleName}".`);
+  console.error(
+    `Role "${roleName}" does not exist. Please create it first using "npm run create:role ${roleName}".`
+  );
   process.exit(1);
 }
 
@@ -38,24 +41,13 @@ folders.forEach((folder) => {
   console.log(`Created: ${folderPath}`);
 });
 
-const layoutContent = `
-export default function ${capitalize(featureName)}Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <section className="p-4">
-      {/*  Add ${featureName}-specific navigation, breadcrumbs, etc. here */}
-      {children}
-    </section>
-  );
-}
-`;
-fs.writeFileSync(layoutFile, layoutContent.trim());
-console.log(`Created: ${layoutFile}`);
-
 const pageContent = `
 export default function ${capitalize(featureName)}Page() {
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-semibold">${capitalize(featureName)} Feature</h1>
+      <h1 className="text-2xl font-semibold">${capitalize(
+        featureName
+      )} Feature</h1>
       <p>This is the ${featureName} feature page under the ${roleName} role.</p>
     </div>
   );

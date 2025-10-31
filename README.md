@@ -27,7 +27,7 @@ npm run create:role admin
 To create a new feature, eg authentication under the role folder admin run the following in the terminal:
 
 ``` bash
-git checkout -b admin-ft/authentication
+git checkout -b admin/ft/authentication
 
 
 npm run create:feature admin authentication
@@ -53,9 +53,9 @@ if working under a role folder such as admin:
 
 ```bash
 git add .
-git commit -m "admin-ft/authentication => commit message"
+git commit -m "admin/ft/authentication => commit message"
 
-git push origin admin-ft/authentication
+git push origin admin/ft/authentication
 ```
 
 ```bash
