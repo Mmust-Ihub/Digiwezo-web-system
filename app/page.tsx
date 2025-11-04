@@ -9,9 +9,9 @@ import Testimonials from "@/components/LandingPage/Home/Testimonials";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-custom-white">
       <Header />
-      <main className="flex flex-1 flex-col items-center justify-between    bg-grey-300  sm:items-start overflow-x-clip">
+      <main className="flex flex-1 flex-col items-center justify-between sm:items-start overflow-x-clip">
         <Hero />
         <AboutSection />
         <Testimonials />

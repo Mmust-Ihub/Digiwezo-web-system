@@ -3,9 +3,10 @@ import Image from "next/image";
 
 export default function AboutSection() {
   return (
-    <div className="w-screen lg:px-6">
+<div className="relative w-screen bg-custom-white flex-col flex lg:flex-row gap-6 px-20 pt-16 pb-6 justify-center items-center text-custom-white">
+
       <div className="w-full flex flex-col justify-center items-center  lg:mt-0">
-        <h2 className="text-[#007BFF]  m-6 lg:text-left lg:self-start lg:px-8 text-2xl font-bold">
+        <h2 className="text-dark-blue  m-6 lg:text-left lg:self-start lg:px-8 text-2xl font-bold">
           What Makes Us Stand Out Section
         </h2>
         <div className="w-full text-gray-600 grid grid-cols-2 lg:grid-cols-4 lg:gap-14 gap-4 px-4 lg:px-8 text-center">
