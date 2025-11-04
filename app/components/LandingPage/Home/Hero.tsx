@@ -1,3 +1,4 @@
+import CurvePattern from "@/components/ui/CurvePattern";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,17 +57,7 @@ export default function Hero() {
           alt="hero image"
         />
       </motion.div>
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-0">
-        <svg
-          className="relative block w-full h-32"
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none">
-          <path
-            d="M0,60 C240,0 480,0 720,60 C960,120 1200,120 1440,60 L1440,120 L0,120 Z"
-            fill="white"
-          />
-        </svg>
-      </div>
+      <CurvePattern/>
     </section>
   );
 }
