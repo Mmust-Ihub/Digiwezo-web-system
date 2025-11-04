@@ -12,7 +12,7 @@ export const Sidebar = () => {
         <aside className="fixed left-0 top-0 h-screen w-64 bg-blue-400 flex flex-col">
             <div className="p-6">
                 <div className="flex items-center gap-2">
-                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                         <div className="w-6 h-6 bg-primary rounded-full" />
                     </div>
                     <span className="text-white font-bold text-lg">DigiWezo</span>
