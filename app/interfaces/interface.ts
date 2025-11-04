@@ -8,3 +8,22 @@ export interface TestimonialCardData {
   role: string;
   image: string;
 }
+
+export interface BookDemoProp {
+  onSubmit: (data: {
+    name: string;
+    email: string;
+    phone: string;
+    school: string;
+    role: string;
+    date:string,
+  }) => void;
+  isLoading: boolean;
+  defaultValues: {
+    name: string;
+    email: string;
+    phone: string;
+    school: string;
+    role: string;
+  };
+}

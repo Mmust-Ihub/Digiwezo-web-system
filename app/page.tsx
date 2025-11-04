@@ -6,8 +6,11 @@ import BookADemo from "@/components/LandingPage/Home/BookADemo";
 import Hero from "@/components/LandingPage/Home/Hero";
 import Partners from "@/components/LandingPage/Home/Partners";
 import Testimonials from "@/components/LandingPage/Home/Testimonials";
+import { useBookDemo } from "@/hooks/useDemo";
 
 export default function Home() {
+  const { isLoading, handleDemoSubmit, defaultValues } = useBookDemo();
+
   return (
     <div className="min-h-screen bg-custom-white">
       <Header />
@@ -16,7 +19,11 @@ export default function Home() {
         <AboutSection />
         <Testimonials />
         <Partners />
-        <BookADemo />
+        <BookADemo
+          onSubmit={handleDemoSubmit}
+          isLoading={isLoading}
+          defaultValues={defaultValues}
+        />
       </main>
       <Footer />
     </div>

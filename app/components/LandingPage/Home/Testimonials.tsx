@@ -14,7 +14,7 @@ export default function Testimonials() {
         gradient
         gradientWidth={100}
         gradientColor="#FAFAFA"
-        className="max-w-6xl">
+        className="max-w-5xl">
         {[...testimonials, ...testimonials].map((testimonial, index) => (
           <div key={index} className="mx-3">
             <TestimonialCard

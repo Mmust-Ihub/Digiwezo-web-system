@@ -1,71 +1,97 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import CurvePattern from "@/components/ui/CurvePattern";
+import { Input } from "@/components/ui/input";
+import { useZodForm } from "@/hooks/useZodForm";
+import { BookDemoProp } from "@/interfaces/interface";
+import { DemoRequestSchema, fields } from "@/validators/demo-schema-validator";
 import Image from "next/image";
+import { Controller, FormProvider } from "react-hook-form";
 
-function BookADemo() {
+export default function BookADemo({
+  onSubmit,
+  defaultValues,
+  isLoading,
+}: BookDemoProp) {
+  const form = useZodForm(DemoRequestSchema, {
+    defaultValues,
+  });
+
+  const {
+    control,
+    formState: { errors },
+  } = form;
+
   return (
-    <div className="w-screen lg:h-screen mainbg flex-col lg:flex-row flex  gap-6 px-6 py-3 justify-center items-center mt-[30px]" id="demo">
-      <div className=" lg:pt-0  space-y-6 pt-[100px] flex flex-col">
-        <h2 className="lg:text-left lg:self-start lg:px-8 text-2xl font-bold">
-          Book Your Free Demo
-        </h2>
-        <p className="lg:text-left lg:self-start lg:px-8">
-          Book a demo with us to see our top-rated solutions in action
+    <section
+      className="relative w-screen md:min-h-[95vh] flex-col flex md:flex-row gap-8 px-8 md:px-20 pb-24 justify-center items-center text-custom-white bg-primary "
+      id="demo">
+      <div className="flex flex-col flex-2 gap-3">
+        <h2 className="text-lg md:text-xl font-bold">Book Your Free Demo</h2>
+        <p className="text-sm md:text-base">
+          Book a demo with us to see our top-rated solutions in action.
         </p>
-        <form className=" flex gap-2 flex-col lg:px-8">
-          <div className=" bg-white rounded-lg">
-            <input
-              type="text"
-              className=" outline-0 p-2 rounded-lg text-black w-full"
-              placeholder="Name..."
-            />
-          </div>
-          <div className=" bg-white rounded-lg">
-            <input
-              type="email"
-              className=" outline-0 p-2 rounded-lg text-black w-full"
-              placeholder="Email..."
-            />
-          </div>
 
-          <div className=" bg-white rounded-lg">
-            <input
-              type="tel"
-              className=" outline-0 p-2 rounded-lg text-black w-full"
-              placeholder="Phone Number..."
-            />
-          </div>
-          <div className=" bg-white rounded-lg">
-            <input
-              type="text"
-              className=" outline-0 p-2 rounded-lg text-black w-full"
-              placeholder="School..."
-            />
-          </div>
-          <div className=" bg-white rounded-lg">
-            <input
-              type="text"
-              className=" outline-0 p-2 rounded-lg text-black w-full"
-              placeholder="Role (Admin, Teacher, Parent etc)..."
-            />
-          </div>
-          <div className=" bg-white rounded-lg">
-            <input
-              type="date"
-              className=" outline-0 p-2 rounded-lg text-black placeholder:text-black w-full"
-              placeholder="Prefered Date..."
-            />
-          </div>
-          <input
-            type="submit"
-            value="Submit"
-            className="bg-[#ffc004] rounded-lg p-2 font-semibold w-[45%] text-center"
-          />
-        </form>
+        <FormProvider {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-2 ">
+            {fields.map((field, index) => (
+              <Controller
+                key={index}
+                control={control}
+                name={field.name}
+                render={({ field: inputField }) => (
+                  <div>
+                    <Input
+                      {...inputField}
+                      id={field.name}
+                      type={field.type}
+                      placeholder={
+                        field.type !== "date" ? field.placeholder : undefined
+                      }
+                      required
+                      disabled={isLoading}
+                      className="mt-2"
+                      {...(field.type === "date"
+                        ? { min: new Date().toISOString().split("T")[0] }
+                        : {})}
+                    />
+                    {errors[field.name as keyof typeof errors] && (
+                      <p className="text-red-400 text-sm mt-1">
+                        {
+                          (errors[field.name as keyof typeof errors]?.message ||
+                            "") as string
+                        }
+                      </p>
+                    )}
+                  </div>
+                )}
+              />
+            ))}
+
+            <Button
+              type="submit"
+              variant="default"
+              disabled={isLoading}
+              className=" ">
+              {isLoading ? "Submitting..." : "Submit"}
+            </Button>
+          </form>
+        </FormProvider>
       </div>
-      <div>
-        <Image width={1000} height={1000} src="/assets/webp/DemoImage.webp" alt="hero image" />
+
+      <div className="flex-3 flex justify-center items-center">
+        <Image
+          width={600}
+          height={600}
+          src="/assets/webp/DemoImage.webp"
+          alt="Book demo illustration"
+          className="object-contain"
+        />
       </div>
-    </div>
+      <CurvePattern />
+    </section>
   );
 }
-
-export default BookADemo;
