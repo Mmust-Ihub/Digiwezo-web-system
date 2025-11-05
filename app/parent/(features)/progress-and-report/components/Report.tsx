@@ -1,32 +1,32 @@
 import React from "react";
 import { FaPrint} from "react-icons/fa";
-import Filters from "./Filters";
 
 const ReportCard = () => {
   const subjects = [
     { area: "English", score: "78%", level: "Meeting Expectations" },
-    {area:"Mathematics", score:"72%", LEVEL:"Meeting Expectation"},
+    {area:"Mathematics", score:"72%", level:"Meeting Expectation"},
+    { area: "Science", score: "80%", level: "Exceeding Expectations" },
+    { area: "Kiswahili", score: "70%", level: "Satisfactory" },
+      { area: "English", score: "78%", level: "Meeting Expectations" },
+    {area:"Mathematics", score:"72%", level:"Meeting Expectation"},
     { area: "Science", score: "80%", level: "Exceeding Expectations" },
     { area: "Kiswahili", score: "70%", level: "Satisfactory" },
   ];
 
   return (
-    <section className="bg-white shadow rounded-xl p-6">
-      
-       <div className="mb-6">
-        <Filters />
-      </div>
+    <section className="bg-white p-6">
+       
 
       <h2 className="text-lg font-semibold mb-2">
         Student Progress & Report – Term 1 (Grade 6)
       </h2>
 
       <div className="text-sm text-gray-700 mb-4">
-        <p>Student Name: Peter Johnson</p>
-        <p>Admission Number: 2734</p>
-        <p>Class: Grade 6</p>
-        <p>Term: 1</p>
-        <p>Year: 2025</p>
+        <p><b>Student Name: </b> Peter Johnson</p>
+        <p><b>Admission Number: </b> 2734</p>
+        <p><b>Class: </b> Grade 6</p>
+        <p><b>Term: </b> 1</p>
+        <p><b>Year: </b> 2025</p>
       </div>
 
       <section className="mb-6">
@@ -43,9 +43,10 @@ const ReportCard = () => {
       </section>
 
       <section>
-        <h3 className="font-semibold text-gray-800 mb-1">
-          Learning Areas & Competencies
+        <h3 className="font-semibold mb-1">
+           Learning Areas & Competencies
         </h3>
+        <h4 className="font-bold  text-gray-800 pb-4">Learning Areas Perfomance(Subject-Wise Score) </h4>
         <table className="w-full border text-sm rounded overflow-hidden">
           <thead className="bg-gray-100">
             <tr>
@@ -64,6 +65,11 @@ const ReportCard = () => {
             ))}
           </tbody>
         </table>
+
+        <p className="text-sm p-2">
+         <b> Teacher's Note:</b> <i>Johnson demonstrated good understanding in most subjects
+          particularly in English and Physics Education. More engangement in science projects will ehance his exploration skills</i>
+        </p>
       </section>
 
       <div className="flex gap-4 mt-6">

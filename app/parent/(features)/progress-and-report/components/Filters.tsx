@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useFilters } from "@/hooks/useFilters";
+import { useFilters } from "../hooks/useFilters";
 
 const Filters = () => {
   const {

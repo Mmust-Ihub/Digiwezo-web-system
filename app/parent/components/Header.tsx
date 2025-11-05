@@ -1,4 +1,4 @@
-import { inter } from "@/app/layout";
+import { inter } from "@/layout";
 import { Bell, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
