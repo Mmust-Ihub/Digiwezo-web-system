@@ -1,0 +1,33 @@
+services:
+  frontend:
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    container_name: digiwezo-frontend
+    restart: unless-stopped
+    expose:
+      - 3000
+    env_file:
+      - .env
+    volumes:
+      - ./:/usr/src/app
+    networks:
+      - digiwezo
+    stdin_open: true
+    tty: true
+
+  proxy:
+    build:
+      context: ./deployment/nginx
+      dockerfile: nginx.Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+    networks:
+      - digiwezo
+    restart: unless-stopped
+
+networks:
+  digiwezo:
+    driver: bridge

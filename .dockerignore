@@ -1,0 +1,40 @@
+# Dependencies
+**/node_modules
+.pnpm-store
+
+# Next.js Build Artifacts
+.next
+out
+
+# Development & Config
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.git
+.gitignore
+.vercel
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npmrc
+.yarnrc
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# Docker
+Dockerfile
+*.Dockerfile
+Dockerfile.*
+.dockerignore
+docker-compose*
+
+# Others
+**/.DS_Store
+nginx/
+README.md
