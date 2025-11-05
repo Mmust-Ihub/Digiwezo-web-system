@@ -6,6 +6,7 @@ import BookADemo from "@/components/LandingPage/Home/BookADemo";
 import Hero from "@/components/LandingPage/Home/Hero";
 import Partners from "@/components/LandingPage/Home/Partners";
 import Testimonials from "@/components/LandingPage/Home/Testimonials";
+import ServicesSection from "@/components/LandingPage/Home/ServicesSection";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="flex flex-1 flex-col items-center justify-between sm:items-start overflow-x-clip">
         <Hero />
         <AboutSection />
+        <ServicesSection/>
         <Testimonials />
         <Partners />
         <BookADemo/>
