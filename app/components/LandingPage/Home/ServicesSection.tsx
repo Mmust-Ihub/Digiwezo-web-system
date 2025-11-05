@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 export default function ServicesSection() {
   return (
-    <section className="py-12 px-8 md:px-20 mx-auto bg-primary text-custom-white flex flex-col gap-8 relative w-screen mt-8 ">
+    <section id="services" className="py-12 px-8 md:px-20 mx-auto bg-primary text-custom-white flex flex-col gap-8 relative w-screen mt-8 ">
       <CurvePattern />
 
       <h2 className="lg:text-3xl text-lg font-bold">Our Services</h2>
