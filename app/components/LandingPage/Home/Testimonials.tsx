@@ -5,7 +5,7 @@ import { testimonials } from "@/data/homepage";
 
 export default function Testimonials() {
   return (
-    <section className="w-screen h-[80vh] relative gap-6 bg-primary flex flex-col justify-center items-center lg:pb-24 text-custom-white">
+    <section id="testimonials" className="w-screen h-[80vh] relative gap-6 bg-primary flex flex-col justify-center items-center lg:pb-24 text-custom-white">
       <h2 className="lg:text-lg text-md font-bold">What Our Users Say</h2>
 
       <Marquee
