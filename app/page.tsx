@@ -1,32 +1,33 @@
-import "./globals.css";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-import { LogIn } from "lucide-react";
-import LoginPage from "./components/layout/login";
-import ForgotPasswordPage from "./components/layout/forgotPassword";
+"use client";
 
-export const metadata = {
-  title: "DigiWezo",
-  description: "Empowering Digital Solutions",
-};
+import Footer from "@/components/LandingPage/common/Footer";
+import Header from "@/components/LandingPage/common/Header";
+import AboutSection from "@/components/LandingPage/Home/AboutSection";
+import BookADemo from "@/components/LandingPage/Home/BookADemo";
+import Hero from "@/components/LandingPage/Home/Hero";
+import Partners from "@/components/LandingPage/Home/Partners";
+import Testimonials from "@/components/LandingPage/Home/Testimonials";
+import { useBookDemo } from "@/hooks/useDemo";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Home() {
+  const { isLoading, handleDemoSubmit, defaultValues } = useBookDemo();
+
   return (
-    <html lang="en">
+    <div className="min-h-screen bg-custom-white">
+      <Header />
       
-      <body className="flex flex-col min-h-screen bg-background text-foreground">
-        <Navbar />
-        <main className="grow pt-20">
-         <LoginPage/>
-       
-        </main>
-         <Footer />
-
-      </body>
-    </html>
+      <main className="flex flex-1 flex-col items-center justify-between sm:items-start overflow-x-clip">
+        <Hero />
+        <AboutSection />
+        <Testimonials />
+        <Partners />
+        <BookADemo
+          onSubmit={handleDemoSubmit}
+          isLoading={isLoading}
+          defaultValues={defaultValues}
+        />
+      </main>
+      <Footer />
+    </div>
   );
 }
