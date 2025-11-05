@@ -8,7 +8,7 @@ const partnerImages: string[] = [
 
 export default function Partners() {
   return (
-    <section className="w-screen bg-custom-white flex-col flex lg:flex-row gap-6 px-20 pt-4 pb-6 justify-center items-center text-custom-white">
+    <section id="partners" className="w-screen bg-custom-white flex-col flex lg:flex-row gap-6 px-20 pt-4 pb-6 justify-center items-center text-custom-white">
       <div className="w-full flex flex-col justify-center items-center  gap-6 ">
         <h2 className="text-primary lg:text-left  lg:px-8 lg:text-lg text-md font-bold">
           Join the Growing Community of Schools Using Our System{" "}
