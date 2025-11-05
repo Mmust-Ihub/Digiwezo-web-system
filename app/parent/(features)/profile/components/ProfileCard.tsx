@@ -10,7 +10,7 @@ export function ProfileCard({ name, avatarSrc }: ProfileCardProps) {
     const defaultAvatar = '/assets/default-avatar.png';
     const imageSource = avatarSrc || defaultAvatar;
     return (
-        <div className="w-1/4 pr-8 border-r border-gray-200 flex flex-col items-center">
+        <div className="w-1/4 pr-8 border-r border-gray flex flex-col items-center">
             <div className="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden mb-4">
                 <Image
                     src={imageSource}
@@ -21,7 +21,7 @@ export function ProfileCard({ name, avatarSrc }: ProfileCardProps) {
                     priority
                 />
             </div>
-            <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
+            <h2 className="text-xl font-semibold">{name}</h2>
         </div>
     );
 }
