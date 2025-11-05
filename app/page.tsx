@@ -1,22 +1,32 @@
 "use client";
 
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import ProfileCard from "./components/ProfileCard";
-import ReportCard from "./components/Report";
+import Footer from "@/components/LandingPage/common/Footer";
+import Header from "@/components/LandingPage/common/Header";
+import AboutSection from "@/components/LandingPage/Home/AboutSection";
+import BookADemo from "@/components/LandingPage/Home/BookADemo";
+import Hero from "@/components/LandingPage/Home/Hero";
+import Partners from "@/components/LandingPage/Home/Partners";
+import Testimonials from "@/components/LandingPage/Home/Testimonials";
+import { useBookDemo } from "@/hooks/useDemo";
 
-export default function ProgressReportPage() {
+export default function Home() {
+  const { isLoading, handleDemoSubmit, defaultValues } = useBookDemo();
+
   return (
-    <div className="min-h-screen flex bg-background">
-      <Sidebar />
-
-      <div className="flex-1 flex flex-col">
-        <Header />
-        <div className="flex-1 p-6 space-y-6">
-          <ProfileCard />
-          <ReportCard />
-        </div>
-      </div>
+    <div className="min-h-screen bg-custom-white">
+      <Header />
+      <main className="flex flex-1 flex-col items-center justify-between sm:items-start overflow-x-clip">
+        <Hero />
+        <AboutSection />
+        <Testimonials />
+        <Partners />
+        <BookADemo
+          onSubmit={handleDemoSubmit}
+          isLoading={isLoading}
+          defaultValues={defaultValues}
+        />
+      </main>
+      <Footer />
     </div>
   );
 }
