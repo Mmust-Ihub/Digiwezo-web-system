@@ -7,6 +7,7 @@ import Hero from "@/components/LandingPage/Home/Hero";
 import Partners from "@/components/LandingPage/Home/Partners";
 import Testimonials from "@/components/LandingPage/Home/Testimonials";
 import ServicesSection from "@/components/LandingPage/Home/ServicesSection";
+import ContactSection from "@/components/LandingPage/Home/ContactSection";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Hero />
         <AboutSection />
         <ServicesSection/>
+        <ContactSection/>
         <Testimonials />
         <Partners />
         <BookADemo/>

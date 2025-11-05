@@ -78,3 +78,30 @@ export const services = [
     img: "/assets/tracking.png",
   },
 ];
+
+ export const contactFormFields = [
+  {
+    name: "name",
+    label: "Name",
+    placeholder: "Byrone Kingsly",
+    type: "text",
+  },
+  {
+    name: "email",
+    label: "Email",
+    placeholder: "user@gmail.com",
+    type: "text",
+  },
+  {
+    name: "phoneNumber",
+    label: "Phone Number",
+    placeholder: "+254712345678",
+    type: "text",
+  },
+  {
+    name: "message",
+    label: "Type your message here",
+    placeholder: "Type your reply message",
+    type: "textarea",
+  },
+];
