@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# --------- Example usage: ./setup-server.sh --username "REMOTE_USER" --domain "DOMAIN_NAME" --install-docker true --install-nginx true
 set -eEuo pipefail
 
 # Colors

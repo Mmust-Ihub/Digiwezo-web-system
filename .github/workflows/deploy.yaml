@@ -1,0 +1,121 @@
+name: Deploy
+run-name: Deploy to production
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Do you want to deploy the latest changes?"
+        type: boolean
+        default: false
+
+env:
+  # --- Actions specific ----
+  ENDPOINT: /
+  DOMAIN: digiwezo.tech
+
+  # --- App specific ---
+  NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
+
+jobs:
+  build:
+    name: "build and test"
+    outputs:
+      fullImageTag: ${{ steps.build-test-push.outputs.fullImageTag }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{vars.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+
+      - name: Mask sensitive variables
+        run: |
+          echo "::add-mask::${{ vars.NEXT_PUBLIC_API_URL }}"
+
+      - name: Build, Test and Push image
+        uses: ./.github/actions/build-test-push
+        id: build-test-push
+        with:
+          working-directory: deployment/scripts/
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          image: ${{ vars.IMAGE_NAME  }}
+          dockerfile: ${{ vars.DOCKERFILE }}
+          contextPath: ${{ github.workspace }}
+          endpoint: "${{ env.ENDPOINT }}"
+          test: true
+          push: true
+
+  deploy:
+    name: "Deploy to production"
+    needs: [build]
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: deployment/scripts/
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: "${{ secrets.SSH_PRIVATE_KEY }}"
+
+      - name: Add server to know hosts
+        run: |
+          ssh-keyscan -H ${{ secrets.REMOTE_IP }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        working-directory: ${{ github.workspace }}
+        run: |
+          rsync -avz ./deployment/ ${{secrets.REMOTE_USER}}@${{ secrets.REMOTE_IP }}:~/frontend
+
+          # --- Execute deployment --------
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_IP }} << 'EOF'
+            cd ~/frontend/scripts
+            chmod +x *.sh
+            ./deploy.sh "${{ vars.IMAGE_NAME }}" "${{ needs.build.outputs.fullImageTag }}"
+          EOF
+
+      - name: Health Check
+        run: |
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_IP }} << 'EOF'
+            cd ~/frontend/scripts
+            if ! ./healthcheck.sh "${{ vars.IMAGE_NAME }}" "${{ vars.NGINX_CONFIG_PATH }}" "${{ env.ENDPOINT }}"; then
+              echo "Health check failed! rolling back..."
+              ./rollback.sh "${{ vars.IMAGE_NAME }}" "${{ needs.build.outputs.fullImageTag }}" "${{ vars.NGINX_CONFIG_PATH }}"
+            fi
+          EOF
+
+      - name: Cleanup old images
+        if: success()
+        run: |
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_IP }} << 'EOF'
+            # --- Only keep the last 3 images. ---
+            docker image prune -f
+            docker images --format "table {{.Repository}}:{{.Tag}}\t{{.CreatedAt}}" | grep ${{ vars.IMAGE_NAME }} | tail -n +4 | awk '{print $1}' | xargs -r docker rmi
+          EOF
+
+  notify:
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Notify deployment status
+        run: |
+          if [[ "${{ needs.deploy.result }}" == "success" ]]; then
+            echo "✅ Deployment successful"
+          else
+            echo "❌ Deployment failed"
+          fi
