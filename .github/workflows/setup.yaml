@@ -21,12 +21,12 @@ jobs:
       run:
         working-directory: deployment/scripts/
     steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
       - name: Mask sensitive variables
         run: |
           echo "::add-mask::${{ env.NGINX_CONFIG_PATH }}"
-
-      - name: Checkout the code
-        uses: actions/checkout@v4
 
       - name: Setup SSH Key
         run: |
