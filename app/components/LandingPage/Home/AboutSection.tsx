@@ -3,7 +3,7 @@ import AboutCard from "@/components/LandingPage/Home/AboutCard";
 
 export default function AboutSection() {
   return (
-    <div className="w-screen bg-custom-white flex-col flex lg:flex-row gap-6 px-20 pt-4 pb-6 justify-center items-center text-custom-white">
+    <section id="about" className="w-screen bg-custom-white flex-col flex lg:flex-row gap-6 px-20 pt-4 pb-6 justify-center items-center text-custom-white">
       <div className="w-full flex flex-col justify-center items-center  gap-6 ">
         <h2 className="text-primary lg:text-left lg:self-start lg:px-8 lg:text-lg text-md font-bold  ">
           What Makes Us Stand Out Section
@@ -14,6 +14,6 @@ export default function AboutSection() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
