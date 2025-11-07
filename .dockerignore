@@ -38,3 +38,4 @@ docker-compose*
 **/.DS_Store
 nginx/
 README.md
+.github/

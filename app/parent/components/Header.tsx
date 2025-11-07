@@ -1,4 +1,4 @@
-import { inter } from "@/app/layout";
+import { inter } from "@/layout";
 import { Bell, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export const Header = () => {
         <h1 className={` ${inter.className} text-2xl font-bold text-cyan-500`}>BOOKER ACADEMY</h1>
       </Link>
       <div className="flex items-center gap-4">
-        <button className="relative p-2 hover:bg-muted rounded-full transition-colors">
+        <button title="notification" className="relative p-2 hover:bg-muted rounded-full transition-colors">
           <Bell className="w-5 h-5 text-primary fill" />
           <span className="absolute top-1 right-1 w-2 h-2 bg-secondary rounded-full" />
         </button>
