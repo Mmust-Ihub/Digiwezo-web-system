@@ -1,8 +1,7 @@
 "use client";
 
 import { Facebook, Instagram, X as Twitter } from "lucide-react";
-import Link from "next/link";
-
+import Image from "next/image";
 interface QuickLink {
   name: string;
   href: string;
@@ -21,10 +20,10 @@ interface SocialLink {
 
 const quickLinks: QuickLink[] = [
   { name: "Home", href: "#" },
-  { name: "About Us", href: "#about" },
   { name: "Services", href: "#services" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Pricing", href: "/pricing" },
   { name: "Contact Us", href: "#contact" },
+  { name: "About Us", href: "#about" },
 ];
 
 const partnerLinks: PartnerLink[] = [
@@ -40,11 +39,11 @@ const socialLinks: SocialLink[] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-gradient text-primary py-12 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-16 items-start">
+    <footer className="bg-brand-gradient text-primary py-12 px-6 md:px-20 flex flex-col">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row flex-3 gap-10 md:gap-16 items-start h-full justify-end">
         
-        <div className="space-y-3">
-          <img src="/logo.png" alt="DigiWezo logo" className="w-20 h-20" />
+        <div className="">
+          <Image src="/logo.png" width={1000} height={1000} alt="DigiWezo logo" className="w-20 h-20 object-contain scale-200" />
           <p className="font-semibold text-background">Contact Us</p>
           <p className="text-sm text-foreground">+254 796 564 709</p>
           <p className="text-sm text-foreground">info@digiwezo.co.ke</p>
@@ -122,7 +121,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-center text-sm mt-6 text-foreground space-y-1">
+      <div className="text-center text-sm mt-6 text-foreground space-y-1 flex-1 flex flex-col justify-center items-center">
         <p>
           <span className="text-background font">©</span> 2025 All Rights
           Reserved by DigiWezo

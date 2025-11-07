@@ -8,10 +8,11 @@ interface NavigationLink {
   href: string;
 }
 const navlinks: NavigationLink[] = [
-  { name: "About Us", href: "#about" },
+  
   { name: "Services", href: "#services" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Pricing", href: "/pricing" },
   { name: "Contact Us", href: "#contact" },
+  { name: "About Us", href: "#about" }
 ];
 export default function Navbar() {
   const [open, setOpen] = useState(false);
