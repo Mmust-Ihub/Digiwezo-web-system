@@ -7,7 +7,7 @@ import AssessmentTable from "@parent/(features)/progress-and-report/components/A
 
 const ReportDetails = () => {
   return (
-    <section className="bg-white p-6 space-y-8 text-sm text-gray-800">
+    <section className="bg-custom-white p-6 space-y-8 text-sm text-gray-800">
       <CompetencyTable />
       <AssessmentTable />
 

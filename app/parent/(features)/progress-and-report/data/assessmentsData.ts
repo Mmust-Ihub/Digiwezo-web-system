@@ -1,4 +1,4 @@
-import { Assessment } from "../types/assessmentTypes";
+import { Assessment } from "@parent/(features)/progress-and-report/types/assessmentTypes";
 
 export const assessmentsData: Assessment[] = [
   { task: "Science Experiment (Simple Machines Project)", status: "Completed" },

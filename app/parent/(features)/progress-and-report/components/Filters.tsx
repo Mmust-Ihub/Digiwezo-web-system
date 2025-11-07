@@ -3,7 +3,7 @@
 import React from "react";
 import { useFilters } from "@parent/(features)/progress-and-report/hooks/useFilters";
 import { filterData } from "@parent/(features)/progress-and-report/data/filterData";
-import { FiltersProps } from "@parent/(features)/progress-and-report/data/filterTypes";
+import { FiltersProps } from "@parent/(features)/progress-and-report/types/filterTypes";
 
 const Filters: React.FC = () => {
   const { grade, term, handleGradeChange, handleTermChange, handleSubmit } =
@@ -12,16 +12,16 @@ const Filters: React.FC = () => {
   const { grades, terms } = filterData;
 
   return (
-    <section className="bg-white p-6 mb-8 rounded-md shadow-sm">
+    <section className="bg-custom-white p-6 mb-8 rounded-md shadow-sm">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Grade Selector */}
         <div>
-          <label htmlFor="grade" className="block font-medium mb-1">
+          <label htmlFor="grade" className="block font-medium mb-1 text-foreground">
             Grade Performance
           </label>
           <select
             id="grade"
-            className="w-full border border-amber-500 rounded-md p-2"
+            className="w-full border border-primary rounded-md p-2 bg-custom-white text-foreground focus:outline-none focus:ring-2 focus:ring-secondary"
             value={grade}
             onChange={handleGradeChange}
           >
@@ -35,12 +35,12 @@ const Filters: React.FC = () => {
 
         {/* Term Selector */}
         <div>
-          <label htmlFor="term" className="block font-medium mb-1">
+          <label htmlFor="term" className="block font-medium mb-1 text-foreground">
             Term
           </label>
           <select
             id="term"
-            className="w-full border border-amber-500 rounded-md p-2"
+            className="w-full border border-primary rounded-md p-2 bg-custom-white text-foreground focus:outline-none focus:ring-2 focus:ring-secondary"
             value={term}
             onChange={handleTermChange}
           >
@@ -52,10 +52,11 @@ const Filters: React.FC = () => {
           </select>
         </div>
 
+        {/* Submit Button */}
         <div className="flex items-end">
           <button
             onClick={handleSubmit}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded w-full"
+            className="bg-primary hover:bg-secondary text-foreground font-semibold px-4 py-2 rounded-md w-full transition-all duration-200"
           >
             View Performance
           </button>

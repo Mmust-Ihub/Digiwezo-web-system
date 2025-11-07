@@ -7,13 +7,13 @@ import { Assessment } from "@parent/(features)/progress-and-report/types/assessm
 
 const AssessmentTable: React.FC = () => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm">
-      <h2 className="font-semibold text-base mb-3 text-gray-800">
+    <div className="bg-custom-white p-6 rounded-lg shadow-sm">
+      <h2 className="font-semibold text-base mb-3 text">
         ③ Practical Assessments (Project-Based Learning)
       </h2>
 
       <table className="w-full border rounded overflow-hidden text-sm">
-        <thead className="bg-gray-100 text-left">
+        <thead className="bg-soft-grey text-left">
           <tr>
             <th className="border p-2">Assessment Task</th>
             <th className="border p-2">Status</th>
@@ -36,7 +36,7 @@ const AssessmentTable: React.FC = () => {
         </tbody>
       </table>
 
-      <p className="mt-3 text-gray-700 text-sm leading-relaxed">
+      <p className="mt-3 text-custom-grey text-sm leading-relaxed">
         <b>Teacher’s Comment:</b> Johnson excelled in community service and mathematics projects.
         However, he missed one class presentation; he should aim to participate actively in oral
         activities.

@@ -9,13 +9,13 @@ const ReportCard = () => {
   const { student, termSummary, subjects } = reportData;
 
   return (
-    <section className="bg-white p-6 rounded-md shadow-sm">
+    <section className="bg-custom-white p-6 rounded-md shadow-sm">
       <h2 className="text-lg font-semibold mb-2">
         Student Progress & Report – Term {student.term} ({student.grade})
       </h2>
 
       {/* Student Info */}
-      <div className="text-sm text-gray-700 mb-4 space-y-1">
+      <div className="text-sm text-custom-grey mb-4 space-y-1">
         <p>
           <b>Student Name:</b> {student.name}
         </p>
@@ -35,7 +35,7 @@ const ReportCard = () => {
 
       {/* Term Performance Summary */}
       <section className="mb-6">
-        <h3 className="font-semibold text-gray-800 mb-1">
+        <h3 className="font-semibold text-custom-grey mb-1">
           Term Performance Summary
         </h3>
         <p className="text-sm">
@@ -57,7 +57,7 @@ const ReportCard = () => {
         </h4>
 
         <table className="w-full border text-sm rounded overflow-hidden">
-          <thead className="bg-gray-100">
+          <thead className="bg-soft-gray">
             <tr>
               <th className="border p-2 text-left">Learning Area</th>
               <th className="border p-2 text-left">Performance Score</th>

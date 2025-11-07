@@ -1,4 +1,4 @@
-import { FiltersData } from "./filterTypes";
+import { FiltersData } from "@parent/(features)/progress-and-report/types/filterTypes";
 
 export const filterData: FiltersData = {
   grades: [
