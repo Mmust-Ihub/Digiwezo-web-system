@@ -1,14 +1,14 @@
 #! /bin/bash
 set -eEuo pipefail
-# ---- Example usage: ./healthcheck.sh <APP_NAME> <ENDPOINT> ----
+# ---- Example usage: ./healthcheck.sh <APP_NAME> <ENDPOINT> <NGINX_CONF_FILE> ----
 
 # ------ Configs ------
 APP_NAME="$1"
 CURRENT_PORT_FILE="/tmp/current_port"
-NGINX_CONF="/etc/nginx/conf.d/frontend.conf"
+NGINX_CONF="$2"
 MAX_RETRIES=10
 RETRY_INTERVAL=5
-ENDPOINT=${2:-"/"}
+ENDPOINT=${3:-"/"}
 
 # ----- Colors ----
 RED='\033[0;31m'
@@ -52,7 +52,7 @@ for i in $(seq 1 "$MAX_RETRIES"); do
 
 		# Update nginx to point to the new port
 		log "Updating nginx configuration to port $CURRENT_PORT"
-		sudo sed -i "s/proxy_pass http:\/\/localhost:[0-9]*/proxy_pass http:\/\/localhost:$CURRENT_PORT/" $NGINX_CONF
+		sudo sed -i "s/proxy_pass http:\/\/localhost:[0-9]*/proxy_pass http:\/\/localhost:$CURRENT_PORT/" "$NGINX_CONF"
 		sudo nginx -t && sudo systemctl reload nginx
 
 		# Clean up old containers

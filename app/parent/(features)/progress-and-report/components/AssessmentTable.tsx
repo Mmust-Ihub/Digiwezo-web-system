@@ -1,50 +1,48 @@
+"use client";
+
 import React from "react";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { assessmentsData } from "@parent/(features)/progress-and-report/data/assessmentsData";
+import { Assessment } from "@parent/(features)/progress-and-report/types/assessmentTypes";
 
-const competencies = [
-  { competency: "Communication & Collaboration", rating: 4 },
-  { competency: "Critical Thinking & Problem Solving", rating: 3.5 },
-  { competency: "Self-Management", rating: 4 },
-  { competency: "Digital Literacy", rating: 4 },
-  { competency: "Citizenship & Social Responsibility", rating: 3 },
-];
-
-const CompetencyTable = () => {
+const AssessmentTable: React.FC = () => {
   return (
-    <div>
-      <h2 className="font-semibold text-base mb-3">
-        ② Core Competencies Development (Rated from ⭐ to ⭐⭐⭐⭐⭐)
+    <div className="bg-white p-6 rounded-lg shadow-sm">
+      <h2 className="font-semibold text-base mb-3 text-gray-800">
+        ③ Practical Assessments (Project-Based Learning)
       </h2>
 
-      <table className="w-full border rounded overflow-hidden">
+      <table className="w-full border rounded overflow-hidden text-sm">
         <thead className="bg-gray-100 text-left">
           <tr>
-            <th className="border p-2">Competency</th>
-            <th className="border p-2">Rating</th>
+            <th className="border p-2">Assessment Task</th>
+            <th className="border p-2">Status</th>
           </tr>
         </thead>
         <tbody>
-          {competencies.map(({ competency, rating }) => (
-            <tr key={competency}>
-              <td className="border p-2">{competency}</td>
-              <td className="border p-2 flex items-center space-x-1">
-                {[...Array(Math.floor(rating))].map((_, i) => (
-                  <FaStar key={i} className="text-yellow-500" />
-                ))}
-                {rating % 1 !== 0 && <FaStarHalfAlt className="text-yellow-500" />}
+          {assessmentsData.map(({ task, status }: Assessment) => (
+            <tr key={task}>
+              <td className="border p-2">{task}</td>
+              <td className="border p-2 flex items-center gap-2">
+                {status === "Completed" ? (
+                  <FaCheckCircle className="text-green-500" />
+                ) : (
+                  <FaTimesCircle className="text-red-500" />
+                )}
+                {status}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <p className="mt-2 text-gray-700">
-        <b>Comment:</b> Johnson communicates his ideas well in group discussions and can manage
-        his learning activities independently. Critical thinking can improve with more
-        problem-solving exercises.
+      <p className="mt-3 text-gray-700 text-sm leading-relaxed">
+        <b>Teacher’s Comment:</b> Johnson excelled in community service and mathematics projects.
+        However, he missed one class presentation; he should aim to participate actively in oral
+        activities.
       </p>
     </div>
   );
 };
 
-export default CompetencyTable;
+export default AssessmentTable;

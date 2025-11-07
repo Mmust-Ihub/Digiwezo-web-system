@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# --- Example usage: ./rollback.sh <APP_NAME> <IMAGE_TAG>
+# --- Example usage: ./rollback.sh <APP_NAME> <IMAGE_TAG> <NGINX_CONF_FILE>
 set -eEuo pipefail
 
 # ----- Configs -----
@@ -8,7 +8,7 @@ APP_NAME="$1"
 IMAGE_TAG="$2"
 ROLLBACK_FILE="/tmp/rollback_info"
 CURRENT_PORT_FILE="/tmp/current_port"
-NGINX_CONF="/etc/nginx/conf.d/frontend.conf"
+NGINX_CONF="$3"
 
 # Colors
 RED='\033[0;31m'

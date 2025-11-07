@@ -1,0 +1,107 @@
+name: "Build, Test and Push"
+description: "Reusable workflow to Build, Test and Push Docker Image"
+
+inputs:
+  working-directory:
+    description: "Directory to run commands in relative to"
+    default: deployment/scripts/
+  username:
+    description: "Dockerhub username"
+    required: true
+  image:
+    description: "Name of the image"
+    default: digiwezo-web
+
+  dockerfile:
+    description: "Dockerfile to use."
+    required: true
+    default: Dockerfile
+
+  contextPath:
+    description: "Dockerfile context"
+    required: true
+
+  endpoint:
+    description: "Healthcheck endpoint"
+    default: /
+
+  test:
+    description: "Whether to test the Image"
+    default: "true"
+  push:
+    description: "Whether to push the Image"
+    default: "false"
+
+outputs:
+  fullImageTag:
+    description: "The full image tag"
+    value: "${{ steps.build.outputs.FULL_TAG }}"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Make script executable
+      working-directory: ${{ inputs.working-directory}}
+      shell: bash
+      run: |
+        chmod +x ./utils.sh
+
+    - name: Build the Image
+      working-directory: ${{ inputs.working-directory}}
+      id: build
+      shell: bash
+      run: |
+        # --- Get the tag ---
+        TAG=$(./utils.sh --tag)
+        FULL_TAG="${{inputs.username}}/${{inputs.image}}:$TAG"
+
+        # ---- Get the build args and Dockerfile path ----
+        JSON_OUTPUT=$(./utils.sh --args "${{ inputs.dockerfile }}")
+        BUILD_ARGS=$(echo "$JSON_OUTPUT" | jq -r .args)
+        DOCKER_FILE_PATH=$(echo "$JSON_OUTPUT"| jq -r .path)
+        DOCKER_FILE_PATH=$(echo "$JSON_OUTPUT"| jq -r .path)
+        BUILD_CONTEXT=${{ inputs.contextPath }}
+
+        # ----- Build the Image --------
+        docker build -t $FULL_TAG $BUILD_ARGS -f $DOCKER_FILE_PATH $BUILD_CONTEXT
+        echo "Image Build successful with tag: $FULL_TAG"
+
+        # --- Store the above to the GITHUB_OUTPUT -----
+        echo "TAG=$TAG" >> $GITHUB_OUTPUT
+        echo "FULL_TAG=$FULL_TAG" >> $GITHUB_OUTPUT
+
+    - name: Test the Image
+      if: ${{ inputs.test == 'true' }}
+      working-directory: ${{ inputs.working-directory}}
+      id: test
+      shell: bash
+      run: |
+        FULL_TAG="${{ steps.build.outputs.FULL_TAG }}"
+        CONTAINER_NAME="test-$RANDOM"
+
+        # ----- Start the container and clean it on exit/failure
+        docker run -d --name "$CONTAINER_NAME" -p 3000:3000 $FULL_TAG
+        trap "docker stop $CONTAINER_NAME; docker rm $CONTAINER_NAME" EXIT
+
+        echo "Running Healthchecks on http://localhost:3000${{ inputs.endpoint }}"
+        URL="http://localhost:3000${{ inputs.endpoint }}"
+        for _ in {1..30}; do
+          if curl --silent --fail "$URL"; then
+            echo "Health check passed!"
+            exit 0
+          else
+            echo "Waiting for health check to pass. (Attempt $_/30)"
+            sleep 2
+          fi
+        done
+        echo "Healthcheck failed after multiple attempts"
+        exit 1
+
+    - name: Push the Image
+      if: ${{ inputs.push == 'true' }}
+      shell: bash
+      run: |
+        FULL_TAG="${{ steps.build.outputs.FULL_TAG }}"
+
+        # ---- Push the Image ---
+        docker push $FULL_TAG
