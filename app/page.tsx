@@ -7,24 +7,21 @@ import BookADemo from "@/components/LandingPage/Home/BookADemo";
 import Hero from "@/components/LandingPage/Home/Hero";
 import Partners from "@/components/LandingPage/Home/Partners";
 import Testimonials from "@/components/LandingPage/Home/Testimonials";
-import { useBookDemo } from "@/hooks/useDemo";
+import ServicesSection from "@/components/LandingPage/Home/ServicesSection";
+import ContactSection from "@/components/LandingPage/Home/ContactSection";
 
 export default function Home() {
-  const { isLoading, handleDemoSubmit, defaultValues } = useBookDemo();
-
   return (
     <div className="min-h-screen bg-custom-white">
       <Header />
       <main className="flex flex-1 flex-col items-center justify-between sm:items-start overflow-x-clip">
         <Hero />
         <AboutSection />
+        <ServicesSection/>
+        <ContactSection/>
         <Testimonials />
         <Partners />
-        <BookADemo
-          onSubmit={handleDemoSubmit}
-          isLoading={isLoading}
-          defaultValues={defaultValues}
-        />
+        <BookADemo/>
       </main>
       <Footer />
     </div>
