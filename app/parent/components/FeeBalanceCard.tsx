@@ -8,7 +8,7 @@ export const FeeBalanceCard = () => {
       
       <div className="flex flex-col items-center space-y-6">
         <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center relative">
-          <PaymentIcon className="w-32 h-32 text-white" />
+          <PaymentIcon className="w-32 h-32 text-background" />
         </div>
         
         <div className="text-center">
