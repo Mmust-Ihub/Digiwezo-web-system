@@ -1,51 +1,57 @@
 "use client";
 
 import React from "react";
-import { useFilters } from "../hooks/useFilters";
+import { useFilters } from "@parent/(features)/progress-and-report/hooks/useFilters";
+import { filterData } from "@parent/(features)/progress-and-report/data/filterData";
+import { FiltersProps } from "@parent/(features)/progress-and-report/data/filterTypes";
 
-const Filters = () => {
-  const {
-    grade,
-    term,
-    handleGradeChange,
-    handleTermChange,
-    handleSubmit,
-  } = useFilters();
+const Filters: React.FC = () => {
+  const { grade, term, handleGradeChange, handleTermChange, handleSubmit } =
+    useFilters() as FiltersProps;
+
+  const { grades, terms } = filterData;
 
   return (
-    <section className="bg-white p-6 mb-8">
-      <div className="grid grid-cols-3 gap-4">
-     
+    <section className="bg-white p-6 mb-8 rounded-md shadow-sm">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Grade Selector */}
         <div>
-          <label className="block font-medium mb-1">Grade Performance</label>
+          <label htmlFor="grade" className="block font-medium mb-1">
+            Grade Performance
+          </label>
           <select
+            id="grade"
             className="w-full border border-amber-500 rounded-md p-2"
             value={grade}
             onChange={handleGradeChange}
           >
-            <option value="">Select</option>
-            <option value="Grade 6">Grade 6</option>
-            <option value="Grade 7">Grade 7</option>
-            <option value="Grade 8">Grade 8</option>
+            {grades.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
 
-     
+        {/* Term Selector */}
         <div>
-          <label className="block font-medium mb-1">Term</label>
+          <label htmlFor="term" className="block font-medium mb-1">
+            Term
+          </label>
           <select
+            id="term"
             className="w-full border border-amber-500 rounded-md p-2"
             value={term}
             onChange={handleTermChange}
           >
-            <option value="">Select</option>
-            <option value="Term 1">Term 1</option>
-            <option value="Term 2">Term 2</option>
-            <option value="Term 3">Term 3</option>
+            {terms.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
 
-       
         <div className="flex items-end">
           <button
             onClick={handleSubmit}

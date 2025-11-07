@@ -1,5 +1,3 @@
-import { Header } from "@parent/components/Header";
-import { Sidebar } from "@parent/components/SideBar";
 import ProfileCard from "@parent/(features)/progress-and-report/components/ProfileCard";
 import ReportCard from "@parent/(features)/progress-and-report/components/Report";
 import ReportDetails from "@parent/(features)/progress-and-report/components/ReportDetails";
@@ -7,10 +5,7 @@ import Filters from "@parent/(features)/progress-and-report/components/Filters";
 
 export default function ProgressReportPage() {
   return (
-    <div className="min-h-screen flex bg-background">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <Header />
+    
         <div className="flex-1 p-6 space-y-6">
           <ProfileCard />
 
@@ -31,7 +26,7 @@ export default function ProgressReportPage() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+  
+    
   );
 }
