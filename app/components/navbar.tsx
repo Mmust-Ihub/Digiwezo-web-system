@@ -2,18 +2,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { Button } from "../../components/ui/button";
-interface NavigationLink {
-  name: string;
-  href: string;
-}
-const navlinks: NavigationLink[] = [
-  
-  { name: "Services", href: "#services" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Contact Us", href: "#contact" },
-  { name: "About Us", href: "#about" }
-];
+import { Button } from "@/components/ui/button";
+import { navlinks } from "@/data/NavigationLink";
+
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   return (

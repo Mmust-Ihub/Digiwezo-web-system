@@ -1,41 +1,7 @@
 "use client";
-
-import { Facebook, Instagram, X as Twitter } from "lucide-react";
 import Image from "next/image";
-interface QuickLink {
-  name: string;
-  href: string;
-}
-
-interface PartnerLink {
-  name: string;
-  href: string;
-}
-
-interface SocialLink {
-  icon: React.ElementType;
-  label: string;
-  href: string;
-}
-
-const quickLinks: QuickLink[] = [
-  { name: "Home", href: "#" },
-  { name: "Services", href: "#services" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Contact Us", href: "#contact" },
-  { name: "About Us", href: "#about" },
-];
-
-const partnerLinks: PartnerLink[] = [
-  { name: "Mmust", href: "https://mmust.ac.ke" },
-  { name: "Mmust-iHub", href: "https://mmustihub.com" },
-];
-
-const socialLinks: SocialLink[] = [
-  { icon: Facebook, label: "Facebook", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Twitter, label: "Twitter", href: "#" },
-];
+import { navlinks } from "@/data/NavigationLink";
+import { partnerLinks, socialLinks } from "@/data/NavigationLink";
 
 export default function Footer() {
   return (
@@ -53,7 +19,7 @@ export default function Footer() {
         <div className="space-y-3">
           <p className="font-semibold text-background">Quick Links</p>
           <ul className="space-y-1 text-sm text-foreground">
-            {quickLinks.map((link, i) => (
+            {navlinks.map((link, i) => (
               <li key={i}>
                 <a href={link.href}>{link.name}</a>
               </li>

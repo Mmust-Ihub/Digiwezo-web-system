@@ -27,3 +27,22 @@ export interface BookDemoProp {
     role: string;
   };
 }
+export interface NavigationLink {
+  name: string;
+  href: string;
+}
+export interface QuickLink {
+  name: string;
+  href: string;
+}
+
+export interface PartnerLink {
+  name: string;
+  href: string;
+}
+
+export interface SocialLink {
+  icon: React.ElementType;
+  label: string;
+  href: string;
+}
