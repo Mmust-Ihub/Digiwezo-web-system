@@ -5,44 +5,44 @@ import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { assessmentsData } from "@parent/(features)/progress-and-report/data/assessmentsData";
 import { Assessment } from "@parent/(features)/progress-and-report/types/assessmentTypes";
 
-const AssessmentTable: React.FC = () => {
+export const AssessmentTable = () => {
   return (
-    <div className="bg-custom-white p-6 rounded-lg shadow-sm">
-      <h2 className="font-semibold text-base mb-3 text">
+    <div className="bg-custom-white  p-6 ">
+      <h3 className="text-xl font-bold mb-4">
         ③ Practical Assessments (Project-Based Learning)
-      </h2>
+      </h3>
 
-      <table className="w-full border rounded overflow-hidden text-sm">
-        <thead className="bg-soft-grey text-left">
-          <tr>
-            <th className="border p-2">Assessment Task</th>
-            <th className="border p-2">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {assessmentsData.map(({ task, status }: Assessment) => (
-            <tr key={task}>
-              <td className="border p-2">{task}</td>
-              <td className="border p-2 flex items-center gap-2">
-                {status === "Completed" ? (
-                  <FaCheckCircle className="text-green-500" />
-                ) : (
-                  <FaTimesCircle className="text-red-500" />
-                )}
-                {status}
-              </td>
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[320px] border rounded text-sm">
+          <thead className="bg-soft-gray text-left">
+            <tr>
+              <th className="border p-3 font-medium">Assessment Task</th>
+              <th className="border p-3 font-medium">Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {assessmentsData.map(({ task, status }: Assessment) => (
+              <tr key={task} className="hover:bg-gray-50 transition-colors">
+                <td className="border p-3">{task}</td>
+                <td className="border p-3 flex items-center gap-2">
+                  {status === "Completed" ? (
+                    <FaCheckCircle className="text-green-500 shrink-0" />
+                  ) : (
+                    <FaTimesCircle className="text-red-500 shrink-0" />
+                  )}
+                  <span>{status}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <p className="mt-3 text-custom-grey text-sm leading-relaxed">
-        <b>Teacher’s Comment:</b> Johnson excelled in community service and mathematics projects.
-        However, he missed one class presentation; he should aim to participate actively in oral
-        activities.
+      <p className="mt-6 text-muted-foreground text-sm leading-relaxed">
+        <strong>Teacher’s Comment:</strong> Johnson excelled in community service and mathematics
+        projects. However, he missed one class presentation; he should aim to participate actively
+        in oral activities.
       </p>
     </div>
   );
 };
-
-export default AssessmentTable;

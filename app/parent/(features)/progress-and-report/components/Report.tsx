@@ -2,14 +2,15 @@
 
 import React from "react";
 import { FaPrint } from "react-icons/fa";
+import { Button } from "@/components/ui/button";
 import { reportData } from "@parent/(features)/progress-and-report/data/reportData";
-import { SubjectPerformance } from "@parent/(features)/progress-and-report/data/reportTypes";
+import { SubjectPerformance } from "@parent/(features)/progress-and-report/types/reportTypes";
 
-const ReportCard = () => {
+export const ReportCard = () => {
   const { student, termSummary, subjects } = reportData;
-
-  return (
-    <section className="bg-custom-white p-6 rounded-md shadow-sm">
+  
+     return (
+   <section className="bg-custom-white  p-6 mb-6 w-full lg:w-1/2">
       <h2 className="text-lg font-semibold mb-2">
         Student Progress & Report – Term {student.term} ({student.grade})
       </h2>
@@ -85,14 +86,10 @@ const ReportCard = () => {
         </p>
       </section>
 
-      
-      <div className="flex gap-4 mt-6">
-        <button className="bg-primary text-white px-6 py-2 rounded flex items-center gap-2 hover:bg-green-700">
-          <FaPrint /> Print
-        </button>
-      </div>
+      <Button className="flex items-center gap-2">
+        <FaPrint />
+        Print
+      </Button>
     </section>
   );
 };
-
-export default ReportCard;

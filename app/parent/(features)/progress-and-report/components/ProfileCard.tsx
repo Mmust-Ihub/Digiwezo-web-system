@@ -1,31 +1,36 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { studentData } from "@parent/(features)/progress-and-report/data/studentData";
 
-const ProfileCard: React.FC = () => {
+export const ProfileCard = () => {
   const { name, email, admissionNo, school, image } = studentData;
 
   return (
-    <section className="bg-custom-white shadow rounded-xl p-6 mb-8 flex justify-between items-center border border-primary">
-      {/* Left: Avatar + Info */}
-      <div className="flex items-center space-x-4">
-        <div className="w-16 h-16 bg-background rounded-full overflow-hidden border border-secondary">
-          {image ? (
-            <img src={image} alt={name} className="w-full h-full object-cover" />
-          ) : null}
+    <section className="bg-custom-white rounded-2xl shadow-sm p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex items-center gap-4">
+        <div className="relative w-16 h-16 rounded-full overflow-hidden border border-secondary">
+          {image && (
+            <Image
+              src={image}
+              alt={name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 64px, 64px"
+              priority
+            />
+          )}
         </div>
-        <div>
+        <div className="flex flex-col">
           <p className="font-semibold text-foreground">{name}</p>
-          <p className="text-sm text-custom-grey">{email}</p>
-          <p className="text-sm text-custom-grey">Adm No: {admissionNo}</p>
+          <p className="text-sm text-muted-foreground break-all">{email}</p>
+          <p className="text-sm text-muted-foreground">Adm No: {admissionNo}</p>
         </div>
       </div>
-
-      {/* Right: School name */}
-      <span className="text-primary font-bold text-lg">{school}</span>
+      <div className="text-right">
+        <span className="text-primary font-bold text-lg">{school}</span>
+      </div>
     </section>
   );
 };
-
-export default ProfileCard;

@@ -1,4 +1,4 @@
-import { ReportData } from "@parent/(features)/progress-and-report/data/reportTypes";
+import { ReportData } from "@parent/(features)/progress-and-report/types/reportTypes";
 
 export const reportData: ReportData = {
   student: {

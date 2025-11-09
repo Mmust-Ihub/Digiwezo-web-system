@@ -1,25 +1,48 @@
-import { Button } from "@/components/ui/button";
-import { PaymentIcon } from "@parent/components/icons/payment-icon";
+"use client";
 
-export const FeeBalanceCard = () => {
+import React from "react";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { assessmentsData } from "@parent/(features)/progress-and-report/data/assessmentsData";
+import { Assessment } from "@parent/(features)/progress-and-report/types/assessmentTypes";
+
+export const AssessmentTable = () => {
   return (
     <div className="bg-card rounded-2xl p-8 shadow-sm">
-      <h3 className="text-xl font-bold mb-8">Fees</h3>
-      
-      <div className="flex flex-col items-center space-y-6">
-        <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center relative">
-          <PaymentIcon className="w-32 h-32 text-background" />
-        </div>
-        
-        <div className="text-center">
-          <h4 className="text-lg font-semibold mb-1">Fee Balance</h4>
-          <p className="text-xl">Kshs 5600</p>
-        </div>
-        
-        <Button className="bg-gradient-start hover:bg-secondary/90 text-foreground font-semibold px-8">
-          View Statement
-        </Button>
+      <h3 className="text-xl font-bold mb-8">
+        ③ Practical Assessments (Project-Based Learning)
+      </h3>
+
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[320px] border rounded text-sm">
+          <thead className="bg-soft-gray text-left">
+            <tr>
+              <th className="border p-3 font-medium">Assessment Task</th>
+              <th className="border p-3 font-medium">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {assessmentsData.map(({ task, status }: Assessment) => (
+              <tr key={task} className="hover:bg-gray-50 transition-colors">
+                <td className="border p-3">{task}</td>
+                <td className="border p-3 flex items-center gap-2">
+                  {status === "Completed" ? (
+                    <FaCheckCircle className="text-green-500 shrink-0" />
+                  ) : (
+                    <FaTimesCircle className="text-red-500 shrink-0" />
+                  )}
+                  <span>{status}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+
+      <p className="mt-6 text-muted-foreground text-sm leading-relaxed">
+        <strong>Teacher’s Comment:</strong> Johnson excelled in community service and mathematics
+        projects. However, he missed one class presentation; he should aim to participate actively
+        in oral activities.
+      </p>
     </div>
   );
 };
