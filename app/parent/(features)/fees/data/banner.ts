@@ -7,7 +7,7 @@ export const BANNER_CONFIG = {
   },
   dimensions: {
     container: {
-      height: 185,
+      height: 200,
       maxWidth: 1301
     },
     illustration: {
