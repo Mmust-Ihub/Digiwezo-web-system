@@ -1,10 +1,9 @@
 'use client'
 
-import { FC } from 'react'
-import { PAYMENT_TERMS, BANK_ACCOUNTS } from '@/parent/(features)/fees/data/fee-structure'
-import { feeStructureStyles as styles } from '@/parent/(features)/fees/components/styles/fee-structure.styles'
+import { PAYMENT_TERMS, BANK_ACCOUNTS } from '@parent/(features)/fees/data/fee-structure'
+import { feeStructureStyles as styles } from '@parent/(features)/fees/components/styles/fee-structure.styles'
 
-export const FeeStructureTerms: FC = () => {
+export const FeeStructureTerms = () => {
   return (
     <div className={styles.terms.container}>
       <h3 className={styles.terms.title}>TERMS OF PAYMENT:</h3>

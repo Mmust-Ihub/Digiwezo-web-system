@@ -1,11 +1,11 @@
 'use client'
 
-import { useFees } from '@/parent/(features)/fees/hooks/useFees'
+import { useFees } from '@parent/(features)/fees/hooks/useFees'
 
-import { WelcomeBanner } from '@/parent/(features)/fees/components/WelcomeBanner'
-import { FeeTabs } from '@/parent/(features)/fees/components/FeeTabs'
-import { DefaultFeeStatement } from '@/parent/(features)/fees/components/DefaultFeeStatement'
-import { FeeStructure } from '@/parent/(features)/fees/components/FeeStructure'
+import { WelcomeBanner } from '@parent/(features)/fees/components/WelcomeBanner'
+import { FeeTabs } from '@parent/(features)/fees/components/FeeTabs'
+import { DefaultFeeStatement } from '@parent/(features)/fees/components/DefaultFeeStatement'
+import { FeeStructure } from '@parent/(features)/fees/components/FeeStructure'
 
 export default function FeesPage() {
   const { activeTab, handleTabChange } = useFees()

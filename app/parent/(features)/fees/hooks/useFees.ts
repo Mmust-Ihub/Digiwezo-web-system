@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { TabType } from '@/parent/(features)/fees/types/fee-tabs';
+import type { TabType } from '@parent/(features)/fees/types/fee-tabs';
 
 export const useFees = () => {
   const [activeTab, setActiveTab] = useState<TabType>('statement');

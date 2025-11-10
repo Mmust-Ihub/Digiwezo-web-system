@@ -1,16 +1,15 @@
 'use client'
 
-import { FC } from 'react'
 import { cn } from '@/lib/utils'
-import { TABLE_HEADERS, SUB_HEADERS } from '@/parent/(features)/fees/types/fee-structure'
-import { FormattedFeeStructureItem } from '@/parent/(features)/fees/types/fee-hooks'
-import { feeStructureStyles as styles } from '@/parent/(features)/fees/components/styles/fee-structure.styles'
+import { TABLE_HEADERS, SUB_HEADERS } from '@parent/(features)/fees/types/fee-structure'
+import { FormattedFeeStructureItem } from '@parent/(features)/fees/types/fee-hooks'
+import { feeStructureStyles as styles } from '@parent/(features)/fees/components/styles/fee-structure.styles'
 
 interface FeeStructureTableProps {
   data: FormattedFeeStructureItem[]
 }
 
-export const FeeStructureTable: FC<FeeStructureTableProps> = ({ data }) => {
+export const FeeStructureTable = ({ data }: FeeStructureTableProps) => {
   return (
     <div className={styles.table.container}>
       <table className={styles.table.base}>

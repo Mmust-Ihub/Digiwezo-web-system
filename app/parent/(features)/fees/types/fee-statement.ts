@@ -1,4 +1,4 @@
-import type { FeeReceipt } from '@/parent/(features)/fees/types/fees';
+import type { FeeReceipt } from '@parent/(features)/fees/types/fees';
 
 export interface FeeStatementProps {
   receipt: FeeReceipt;

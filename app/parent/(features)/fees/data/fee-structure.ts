@@ -1,6 +1,6 @@
 import { BankAccount, FeeStructureItem } from "@parent/(features)/fees/types/fees-structure";
 
-export const FEE_STRUCTURE_DATA: FeeStructureItem[] = [
+export const fee_structure_data: FeeStructureItem[] = [
   {
     grade: "GRADE 1",
     mandatory: {

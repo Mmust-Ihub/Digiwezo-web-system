@@ -1,14 +1,13 @@
 'use client'
 
-import { FC } from 'react'
 import { Button } from '@/components/ui/button'
-import { useFeeStructure } from '@/parent/(features)/fees/hooks/useFeeStructure'
-import { FeeStructureHeader } from '@/parent/(features)/fees/components/FeeStructureHeader'
-import { FeeStructureTable } from '@/parent/(features)/fees/components/FeeStructureTable'
-import { FeeStructureTerms } from '@/parent/(features)/fees/components/FeeStructureTerms'
-import { feeStructureStyles as styles } from '@/parent/(features)/fees/components/styles/fee-structure.styles'
+import { useFeeStructure } from '@parent/(features)/fees/hooks/useFeeStructure'
+import { FeeStructureHeader } from '@parent/(features)/fees/components/FeeStructureHeader'
+import { FeeStructureTable } from '@parent/(features)/fees/components/FeeStructureTable'
+import { FeeStructureTerms } from '@parent/(features)/fees/components/FeeStructureTerms'
+import { feeStructureStyles as styles } from '@parent/(features)/fees/components/styles/fee-structure.styles'
 
-export const FeeStructure: FC = () => {
+export const FeeStructure = () => {
   const { 
     selectedGrade,
     displayedData,

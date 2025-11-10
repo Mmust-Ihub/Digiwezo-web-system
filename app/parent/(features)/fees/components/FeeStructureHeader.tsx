@@ -1,9 +1,8 @@
 'use client'
 
-import { FC } from 'react'
 import { Button } from '@/components/ui/button'
-import { FEE_STRUCTURE_DATA } from '@/parent/(features)/fees/data/fee-structure'
-import { feeStructureStyles as styles } from '@/parent/(features)/fees/components/styles/fee-structure.styles'
+import { fee_structure_data } from '@parent/(features)/fees/data/fee-structure'
+import { feeStructureStyles as styles } from '@parent/(features)/fees/components/styles/fee-structure.styles'
 
 interface FeeStructureHeaderProps {
   selectedGrade: string
@@ -12,12 +11,12 @@ interface FeeStructureHeaderProps {
   onGenerate: () => void
 }
 
-export const FeeStructureHeader: FC<FeeStructureHeaderProps> = ({
+export const FeeStructureHeader = ({
   selectedGrade,
   isLoading,
   onGradeChange,
   onGenerate
-}) => {
+}: FeeStructureHeaderProps) => {
   return (
     <div className={styles.header.container}>
       <div className={styles.header.gradeContainer}>
@@ -31,7 +30,7 @@ export const FeeStructureHeader: FC<FeeStructureHeaderProps> = ({
             >
               <option value="">Select Grade</option>
               <option value="all">All Grades</option>
-              {FEE_STRUCTURE_DATA.map((item, index) => (
+              {fee_structure_data.map((item, index) => (
                 <option key={index} value={item.grade}>{item.grade}</option>
               ))}
             </select>

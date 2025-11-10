@@ -1,9 +1,8 @@
-import { FC } from 'react'
 import Image from 'next/image'
-import { banner_data } from '@/parent/(features)/fees/data/banner'
-import { bannerStyles } from '@/parent/(features)/fees/components/styles/banner.styles'
+import { banner_data } from '@parent/(features)/fees/data/banner'
+import { bannerStyles } from '@parent/(features)/fees/components/styles/banner.styles'
 
-export const WelcomeBanner: FC = () => {
+export const WelcomeBanner = () => {
   return (
     <div 
       className={`${bannerStyles.container} h-[${banner_data.dimensions.container.height}px] w-full max-w-[${banner_data.dimensions.container.maxWidth}px]`}

@@ -1,13 +1,11 @@
 'use client'
 
-import { FC } from 'react'
-
 import { Button } from '@/components/ui/button'
 
-import type { TabsProps } from '@/parent/(features)/fees/types/fee-tabs'
-import { TAB_BUTTONS } from '@/parent/(features)/fees/types/fee-tabs'
+import type { TabsProps } from '@parent/(features)/fees/types/fee-tabs'
+import { TAB_BUTTONS } from '@parent/(features)/fees/types/fee-tabs'
 
-export const FeeTabs: FC<TabsProps> = ({ activeTab, onTabChange }) => {
+export const FeeTabs = ({ activeTab, onTabChange }: TabsProps) => {
   return (
     <div className="flex gap-4 mb-8 px-2">
       {TAB_BUTTONS.map((tab) => (
