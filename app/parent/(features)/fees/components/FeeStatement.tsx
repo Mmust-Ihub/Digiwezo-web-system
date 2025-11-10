@@ -8,17 +8,7 @@ import {
   TABLE_HEADERS
 } from '@/parent/(features)/fees/types/fee-statement'
 import { cn } from '@/lib/utils'
-
-// Common CSS classes
-const commonClasses = {
-  container: 'border border-custom-grey/20 rounded-lg',
-  text: {
-    base: 'text-sm text-foreground',
-    bold: 'font-semibold',
-  },
-  cell: 'py-2 px-4 text-sm text-foreground border-r border-custom-grey/20',
-  tableHeader: 'py-2 px-4 text-left text-sm font-bold text-foreground border-b border-r border-custom-grey/20 bg-gray-50 last:border-r-0',
-}
+import { feeStatementStyles as styles } from '@/parent/(features)/fees/components/styles/fee-statement.styles'
 
 export const FeeStatement: FC<FeeStatementProps> = ({ receipt }) => {
   const { 
@@ -36,35 +26,35 @@ export const FeeStatement: FC<FeeStatementProps> = ({ receipt }) => {
   const tableData = getTableData()
 
   return (
-    <div className="flex items-end gap-6">
-      <div className={cn(commonClasses.container, 'relative p-4 sm:p-6 max-w-[742px]')}>
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold text-foreground text-center mb-3">Secondary School Fee Receipt</h2>
-          <div className="flex flex-wrap gap-x-8 text-sm justify-end">
+    <div className={styles.container}>
+      <div className={styles.content.base}>
+        <div className={styles.content.header.container}>
+          <h2 className={styles.content.header.title}>Secondary School Fee Receipt</h2>
+          <div className={styles.content.header.infoContainer}>
             {headerInfo.map(({ label, value }) => (
               <div key={label} className="flex gap-1">
-                <span className={cn(commonClasses.text.base, commonClasses.text.bold)}>{label}:</span>
-                <span className={commonClasses.text.base}>{value}</span>
+                <span className={cn(styles.text.base, styles.text.bold)}>{label}:</span>
+                <span className={styles.text.base}>{value}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="space-y-2 mb-6">
+        <div className={styles.content.studentInfo}>
           {studentInfo.map(({ label, value }) => (
-            <div key={label} className={commonClasses.text.base}>
-              <span className={commonClasses.text.bold}>{label}:</span>
+            <div key={label} className={styles.text.base}>
+              <span className={styles.text.bold}>{label}:</span>
               <span className="ml-1">{value}</span>
             </div>
           ))}
         </div>
 
-        <div className={cn(commonClasses.container, 'overflow-x-auto')}>
-          <table className="w-full border-collapse min-w-[680px]">
+        <div className={styles.table.wrapper}>
+          <table className={styles.table.base}>
             <thead>
               <tr>
                 {TABLE_HEADERS.map((header) => (
-                  <th key={header.id} className={commonClasses.tableHeader}>
+                  <th key={header.id} className={styles.table.header}>
                     {header.label}
                   </th>
                 ))}
@@ -72,14 +62,14 @@ export const FeeStatement: FC<FeeStatementProps> = ({ receipt }) => {
             </thead>
             <tbody>
               {tableData.map((row, index) => (
-                <tr key={index} className={index !== tableData.length - 1 ? "border-b border-custom-grey/20" : ""}>
+                <tr key={index} className={index !== tableData.length - 1 ? styles.table.row.border : ""}>
                   {[
                     row.feeDescription,
                     row.amount,
                     row.paidDate,
                     row.paymentMethod
                   ].map((value, cellIndex) => (
-                    <td key={cellIndex} className={cn(commonClasses.cell, {
+                    <td key={cellIndex} className={cn(styles.table.cell, {
                       'font-semibold': cellIndex === 1,
                       'border-r-0': cellIndex === 3
                     })}>
@@ -92,10 +82,10 @@ export const FeeStatement: FC<FeeStatementProps> = ({ receipt }) => {
           </table>
         </div>
 
-        <div className="mt-4 space-y-1">
+        <div className={styles.summary.container}>
           {receiptInfo.map(({ label, value, isBold }) => (
-            <p key={label} className={commonClasses.text.base}>
-              <span className="font-bold">{label}:</span>
+            <p key={label} className={styles.text.base}>
+              <span className={styles.text.bold}>{label}:</span>
               <span className={cn('ml-1', { 'font-semibold': isBold })}>{value}</span>
             </p>
           ))}
