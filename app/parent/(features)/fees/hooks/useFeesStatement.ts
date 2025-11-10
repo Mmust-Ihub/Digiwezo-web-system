@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import type { FeeReceipt } from '../types/fees'
-import type { StudentInfo } from '../types/fee-statement'
+import type { FeeReceipt } from '@parent/(features)/fees/types/fees'
+import type { StudentInfo } from '@parent/(features)/fees/types/fee-statement'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 

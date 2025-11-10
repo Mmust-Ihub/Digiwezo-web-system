@@ -1,4 +1,4 @@
-import { FeeReceipt } from '../types/fees'
+import { FeeReceipt } from '@parent/(features)/fees/types/fees'
 
 export const DUMMY_FEE_RECEIPT: FeeReceipt = {
   date: 'November 5, 2050',

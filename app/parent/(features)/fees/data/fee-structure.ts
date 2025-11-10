@@ -1,4 +1,4 @@
-import { BankAccount, FeeStructureItem } from "../types/fees-structure";
+import { BankAccount, FeeStructureItem } from "@parent/(features)/fees/types/fees-structure";
 
 export const FEE_STRUCTURE_DATA: FeeStructureItem[] = [
   {

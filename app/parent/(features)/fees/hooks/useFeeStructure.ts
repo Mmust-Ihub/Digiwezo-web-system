@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { FEE_STRUCTURE_DATA, BANK_ACCOUNTS, PAYMENT_TERMS } from '../data/fee-structure'
-import type { FeeStructureItem } from '../types/fees-structure'
+import { FEE_STRUCTURE_DATA, BANK_ACCOUNTS, PAYMENT_TERMS } from '@parent/(features)/fees/data/fee-structure'
+import type { FeeStructureItem } from '@parent/(features)/fees/types/fees-structure'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 
