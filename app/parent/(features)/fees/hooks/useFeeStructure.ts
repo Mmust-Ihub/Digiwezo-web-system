@@ -10,10 +10,37 @@ type JsPDFWithPlugin = jsPDF & {
   };
 }
 
+interface FormattedFeeStructureItem extends Omit<FeeStructureItem, 'mandatory' | 'optional'> {
+  mandatory: {
+    tuition: string;
+  };
+  optional: {
+    lunch: string;
+    swimming: string;
+    transport: string;
+    boarding: string;
+  };
+}
+
 export const useFeeStructure = () => {
   const [selectedGrade, setSelectedGrade] = useState<string>('')
-  const [displayedData, setDisplayedData] = useState<FeeStructureItem[]>(FEE_STRUCTURE_DATA)
+  const [displayedData, setDisplayedData] = useState<FormattedFeeStructureItem[]>([])
   const [isLoading, setIsLoading] = useState(false)
+
+  const formatFeeItem = (item: FeeStructureItem): FormattedFeeStructureItem => ({
+    ...item,
+    mandatory: {
+      tuition: `${item.mandatory.tuition.toLocaleString()}.00`
+    },
+    optional: {
+      lunch: `${item.optional.lunch.toLocaleString()}.00`,
+      swimming: typeof item.optional.swimming === 'number' 
+        ? `${item.optional.swimming.toLocaleString()}.00` 
+        : item.optional.swimming,
+      transport: item.optional.transport.toString(),
+      boarding: item.optional.boarding.toString()
+    }
+  })
 
   const handleGradeChange = (grade: string) => {
     setSelectedGrade(grade)
@@ -29,7 +56,7 @@ export const useFeeStructure = () => {
       const filteredData = selectedGrade === 'all' 
         ? FEE_STRUCTURE_DATA 
         : FEE_STRUCTURE_DATA.filter(item => item.grade === selectedGrade)
-      setDisplayedData(filteredData)
+      setDisplayedData(filteredData.map(formatFeeItem))
       setIsLoading(false)
     }, 500)
   }
@@ -52,7 +79,7 @@ export const useFeeStructure = () => {
       item.grade.toString(),
       `${item.mandatory.tuition.toLocaleString()}.00`,
       `${item.optional.lunch.toLocaleString()}.00`,
-      typeof item.optional.swimming === 'number' ? `${item.optional.swimming.toLocaleString()}.00` : String(item.optional.swimming),
+      typeof item.optional.swimming === 'number' ? `${(item.optional.swimming as number).toLocaleString()}.00` : String(item.optional.swimming),
       String(item.optional.transport),
       String(item.optional.boarding)
     ])
