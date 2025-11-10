@@ -1,4 +1,4 @@
-export default function School-adminLayout({ children }: { children: React.ReactNode }) {
+export default function SchoolAdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className="min-h-screen flex flex-col">
       <header className="p-4 bg-gray-100 border-b">
