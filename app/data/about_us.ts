@@ -1,11 +1,23 @@
-export const statsData = [
+
+export interface Stat {
+  value: number;
+  label: string;
+}
+
+export interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+}
+
+export const statsData: Stat[] = [
   { value: 200, label: "Active Institutions" },
   { value: 25, label: "Mentorship Programs" },
   { value: 98, label: "Student Satisfaction" },
   { value: 15000, label: "Learners Impacted" },
 ];
 
-export const teamMembers = [
+export const teamMembers: TeamMember[] = [
   {
     name: "Calvin Muemah",
     role: "Lead Developer",
