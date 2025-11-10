@@ -8,12 +8,12 @@ const partnerImages: string[] = [
 
 export default function Partners() {
   return (
-    <section id="partners" className="w-screen bg-custom-white flex-col flex lg:flex-row gap-6 px-20 pt-4 pb-6 justify-center items-center text-custom-white">
+    <section id="partners" className="w-screen bg-custom-white flex-col flex lg:flex-row gap-6 px-8 lg:px-20 pt-4 pb-6 justify-center items-center text-custom-white">
       <div className="w-full flex flex-col justify-center items-center  gap-6 ">
         <h2 className="text-primary lg:text-left  lg:px-8 lg:text-lg text-md font-bold">
           Join the Growing Community of Schools Using Our System{" "}
         </h2>
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6  gap-4 px-4 lg:px-14">
+        <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6  gap-4 px-4 lg:px-14">
           {partnerImages.map((image, index) => (
             <Image
               key={index}
