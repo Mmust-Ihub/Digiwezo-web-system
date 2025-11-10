@@ -1,37 +1,29 @@
-// External dependencies
 import { FC } from 'react'
 import Image from 'next/image'
-
-// Types
-import type { BannerProps } from '@/parent/(features)/fees/types/banner'
-
-// Data
-import { BANNER_CONFIG } from '@/parent/(features)/fees/data/banner'
-
-// Styles
+import { banner_data } from '@/parent/(features)/fees/data/banner'
 import { bannerStyles } from '@/parent/(features)/fees/components/styles/banner.styles'
 
-export const WelcomeBanner: FC<BannerProps> = ({ username, message }) => {
+export const WelcomeBanner: FC = () => {
   return (
     <div 
-      className={`${bannerStyles.container} h-[${BANNER_CONFIG.dimensions.container.height}px] w-full max-w-[${BANNER_CONFIG.dimensions.container.maxWidth}px]`}
+      className={`${bannerStyles.container} h-[${banner_data.dimensions.container.height}px] w-full max-w-[${banner_data.dimensions.container.maxWidth}px]`}
       style={{
-        backgroundImage: `url(${BANNER_CONFIG.images.background})`,
+        backgroundImage: `url(${banner_data.images.background})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
     >
       <div className={bannerStyles.content}>
-        <h2 className={bannerStyles.title}>Welcome back, {username}</h2>
-        <p className={bannerStyles.description}>{message}</p>
+        <h2 className={bannerStyles.title}>Welcome back, {banner_data.username}</h2>
+        <p className={bannerStyles.description}>{banner_data.message}</p>
       </div>
       <div className={bannerStyles.imageWrapper}>
         <Image 
-          src={BANNER_CONFIG.images.illustration}
+          src={banner_data.images.illustration}
           alt="Fees illustration"
-          width={BANNER_CONFIG.dimensions.illustration.width}
-          height={BANNER_CONFIG.dimensions.illustration.height}
-          className={`${bannerStyles.image} h-[${BANNER_CONFIG.dimensions.illustration.height}px]`}
+          width={banner_data.dimensions.illustration.width}
+          height={banner_data.dimensions.illustration.height}
+          className={`${bannerStyles.image} h-[${banner_data.dimensions.illustration.height}px]`}
         />
       </div>
     </div>

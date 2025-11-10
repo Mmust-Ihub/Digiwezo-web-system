@@ -1,12 +1,9 @@
 'use client'
 
-// External dependencies
 import { FC } from 'react'
 
-// UI Components
 import { Button } from '@/components/ui/button'
 
-// Types & Data
 import type { TabsProps } from '@/parent/(features)/fees/types/fee-tabs'
 import { TAB_BUTTONS } from '@/parent/(features)/fees/types/fee-tabs'
 

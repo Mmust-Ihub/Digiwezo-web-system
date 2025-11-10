@@ -37,7 +37,6 @@ export const useFeeStructure = () => {
     if (!selectedGrade) return
 
     setIsLoading(true)
-    // Simulate API call
     setTimeout(() => {
       const filteredData = selectedGrade === 'all' 
         ? FEE_STRUCTURE_DATA 
@@ -48,18 +47,14 @@ export const useFeeStructure = () => {
   }
 
   const downloadStructure = () => {
-    // Initialize PDF document
     const doc = new jsPDF()
     
-    // Add title
     doc.setFontSize(16)
     doc.text('Secondary School Fee Structure', doc.internal.pageSize.width / 2, 20, { align: 'center' })
     
-    // Add grade information
     doc.setFontSize(12)
     doc.text(`Grade: ${selectedGrade || 'All Grades'}`, 20, 30)
 
-    // Create table data
     const headers = [['Grade', 'Tuition', 'Lunch', 'Swimming', 'Transport', 'Boarding']]
     const rows = displayedData.map(item => [
       item.grade.toString(),
@@ -70,7 +65,6 @@ export const useFeeStructure = () => {
       String(item.optional.boarding)
     ])
 
-    // Add table to PDF using autoTable
     autoTable(doc, {
       head: headers,
       body: rows,
@@ -87,8 +81,6 @@ export const useFeeStructure = () => {
       },
     })
 
-    // Add payment terms
-    // Get the Y position after the table
     let yPos = (doc as JsPDFWithPlugin).lastAutoTable.finalY + 20
     doc.setFontSize(12)
     doc.text('TERMS OF PAYMENT:', 20, yPos)
@@ -104,7 +96,6 @@ export const useFeeStructure = () => {
       yPos += 6
     })
 
-    // Add bank account details
     yPos += 5
     BANK_ACCOUNTS.forEach(account => {
       if (yPos > doc.internal.pageSize.height - 20) {
@@ -116,7 +107,6 @@ export const useFeeStructure = () => {
       yPos += 6
     })
 
-    // Save PDF
     doc.save(`fee_structure_${selectedGrade || 'all'}.pdf`)
   }
 

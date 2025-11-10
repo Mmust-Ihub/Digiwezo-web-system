@@ -22,14 +22,11 @@ export const useFeesStatement = (receipt: FeeReceipt) => {
     setIsDownloading(true)
 
     try {
-      // Initialize PDF document
       const doc = new jsPDF()
       
-      // Add title
       doc.setFontSize(16)
       doc.text('Secondary School Fee Receipt', doc.internal.pageSize.width / 2, 20, { align: 'center' })
       
-      // Add receipt information
       doc.setFontSize(10)
       let yPos = 40
       const receiptInfo = [
@@ -40,7 +37,6 @@ export const useFeesStatement = (receipt: FeeReceipt) => {
       doc.text(receiptInfo.map(item => `${item.label}: ${item.value}`).join('    '), 
         doc.internal.pageSize.width / 2, yPos, { align: 'center' })
       
-      // Add student information
       yPos += 20
       const studentInfo = [
         { label: 'Student Name', value: receipt.studentName },
@@ -53,7 +49,6 @@ export const useFeesStatement = (receipt: FeeReceipt) => {
         yPos += 6
       })
       
-      // Add fee items table
       yPos += 10
       const headers = [['Description', 'Amount', 'Paid Date', 'Payment Method']]
       const rows = receipt.feeItems.map(item => [
@@ -63,7 +58,6 @@ export const useFeesStatement = (receipt: FeeReceipt) => {
         item.paymentMethod
       ])
       
-      // Add table to PDF using autoTable
       autoTable(doc, {
         head: headers,
         body: rows,
@@ -80,7 +74,6 @@ export const useFeesStatement = (receipt: FeeReceipt) => {
         },
       })
       
-      // Add total and status
       yPos = (doc as JsPDFWithPlugin).lastAutoTable.finalY + 20
       doc.setFontSize(11)
       doc.setFont('helvetica', 'bold')
@@ -88,7 +81,6 @@ export const useFeesStatement = (receipt: FeeReceipt) => {
       yPos += 8
       doc.text(`Payment Status: ${receipt.paymentStatus}`, 20, yPos)
       
-      // Save PDF
       doc.save(`fee_receipt_${receipt.receiptNumber}.pdf`)
     } catch (error) {
       console.error('Error generating PDF:', error)
