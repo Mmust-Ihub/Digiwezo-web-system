@@ -3,30 +3,12 @@ import type { FeeReceipt } from '@parent/(features)/fees/types/fees'
 import type { StudentInfo } from '@parent/(features)/fees/types/fee-statement'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
-
-type JsPDFWithPlugin = jsPDF & {
-  lastAutoTable: {
-    finalY: number;
-  };
-}
-
-interface ReceiptInfo {
-  label: string;
-  value: string;
-  isBold?: boolean;
-}
-
-interface HeaderInfo {
-  label: string;
-  value: string;
-}
-
-interface TableRowData {
-  feeDescription: string;
-  amount: string;
-  paidDate: string;
-  paymentMethod: string;
-}
+import type {
+  JsPDFWithPlugin,
+  ReceiptInfo,
+  HeaderInfo,
+  TableRowData
+} from '@parent/(features)/fees/types/fee-hooks'
 
 export const useFeesStatement = (receipt: FeeReceipt) => {
   const [isDownloading, setIsDownloading] = useState(false)

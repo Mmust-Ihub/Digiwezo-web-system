@@ -3,24 +3,10 @@ import { FEE_STRUCTURE_DATA, BANK_ACCOUNTS, PAYMENT_TERMS } from '@parent/(featu
 import type { FeeStructureItem } from '@parent/(features)/fees/types/fees-structure'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
-
-type JsPDFWithPlugin = jsPDF & {
-  lastAutoTable: {
-    finalY: number;
-  };
-}
-
-interface FormattedFeeStructureItem extends Omit<FeeStructureItem, 'mandatory' | 'optional'> {
-  mandatory: {
-    tuition: string;
-  };
-  optional: {
-    lunch: string;
-    swimming: string;
-    transport: string;
-    boarding: string;
-  };
-}
+import type {
+  JsPDFWithPlugin,
+  FormattedFeeStructureItem
+} from '@parent/(features)/fees/types/fee-hooks'
 
 export const useFeeStructure = () => {
   const [selectedGrade, setSelectedGrade] = useState<string>('')
