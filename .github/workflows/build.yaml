@@ -1,0 +1,78 @@
+name: Image Build
+run-name: build
+
+on:
+  pull_request:
+    branches: [main]
+
+env:
+  # --- Actions specific ----
+  ENDPOINT: "/"
+
+  # ---- Application specific ----
+  NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
+
+jobs:
+  normal:
+    name: "normal build"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Mask sensitive variables
+        run: |
+          echo "::add-mask::${{ env.NEXT_PUBLIC_API_URL }}"
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependecies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          CI: true
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ runner.os }}
+
+  docker:
+    name: "docker build and test"
+    needs: [normal]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Mask sensitive variables
+        run: |
+          echo "::add-mask::${{ env.NEXT_PUBLIC_API_URL }}"
+
+      - name: Build, Test and Push Image
+        uses: ./.github/actions/build-test-push
+        id: build-test-push
+        with:
+          working-directory: deployment/scripts/
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          image: ${{ vars.IMAGE_NAME }}
+          dockerfile: ${{ vars.DOCKERFILE }}
+          contextPath: ${{ github.workspace }}
+          endpoint: ${{ env.ENDPOINT }}
+          test: true
+          push: false
