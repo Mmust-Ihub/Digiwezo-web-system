@@ -7,7 +7,7 @@ import { Assessment } from "@parent/(features)/progress-and-report/types/assessm
 
 export const AssessmentTable = () => {
   return (
-    <div className="bg-custom-white  p-6 ">
+    <div className="bg-custom-white  p-6  py-1">
       <h3 className="text-xl font-bold mb-4">
         ③ Practical Assessments (Project-Based Learning)
       </h3>
@@ -22,7 +22,7 @@ export const AssessmentTable = () => {
           </thead>
           <tbody>
             {assessmentsData.map(({ task, status }: Assessment) => (
-              <tr key={task} className="hover:bg-gray-50 transition-colors">
+              <tr key={task} className="hover:bg-soft-grey transition-colors">
                 <td className="border p-3">{task}</td>
                 <td className="border p-3 flex items-center gap-2">
                   {status === "Completed" ? (

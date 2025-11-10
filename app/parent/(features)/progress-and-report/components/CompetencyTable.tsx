@@ -7,8 +7,8 @@ import { Competency } from "@parent/(features)/progress-and-report/types/compete
 
 export const CompetencyTable = () => {
   return (
-    <div className="bg-card  p-8 ">
-      <h3 className="text-xl font-bold mb-4">
+    <div className="bg-custom-white p-6  mt-">
+      <h3 className="text-xl font-bold mb-3">
         ② Core Competencies Development (Rated from ⭐ to ⭐⭐⭐⭐⭐)
       </h3>
 
@@ -22,7 +22,7 @@ export const CompetencyTable = () => {
           </thead>
           <tbody>
             {competenciesData.map(({ competency, rating }: Competency) => (
-              <tr key={competency} className="hover:bg-gray-50 transition-colors">
+              <tr key={competency} className="hover:bg-soft-grey transition-colors">
                 <td className="border p-3">{competency}</td>
                 <td className="border p-3 flex items-center space-x-1">
                   {[...Array(Math.floor(rating))].map((_, i) => (
