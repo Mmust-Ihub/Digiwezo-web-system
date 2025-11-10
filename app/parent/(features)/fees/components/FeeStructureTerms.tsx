@@ -1,7 +1,7 @@
 'use client'
 
 import { PAYMENT_TERMS, BANK_ACCOUNTS } from '@parent/(features)/fees/data/fee-structure'
-import { feeStructureStyles as styles } from '@parent/(features)/fees/components/styles/fee-structure.styles'
+import { feeStructureStyles as styles } from '@parent/(features)/fees/styles/fee-structure.styles'
 
 export const FeeStructureTerms = () => {
   return (

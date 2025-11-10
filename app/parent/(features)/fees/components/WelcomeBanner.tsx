@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { banner_data } from '@parent/(features)/fees/data/banner'
-import { bannerStyles } from '@parent/(features)/fees/components/styles/banner.styles'
+import { bannerStyles } from '@parent/(features)/fees/styles/banner.styles'
 
 export const WelcomeBanner = () => {
   return (

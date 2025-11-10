@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import { TableRowData } from '@parent/(features)/fees/types/fee-hooks'
 import { TABLE_HEADERS } from '@parent/(features)/fees/types/fee-statement'
-import { feeStatementStyles as styles } from '@parent/(features)/fees/components/styles/fee-statement.styles'
+import { feeStatementStyles as styles } from '@parent/(features)/fees/styles/fee-statement.styles'
 
 type FeeStatementTableProps = {
   tableData: TableRowData[]

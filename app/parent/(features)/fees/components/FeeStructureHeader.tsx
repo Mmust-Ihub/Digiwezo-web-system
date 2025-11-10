@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { fee_structure_data } from '@parent/(features)/fees/data/fee-structure'
-import { feeStructureStyles as styles } from '@parent/(features)/fees/components/styles/fee-structure.styles'
+import { feeStructureStyles as styles } from '@parent/(features)/fees/styles/fee-structure.styles'
 
 interface FeeStructureHeaderProps {
   selectedGrade: string

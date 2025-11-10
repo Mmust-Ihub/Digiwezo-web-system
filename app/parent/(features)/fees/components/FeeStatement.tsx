@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { useFeesStatement } from '@parent/(features)/fees/hooks/useFeesStatement'
 import { FeeStatementProps } from '@parent/(features)/fees/types/fee-statement'
-import { feeStatementStyles as styles } from '@parent/(features)/fees/components/styles/fee-statement.styles'
+import { feeStatementStyles as styles } from '@parent/(features)/fees/styles/fee-statement.styles'
 import FeeStatementHeader from '@parent/(features)/fees/components/FeeStatementHeader'
 import FeeStatementTable from '@parent/(features)/fees/components/FeeStatementTable'
 import FeeStatementSummary from '@parent/(features)/fees/components/FeeStatementSummary'

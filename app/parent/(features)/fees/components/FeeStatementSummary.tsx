@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { ReceiptInfo } from '@parent/(features)/fees/types/fee-hooks'
-import { feeStatementStyles as styles } from '@parent/(features)/fees/components/styles/fee-statement.styles'
+import { feeStatementStyles as styles } from '@parent/(features)/fees/styles/fee-statement.styles'
 
 type FeeStatementSummaryProps = {
   receiptInfo: ReceiptInfo[]

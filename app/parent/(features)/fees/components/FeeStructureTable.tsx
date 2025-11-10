@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import { TABLE_HEADERS, SUB_HEADERS } from '@parent/(features)/fees/types/fee-structure'
 import { FormattedFeeStructureItem } from '@parent/(features)/fees/types/fee-hooks'
-import { feeStructureStyles as styles } from '@parent/(features)/fees/components/styles/fee-structure.styles'
+import { feeStructureStyles as styles } from '@parent/(features)/fees/styles/fee-structure.styles'
 
 interface FeeStructureTableProps {
   data: FormattedFeeStructureItem[]
