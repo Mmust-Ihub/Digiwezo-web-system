@@ -1,14 +1,25 @@
 'use client'
 
+// External dependencies
 import { FC } from 'react'
+
+// UI Components
 import { Button } from '@/components/ui/button'
+
+// Hooks
 import { useFeesStatement } from '@/parent/(features)/fees/hooks/useFeesStatement'
+
+// Types
 import { 
   FeeStatementProps, 
   TABLE_HEADERS
 } from '@/parent/(features)/fees/types/fee-statement'
-import { cn } from '@/lib/utils'
+
+// Styles
 import { feeStatementStyles as styles } from '@/parent/(features)/fees/components/styles/fee-statement.styles'
+
+// Utils
+import { cn } from '@/lib/utils'
 
 export const FeeStatement: FC<FeeStatementProps> = ({ receipt }) => {
   const { 

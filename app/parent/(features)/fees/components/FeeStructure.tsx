@@ -1,11 +1,24 @@
 'use client'
 
+// External dependencies
 import { FC } from 'react'
+
+// UI Components
 import { Button } from '@/components/ui/button'
-import { BANK_ACCOUNTS, FEE_STRUCTURE_DATA, PAYMENT_TERMS } from '@/parent/(features)/fees/data/fee-structure'
-import { TABLE_HEADERS, SUB_HEADERS } from '@/parent/(features)/fees/types/fee-structure'
+
+// Hooks
 import { useFeeStructure } from '@/parent/(features)/fees/hooks/useFeeStructure'
+
+// Types
+import { TABLE_HEADERS, SUB_HEADERS } from '@/parent/(features)/fees/types/fee-structure'
+
+// Data
+import { BANK_ACCOUNTS, FEE_STRUCTURE_DATA, PAYMENT_TERMS } from '@/parent/(features)/fees/data/fee-structure'
+
+// Styles
 import { feeStructureStyles as styles } from '@/parent/(features)/fees/components/styles/fee-structure.styles'
+
+// Utils
 import { cn } from '@/lib/utils'
 
 export const FeeStructure: FC = () => {
