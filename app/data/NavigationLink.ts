@@ -1,4 +1,4 @@
-import { NavigationLink, PartnerLink, SocialLink } from "@/interfaces/interface";
+import { NavigationLink,  SocialLink } from "@/interfaces/interface";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export const navlinks: NavigationLink[] = [
@@ -8,7 +8,7 @@ export const navlinks: NavigationLink[] = [
   { name: "Contact Us", href: "#contact" },
   { name: "About Us", href: "#about" }
 ];
-export const partnerLinks: PartnerLink[] = [
+export const partnerLinks: NavigationLink[] = [
   { name: "Mmust", href: "https://mmust.ac.ke" },
   { name: "Mmust-iHub", href: "https://mmustihub.com" },
 ];

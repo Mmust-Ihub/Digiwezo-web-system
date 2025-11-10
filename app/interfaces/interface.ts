@@ -26,21 +26,10 @@ export interface BookDemoProp {
     school: string;
     role: string;
   };
-}
-export interface NavigationLink {
+}export interface NavigationLink {
   name: string;
   href: string;
 }
-export interface QuickLink {
-  name: string;
-  href: string;
-}
-
-export interface PartnerLink {
-  name: string;
-  href: string;
-}
-
 export interface SocialLink {
   icon: React.ElementType;
   label: string;
