@@ -12,7 +12,7 @@ import ContactSection from "@/components/LandingPage/Home/ContactSection";
 export default function Home() {
   return (
     <div className="min-h-screen bg-custom-white">
-      <Header />
+      <nav className="w-full h-[10vh]"></nav>
       <main className="flex flex-1 flex-col items-center justify-between sm:items-start overflow-x-clip">
         <Hero />
         <AboutSection />
