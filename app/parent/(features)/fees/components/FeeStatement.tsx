@@ -1,92 +1,115 @@
 'use client'
 
 import { FC } from 'react'
-import type { FeeReceipt } from '../types/fees'
-import { useFeesStatement } from '../hooks/useFeesStatement'
+import { Button } from '@/components/ui/button'
+import { useFeesStatement } from '@/parent/(features)/fees/hooks/useFeesStatement'
+import { 
+  FeeStatementProps, 
+  TABLE_HEADERS
+} from '@/parent/(features)/fees/types/fee-statement'
+import { cn } from '@/lib/utils'
 
-interface FeeStatementProps {
-  receipt: FeeReceipt
+// Common CSS classes
+const commonClasses = {
+  container: 'border border-custom-grey/20 rounded-lg',
+  text: {
+    base: 'text-sm text-foreground',
+    bold: 'font-semibold',
+  },
+  cell: 'py-2 px-4 text-sm text-foreground border-r border-custom-grey/20',
+  tableHeader: 'py-2 px-4 text-left text-sm font-bold text-foreground border-b border-r border-custom-grey/20 bg-gray-50 last:border-r-0',
 }
 
 export const FeeStatement: FC<FeeStatementProps> = ({ receipt }) => {
-  const { isDownloading, downloadStatement } = useFeesStatement(receipt)
+  const { 
+    isDownloading, 
+    downloadStatement, 
+    getStudentInfo, 
+    getReceiptInfo,
+    getHeaderInfo,
+    getTableData
+  } = useFeesStatement(receipt)
+
+  const studentInfo = getStudentInfo()
+  const receiptInfo = getReceiptInfo()
+  const headerInfo = getHeaderInfo()
+  const tableData = getTableData()
+
   return (
     <div className="flex items-end gap-6">
-      <div className="relative border border-custom-grey/20 rounded-lg p-4 sm:p-6 max-w-[742px]">
-        <button 
-          onClick={downloadStatement}
-          disabled={isDownloading}
-          className="absolute right-6 top-6 bg-secondary hover:bg-secondary/90 text-foreground px-8 py-2.5 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-        >
-          {isDownloading ? 'Downloading...' : 'Download'}
-        </button>
+      <div className={cn(commonClasses.container, 'relative p-4 sm:p-6 max-w-[742px]')}>
         <div className="mb-6">
           <h2 className="text-xl font-semibold text-foreground text-center mb-3">Secondary School Fee Receipt</h2>
-        <div className="flex flex-wrap gap-x-8 text-sm justify-end">
-          <span className="text-foreground font-semibold">Date:</span>
-          <span className="text-foreground">{receipt.date}</span>
-          <span className="text-foreground font-semibold">Receipt Number:</span>
-          <span className="text-foreground">{receipt.receiptNumber}</span>
-        </div>
-      </div>
-
-      <div className="space-y-2 mb-6">
-        <div className="text-sm">
-          <span className="text-foreground font-semibold">Student Name:</span>
-          <span className="text-foreground ml-1">{receipt.studentName}</span>
-        </div>
-        <div className="text-sm">
-          <span className="text-foreground font-semibold">Class:</span>
-          <span className="text-foreground ml-1">{receipt.class}</span>
-        </div>
-        <div className="text-sm">
-          <span className="text-foreground font-semibold">Academic Year:</span>
-          <span className="text-foreground ml-1">{receipt.academicYear}</span>
-        </div>
-      </div>
-
-      <div className="border border-custom-grey/20 rounded overflow-x-auto">
-        <table className="w-full border-collapse min-w-[680px]">
-          <thead>
-            <tr>
-              <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-b border-r border-custom-grey/20 bg-gray-50">Fee Description</th>
-              <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-b border-r border-custom-grey/20 bg-gray-50">Amount</th>
-              <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-b border-r border-custom-grey/20 bg-gray-50">Paid Date</th>
-              <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-b border-custom-grey/20 bg-gray-50">Payment Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            {receipt.feeItems.map((item, index) => (
-              <tr key={index} className={index !== receipt.feeItems.length - 1 ? "border-b border-custom-grey/20" : ""}>
-                <td className="py-2 px-4 text-sm text-foreground border-r border-custom-grey/20">{item.feeDescription}</td>
-                <td className="py-2 px-4 text-sm font-semibold text-foreground border-r border-custom-grey/20">${item.amount.toFixed(2)}</td>
-                <td className="py-2 px-4 text-sm text-foreground border-r border-custom-grey/20">{item.paidDate}</td>
-                <td className="py-2 px-4 text-sm text-foreground">{item.paymentMethod}</td>
-              </tr>
+          <div className="flex flex-wrap gap-x-8 text-sm justify-end">
+            {headerInfo.map(({ label, value }) => (
+              <div key={label} className="flex gap-1">
+                <span className={cn(commonClasses.text.base, commonClasses.text.bold)}>{label}:</span>
+                <span className={commonClasses.text.base}>{value}</span>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
+
+        <div className="space-y-2 mb-6">
+          {studentInfo.map(({ label, value }) => (
+            <div key={label} className={commonClasses.text.base}>
+              <span className={commonClasses.text.bold}>{label}:</span>
+              <span className="ml-1">{value}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className={cn(commonClasses.container, 'overflow-x-auto')}>
+          <table className="w-full border-collapse min-w-[680px]">
+            <thead>
+              <tr>
+                {TABLE_HEADERS.map((header) => (
+                  <th key={header.id} className={commonClasses.tableHeader}>
+                    {header.label}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.map((row, index) => (
+                <tr key={index} className={index !== tableData.length - 1 ? "border-b border-custom-grey/20" : ""}>
+                  {[
+                    row.feeDescription,
+                    row.amount,
+                    row.paidDate,
+                    row.paymentMethod
+                  ].map((value, cellIndex) => (
+                    <td key={cellIndex} className={cn(commonClasses.cell, {
+                      'font-semibold': cellIndex === 1,
+                      'border-r-0': cellIndex === 3
+                    })}>
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-4 space-y-1">
+          {receiptInfo.map(({ label, value, isBold }) => (
+            <p key={label} className={commonClasses.text.base}>
+              <span className="font-bold">{label}:</span>
+              <span className={cn('ml-1', { 'font-semibold': isBold })}>{value}</span>
+            </p>
+          ))}
+        </div>
       </div>
 
-      <div className="mt-4 space-y-1">
-        <p className="text-sm">
-          <span className="text-foreground font-bold">Total Amount Paid:</span>
-          <span className="text-foreground font-semibold ml-1">${receipt.totalAmount.toFixed(2)}</span>
-        </p>
-        <p className="text-sm">
-          <span className="text-foreground font-bold">Payment Status:</span>
-          <span className="text-foreground ml-1">{receipt.paymentStatus}</span>
-        </p>
-      </div>
-
-      </div>
-      <button 
+      <Button 
         onClick={downloadStatement}
         disabled={isDownloading}
-        className="bg-secondary hover:bg-secondary/90 text-foreground px-8 py-2.5 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        variant="secondary"
+        size="lg"
       >
         {isDownloading ? 'Downloading...' : 'Download'}
-      </button>
+      </Button>
     </div>
   )
 }

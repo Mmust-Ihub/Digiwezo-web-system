@@ -1,20 +1,39 @@
 'use client'
 
 import { FC } from 'react'
-import { BANK_ACCOUNTS, FEE_STRUCTURE_DATA, PAYMENT_TERMS } from '../data/fee-structure'
+import { Button } from '@/components/ui/button'
+import { BANK_ACCOUNTS, FEE_STRUCTURE_DATA, PAYMENT_TERMS } from '@/parent/(features)/fees/data/fee-structure'
+import { TABLE_HEADERS, SUB_HEADERS } from '@/parent/(features)/fees/types/fee-structure'
+import { useFeeStructure } from '@/parent/(features)/fees/hooks/useFeeStructure'
 
 export const FeeStructure: FC = () => {
+  const { 
+    selectedGrade,
+    displayedData,
+    isLoading,
+    handleGradeChange,
+    generateStructure,
+    downloadStructure
+  } = useFeeStructure()
+  
+  const headerBaseClasses = "py-2 px-4 text-sm font-bold text-foreground border-2 border-custom-grey/20 bg-gray-50"
+  const cellBaseClasses = "py-2 px-4 text-sm text-foreground border-2 border-custom-grey/20"
+
   return (
-    <div className="border border-custom-grey/20 rounded-lg p-4 sm:p-6 max-w-[742px]">
-      <div className="mb-6">
-        <div className="flex justify-between items-start mb-6">
-          <div className="space-y-2 flex-1 max-w-[400px]">
+    <div className="flex items-end gap-6">
+      <div className="border border-custom-grey/20 rounded-lg p-4 sm:p-6 max-w-[840px]">
+        <div className="mb-6">
+          <div className="flex justify-between items-end gap-4 mb-6">
+            <div className="space-y-2 max-w-[400px]">
             <h3 className="text-base font-semibold text-foreground">Grade</h3>
             <div className="relative">
               <select 
-                className="w-full border border-[#E7EA33] rounded-lg py-2 px-4 pr-10 text-sm text-foreground appearance-none focus:outline-none focus:border-[#E7EA33] focus:ring-1 focus:ring-[#E7EA33] bg-white"
+                value={selectedGrade}
+                onChange={(e) => handleGradeChange(e.target.value)}
+                className="w-full border border-secondary rounded-lg py-2 px-4 pr-10 text-sm text-foreground appearance-none focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary bg-white"
               >
                 <option value="">Select Grade</option>
+                <option value="all">All Grades</option>
                 {FEE_STRUCTURE_DATA.map((item, index) => (
                   <option key={index} value={item.grade}>{item.grade}</option>
                 ))}
@@ -26,9 +45,14 @@ export const FeeStructure: FC = () => {
               </div>
             </div>
           </div>
-          <button className="bg-[#FFE500] text-black px-8 py-2 rounded-lg text-sm font-medium ml-4">
-            Generate
-          </button>
+          <Button 
+            variant="secondary" 
+            size="lg"
+            onClick={generateStructure}
+            disabled={!selectedGrade || isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Generate'}
+          </Button>
         </div>
 
         {/* Fee Structure Table */}
@@ -36,28 +60,40 @@ export const FeeStructure: FC = () => {
           <table className="w-full border-collapse min-w-[680px]">
             <thead>
               <tr>
-                <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-2 border-custom-grey/20"></th>
-                <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-2 border-custom-grey/20 bg-gray-50">MANDATORY</th>
-                <th className="py-2 px-4 text-center text-sm font-bold text-foreground border-2 border-custom-grey/20 bg-gray-50" colSpan={4}>OPTIONAL</th>
+                {TABLE_HEADERS.map((header) => (
+                  <th 
+                    key={header.id}
+                    className={`${headerBaseClasses} ${header.id === 'optional' ? 'text-center' : 'text-left'}`}
+                    colSpan={header.colSpan}
+                  >
+                    {header.label}
+                  </th>
+                ))}
               </tr>
               <tr>
-                <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-2 border-custom-grey/20"></th>
-                <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-2 border-custom-grey/20 bg-gray-50">TUITION</th>
-                <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-2 border-custom-grey/20 bg-gray-50">LUNCH</th>
-                <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-2 border-custom-grey/20 bg-gray-50">SWIMMING</th>
-                <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-2 border-custom-grey/20 bg-gray-50">TRANSPORT</th>
-                <th className="py-2 px-4 text-left text-sm font-bold text-foreground border-2 border-custom-grey/20 bg-gray-50">BOARDING</th>
+                {SUB_HEADERS.map((header) => (
+                  <th 
+                    key={header.id}
+                    className={`${headerBaseClasses} text-left`}
+                  >
+                    {header.label}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {FEE_STRUCTURE_DATA.map((item, index) => (
+              {displayedData.map((item, index) => (
                 <tr key={index}>
-                  <td className="py-2 px-4 text-sm text-foreground border-2 border-custom-grey/20">{item.grade}</td>
-                  <td className="py-2 px-4 text-sm text-foreground border-2 border-custom-grey/20">{item.mandatory.tuition.toLocaleString()}.00</td>
-                  <td className="py-2 px-4 text-sm text-foreground border-2 border-custom-grey/20">{item.optional.lunch.toLocaleString()}.00</td>
-                  <td className="py-2 px-4 text-sm text-foreground border-2 border-custom-grey/20">{typeof item.optional.swimming === 'number' ? `${item.optional.swimming.toLocaleString()}.00` : item.optional.swimming}</td>
-                  <td className="py-2 px-4 text-sm text-foreground border-2 border-custom-grey/20">{item.optional.transport}</td>
-                  <td className="py-2 px-4 text-sm text-foreground border-2 border-custom-grey/20">{item.optional.boarding}</td>
+                  <td className={cellBaseClasses}>{item.grade}</td>
+                  <td className={cellBaseClasses}>{item.mandatory.tuition.toLocaleString()}.00</td>
+                  <td className={cellBaseClasses}>{item.optional.lunch.toLocaleString()}.00</td>
+                  <td className={cellBaseClasses}>
+                    {typeof item.optional.swimming === 'number' 
+                      ? `${item.optional.swimming.toLocaleString()}.00` 
+                      : item.optional.swimming}
+                  </td>
+                  <td className={cellBaseClasses}>{item.optional.transport}</td>
+                  <td className={cellBaseClasses}>{item.optional.boarding}</td>
                 </tr>
               ))}
             </tbody>
@@ -84,10 +120,17 @@ export const FeeStructure: FC = () => {
         </div>
       </div>
 
+      </div>
+
       <div className="flex justify-end">
-        <button className="bg-[#FFE500] text-black px-8 py-2.5 rounded-lg text-sm font-medium">
-          Download
-        </button>
+        <Button 
+          variant="secondary" 
+          size="lg"
+          onClick={downloadStructure}
+          disabled={displayedData.length === 0 || isLoading}
+        >
+          {isLoading ? 'Downloading...' : 'Download PDF'}
+        </Button>
       </div>
     </div>
   )

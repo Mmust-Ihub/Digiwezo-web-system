@@ -1,6 +1,14 @@
 import { useState } from 'react'
-import { FEE_STRUCTURE_DATA } from '../data/fee-structure'
+import { FEE_STRUCTURE_DATA, BANK_ACCOUNTS, PAYMENT_TERMS } from '../data/fee-structure'
 import type { FeeStructureItem } from '../types/fees-structure'
+import jsPDF from 'jspdf'
+import autoTable from 'jspdf-autotable'
+
+type JsPDFWithPlugin = jsPDF & {
+  lastAutoTable: {
+    finalY: number;
+  };
+}
 
 export const useFeeStructure = () => {
   const [selectedGrade, setSelectedGrade] = useState<string>('')
@@ -27,35 +35,76 @@ export const useFeeStructure = () => {
   }
 
   const downloadStructure = () => {
-    // Create table content
-    const headers = ['Grade', 'Tuition', 'Lunch', 'Swimming', 'Transport', 'Boarding']
+    // Initialize PDF document
+    const doc = new jsPDF()
+    
+    // Add title
+    doc.setFontSize(16)
+    doc.text('Secondary School Fee Structure', doc.internal.pageSize.width / 2, 20, { align: 'center' })
+    
+    // Add grade information
+    doc.setFontSize(12)
+    doc.text(`Grade: ${selectedGrade || 'All Grades'}`, 20, 30)
+
+    // Create table data
+    const headers = [['Grade', 'Tuition', 'Lunch', 'Swimming', 'Transport', 'Boarding']]
     const rows = displayedData.map(item => [
-      item.grade,
+      item.grade.toString(),
       `${item.mandatory.tuition.toLocaleString()}.00`,
       `${item.optional.lunch.toLocaleString()}.00`,
-      typeof item.optional.swimming === 'number' ? `${item.optional.swimming.toLocaleString()}.00` : item.optional.swimming,
-      item.optional.transport,
-      item.optional.boarding
+      typeof item.optional.swimming === 'number' ? `${item.optional.swimming.toLocaleString()}.00` : String(item.optional.swimming),
+      String(item.optional.transport),
+      String(item.optional.boarding)
     ])
 
-    // Create CSV content
-    const csvContent = [
-      headers.join(','),
-      ...rows.map(row => row.join(','))
-    ].join('\\n')
+    // Add table to PDF using autoTable
+    autoTable(doc, {
+      head: headers,
+      body: rows,
+      startY: 40,
+      theme: 'grid',
+      styles: {
+        fontSize: 10,
+        cellPadding: 3,
+      },
+      headStyles: {
+        fillColor: [128, 128, 128],
+        textColor: 255,
+        fontStyle: 'bold',
+      },
+    })
 
-    // Create and trigger download
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
-    const link = document.createElement('a')
-    if (link.download !== undefined) {
-      const url = URL.createObjectURL(blob)
-      link.setAttribute('href', url)
-      link.setAttribute('download', `fee_structure_${selectedGrade || 'all'}.csv`)
-      link.style.visibility = 'hidden'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-    }
+    // Add payment terms
+    // Get the Y position after the table
+    let yPos = (doc as JsPDFWithPlugin).lastAutoTable.finalY + 20
+    doc.setFontSize(12)
+    doc.text('TERMS OF PAYMENT:', 20, yPos)
+    
+    yPos += 10
+    doc.setFontSize(10)
+    PAYMENT_TERMS.forEach(term => {
+      if (yPos > doc.internal.pageSize.height - 20) {
+        doc.addPage()
+        yPos = 20
+      }
+      doc.text(term, 20, yPos)
+      yPos += 6
+    })
+
+    // Add bank account details
+    yPos += 5
+    BANK_ACCOUNTS.forEach(account => {
+      if (yPos > doc.internal.pageSize.height - 20) {
+        doc.addPage()
+        yPos = 20
+      }
+      const accountText = `${account.bank}${account.branch ? ' ' + account.branch : ''} - A/C NO. ${account.accountNumber}`
+      doc.text(accountText, 30, yPos)
+      yPos += 6
+    })
+
+    // Save PDF
+    doc.save(`fee_structure_${selectedGrade || 'all'}.pdf`)
   }
 
   return {

@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import type { BannerProps } from '../types/banner'
-import { bannerStyles } from './styles/banner.styles'
-import { BANNER_CONFIG } from '../data/banner'
+import type { BannerProps } from '@/parent/(features)/fees/types/banner'
+import { bannerStyles } from '@/parent/(features)/fees/components/styles/banner.styles'
+import { BANNER_CONFIG } from '@/parent/(features)/fees/data/banner'
 
 export const WelcomeBanner: FC<BannerProps> = ({ username, message }) => {
   return (
