@@ -1,6 +1,6 @@
 import FeeStatement from '@parent/(features)/fees/components/FeeStatement'
-import { DUMMY_FEE_RECEIPT } from '@parent/(features)/fees/data/dummy-data'
+import { dummy_fee_receipt } from '@parent/(features)/fees/data/dummy-data'
 
 export const DefaultFeeStatement = () => {
-  return <FeeStatement receipt={DUMMY_FEE_RECEIPT} />
+  return <FeeStatement receipt={dummy_fee_receipt} />
 }

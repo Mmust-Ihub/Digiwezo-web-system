@@ -1,6 +1,6 @@
 import { FeeReceipt } from '@parent/(features)/fees/types/fees'
 
-export const DUMMY_FEE_RECEIPT: FeeReceipt = {
+export const dummy_fee_receipt: FeeReceipt = {
   date: 'November 5, 2050',
   receiptNumber: 'SSFR2050-1234',
   studentName: 'Malvina Jones',
