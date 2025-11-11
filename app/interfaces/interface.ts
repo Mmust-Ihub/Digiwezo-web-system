@@ -46,4 +46,12 @@ export interface EmergencyContact {
 }
 export interface LoginPageProps {
   onClose: () => void;
+}export interface NavigationLink {
+  name: string;
+  href: string;
+}
+export interface SocialLink {
+  icon: React.ElementType;
+  label: string;
+  href: string;
 }

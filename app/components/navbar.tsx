@@ -9,9 +9,7 @@ import LoginPage from "@/components/layout/page";
 
 export default function Navbar() {
   const { open, setOpen,setLoginOpen,loginOpen } = useAuth();
-
-
-  return (
+ return (
     <>
       <nav className="bg-background w-full fixed top-0 left-0 z-50 shadow-md border-b border-background px-4 md:px-8 py-4 flex items-center h-auto md:h-[10vh]">
         
@@ -77,8 +75,7 @@ export default function Navbar() {
         )}
       </nav>
 
-      
-      {loginOpen && <LoginPage onClose={() => setLoginOpen(false)} />}
+       {loginOpen && <LoginPage onClose={() => setLoginOpen(false)} />}
     </>
   );
 }
