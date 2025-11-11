@@ -1,7 +1,7 @@
 "use client";
 
-import SectionHeading from "@/about_us/components/SectionHeading";
-import StatsCard from "@/about_us/components/StatsCard";
+import SectionHeading from "@/about/components/SectionHeading";
+import StatsCard from "@/about/components/StatsCard";
 import { statsData } from "@/data/about_us";
 
 export default function StatsSection() {
