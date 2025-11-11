@@ -5,6 +5,8 @@ export function useAuth() {
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
   const [open, setOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+
   const [isLogin, setIsLogin] = useState<boolean>(true);
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -24,6 +26,7 @@ export function useAuth() {
     setIsLogin,
     open,
     setOpen,
-    
+    loginOpen,
+    setLoginOpen,
   };
 }

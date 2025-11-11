@@ -35,3 +35,15 @@ export interface SocialLink {
   label: string;
   href: string;
 }
+export interface PersonalDetail {
+  label: string;
+  value: string;
+}
+
+export interface EmergencyContact {
+  label: string;
+  value: string;
+}
+export interface LoginPageProps {
+  onClose: () => void;
+}
