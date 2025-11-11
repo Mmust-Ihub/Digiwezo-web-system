@@ -20,6 +20,7 @@
     ],
     "paths": {
       "@parent/*": ["./app/parent/*"],
+      "@school-admin/*": ["./app/school-admin/*"],
       "@/*": ["./app/*"]
     }
   },
