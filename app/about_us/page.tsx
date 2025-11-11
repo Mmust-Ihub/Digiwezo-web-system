@@ -5,6 +5,7 @@ import IntroSection from "@/about_us/components/sections/IntroSection";
 import WhoWeAreSection from "@/about_us/components/sections/WhoWeAreSection";
 import StatsSection from "@/about_us/components/sections/StatsSection";
 import TeamSection from "@/about_us/components/sections/TeamSection";
+import { MdOutlineMapsHomeWork } from "react-icons/md";
 
 export default function AboutUsPage() {
   return (
@@ -17,3 +18,16 @@ export default function AboutUsPage() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

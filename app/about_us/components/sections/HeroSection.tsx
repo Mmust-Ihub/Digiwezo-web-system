@@ -15,9 +15,6 @@ export default function HeroSection() {
           className="object-cover object-center brightness-75"
         />
       </div>
-      <h1 className="relative text-[var(--color-custom-white)] text-5xl md:text-6xl font-extrabold drop-shadow-lg">
-        ABOUT US
-      </h1>
     </section>
   );
 }
