@@ -41,10 +41,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lora.className} antialiased`}
       >
-        <Navbar />
+        {/* <Navbar /> */}
 
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
