@@ -16,7 +16,7 @@ export default function StatsCard({
       <h3 className="text-3xl font-extrabold tracking-tight">
         {animatedValue}+
       </h3>
-      <p className="mt-2 text-[var(--color-foreground)]/90 font-medium">
+      <p className="mt-2 text-foreground/90 font-medium">
         {label}
       </p>
     </div>
