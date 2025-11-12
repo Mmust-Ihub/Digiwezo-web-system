@@ -19,7 +19,18 @@
   --text-title: 2rem;
   --text-subtitle: 1.5rem;
   --text-body: 1rem;
+  
 }
+
+.bg-overlay-gradient {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.1),
+    transparent
+  );
+}
+
 
 body {
   @apply bg-background text-foreground font-sans;
