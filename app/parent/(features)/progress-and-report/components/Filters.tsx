@@ -4,6 +4,7 @@ import React from "react";
 import { useFilters } from "@parent/(features)/progress-and-report/hooks/useFilters";
 import { filterData } from "@parent/(features)/progress-and-report/data/filterData";
 import { FiltersProps } from "@parent/(features)/progress-and-report/types/filterTypes";
+import { Button } from "components/ui/button";
 
 const Filters: React.FC = () => {
   const { grade, term, handleGradeChange, handleTermChange, handleSubmit } =
@@ -12,7 +13,7 @@ const Filters: React.FC = () => {
   const { grades, terms } = filterData;
 
   return (
-    <section className="bg-custom-white p-6 mb-8 rounded-md shadow-sm">
+    <section className="bg-custom-white p-6 mb-8 rounded-md">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Grade Selector */}
         <div>
@@ -52,15 +53,7 @@ const Filters: React.FC = () => {
           </select>
         </div>
 
-        {/* Submit Button */}
-        <div className="flex items-end">
-          <button
-            onClick={handleSubmit}
-            className="bg-primary hover:bg-secondary text-foreground font-semibold px-4 py-2 rounded-md w-full transition-all duration-200"
-          >
-            View Performance
-          </button>
-        </div>
+<Button onClick={handleSubmit} className="mt-8 ">View perfomance</Button>
       </div>
     </section>
   );

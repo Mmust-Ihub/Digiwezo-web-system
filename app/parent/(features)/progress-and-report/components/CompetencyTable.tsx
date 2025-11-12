@@ -34,7 +34,7 @@ const CompetencyTable: React.FC = () => {
         </tbody>
       </table>
 
-      <p className="mt-2 text-custom-grey">
+      <p className="mt-2 text-custom-grey p-2">
         <b>Comment:</b> {competencyComment}
       </p>
     </div>

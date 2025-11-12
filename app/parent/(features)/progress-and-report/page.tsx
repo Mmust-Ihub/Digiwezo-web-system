@@ -9,7 +9,7 @@ export default function ProgressReportPage() {
         <div className="flex-1 p-6 space-y-6">
           <ProfileCard />
 
-          <div className="bg-white shadow rounded-xl p-6">
+          <div className="bg-custom-white shadow rounded-xl p-6">
             <div className="mb-6">
               <Filters />
             </div>

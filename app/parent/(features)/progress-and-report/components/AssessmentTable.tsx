@@ -7,7 +7,7 @@ import { Assessment } from "@parent/(features)/progress-and-report/types/assessm
 
 const AssessmentTable: React.FC = () => {
   return (
-    <div className="bg-custom-white p-6 rounded-lg shadow-sm">
+    <div className="bg-custom-white rounded-lg ">
       <h2 className="font-semibold text-base mb-3 text">
         ③ Practical Assessments (Project-Based Learning)
       </h2>
