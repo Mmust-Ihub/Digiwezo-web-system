@@ -5,7 +5,8 @@ import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { assessmentsData } from "@parent/(features)/progress-and-report/data/assessmentsData";
 import { Assessment } from "@parent/(features)/progress-and-report/types/assessmentTypes";
 
-const AssessmentTable: React.FC = () => {
+
+  export default function AssessmentTable() {
   return (
     <div className="bg-custom-white rounded-lg ">
       <h2 className="font-semibold text-base mb-3 text">
@@ -45,4 +46,3 @@ const AssessmentTable: React.FC = () => {
   );
 };
 
-export default AssessmentTable;

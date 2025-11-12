@@ -6,7 +6,7 @@ import { filterData } from "@parent/(features)/progress-and-report/data/filterDa
 import { FiltersProps } from "@parent/(features)/progress-and-report/types/filterTypes";
 import { Button } from "components/ui/button";
 
-const Filters: React.FC = () => {
+export default function Filters() {
   const { grade, term, handleGradeChange, handleTermChange, handleSubmit } =
     useFilters() as FiltersProps;
 
@@ -59,4 +59,4 @@ const Filters: React.FC = () => {
   );
 };
 
-export default Filters;
+

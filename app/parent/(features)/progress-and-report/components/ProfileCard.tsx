@@ -3,7 +3,7 @@
 import React from "react";
 import { studentData } from "@parent/(features)/progress-and-report/data/studentData";
 
-const ProfileCard: React.FC = () => {
+export default function ProfileCard() {
   const { name, email, admissionNo, school, image } = studentData;
 
   return (
@@ -28,4 +28,4 @@ const ProfileCard: React.FC = () => {
   );
 };
 
-export default ProfileCard;
+

@@ -5,7 +5,7 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { competenciesData, competencyComment } from "@parent/(features)/progress-and-report/data/competenciesData";
 import { Competency } from "@parent/(features)/progress-and-report/types/competencyTypes";
 
-const CompetencyTable: React.FC = () => {
+export default function CompetencyTable() {
   return (
     <div>
       <h2 className="font-semibold text-base mb-3">
@@ -41,4 +41,4 @@ const CompetencyTable: React.FC = () => {
   );
 };
 
-export default CompetencyTable;
+

@@ -6,7 +6,7 @@ import CompetencyTable from "@parent/(features)/progress-and-report/components/C
 import AssessmentTable from "@parent/(features)/progress-and-report/components/AssessmentTable";
 import { Button } from "components/ui/button";
 
-const ReportDetails = () => {
+  export default function ReportDetails () {
   return (
     <section className="bg-custom-white p-6 space-y-8 text-sm text-gray-800">
       <CompetencyTable />
@@ -51,4 +51,4 @@ const ReportDetails = () => {
   );
 };
 
-export default ReportDetails;
+

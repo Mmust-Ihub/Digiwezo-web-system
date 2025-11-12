@@ -5,8 +5,8 @@ import { FaPrint } from "react-icons/fa";
 import { reportData } from "@parent/(features)/progress-and-report/data/reportData";
 import { SubjectPerformance } from "@parent/(features)/progress-and-report/types/reportTypes";
 import { Button } from "components/ui/button";
-
-const ReportCard = () => {
+ 
+export default function ReportCard() {
   const { student, termSummary, subjects } = reportData;
 
   return (
@@ -93,4 +93,4 @@ const ReportCard = () => {
   );
 };
 
-export default ReportCard;
+
