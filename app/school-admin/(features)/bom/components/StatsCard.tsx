@@ -1,4 +1,6 @@
-import { Users, User } from "lucide-react";
+import { MaleIcon } from "@school-admin/(features)/bom/components/icons/MaleIcon";
+import { FemaleIcon } from "@school-admin/(features)/bom/components/icons/FemaleIcon";
+import { PeopleIcon } from "@school-admin/(features)/bom/components/icons/PeopleIcon";
 import { statsCardStyles } from "@school-admin/(features)/bom/styles/componentStyles";
 
 interface StatsCardProps {
@@ -11,13 +13,13 @@ export const StatsCard = ({ type, count, label }: StatsCardProps) => {
   const getIcon = () => {
     switch(type) {
       case "total":
-        return <Users className={statsCardStyles.icon} />;
+        return <PeopleIcon className={statsCardStyles.icon} />;
       case "male":
-        return <User className={statsCardStyles.icon} />;
+        return <MaleIcon className={statsCardStyles.icon} />;
       case "female":
-        return <User className={statsCardStyles.icon} />;
+        return <FemaleIcon className={statsCardStyles.icon} />;
       default:
-        return <Users className={statsCardStyles.icon} />;
+        return <PeopleIcon className={statsCardStyles.icon} />;
     }
   };
   

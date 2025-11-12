@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { PlusIcon } from "@school-admin/(features)/bom/components/icons/PlusIcon";
 import { SearchInput } from "@school-admin/(features)/bom/components/SearchInput";
 import { managementSectionStyles } from "@school-admin/(features)/bom/styles/componentStyles";
 
@@ -22,7 +22,7 @@ export const ManagementSection = ({
           onClick={onAddMember}
           className={managementSectionStyles.button}
         >
-          <Plus className={managementSectionStyles.buttonIcon} />
+          <PlusIcon className={managementSectionStyles.buttonIcon} />
           Add Member
         </Button>
       </div>
