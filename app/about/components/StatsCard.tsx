@@ -1,6 +1,6 @@
 "use client";
 
-import useStatsCounter from "@/about_us/hooks/useStatsCounter";
+import useStatsCounter from "@/about/hooks/useStatsCounter";
 
 export default function StatsCard({
   value,

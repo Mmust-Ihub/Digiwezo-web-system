@@ -1,7 +1,7 @@
 "use client";
 
-import SectionHeading from "@/about_us/components/SectionHeading";
-import TeamMemberCard from "@/about_us/components/TeamMemberCard";
+import SectionHeading from "@/about/components/SectionHeading";
+import TeamMemberCard from "@/about/components/TeamMemberCard";
 import { teamMembers } from "@/data/about_us";
 
 export default function TeamSection() {
