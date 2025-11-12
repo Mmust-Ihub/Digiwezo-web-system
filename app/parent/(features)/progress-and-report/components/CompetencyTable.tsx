@@ -2,8 +2,8 @@
 
 import React from "react";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-import {competenciesData, competencyComment,} from "@parent/(features)/progress-and-report/data/competenciesData";
-import { Competency } from "@parent/(features)/progress-and-report/types/competencyTypes";
+import {competenciesData, competencyComment,} from "@parent/(features)/progress-and-report/data/reportData";
+import { Competency } from "@parent/(features)/progress-and-report/types/reportTypes";
 
 export const CompetencyTable = () => {
   return (
