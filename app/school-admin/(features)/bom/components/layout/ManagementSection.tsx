@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { PlusIcon } from "@school-admin/(features)/bom/components/icons/PlusIcon";
-import { SearchInput } from "@school-admin/(features)/bom/components/SearchInput";
+import { PlusIcon } from "@school-admin/(features)/bom/icons/PlusIcon";
+import { SearchInput } from "@school-admin/(features)/bom/components/ui/SearchInput";
 import { managementSectionStyles } from "@school-admin/(features)/bom/styles/componentStyles";
 
 interface ManagementSectionProps {

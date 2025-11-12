@@ -9,6 +9,8 @@ interface TableActionsProps {
   onDownload?: () => void;
   canGoPrevious?: boolean;
   canGoNext?: boolean;
+  isDownloading?: boolean;
+  isPrinting?: boolean;
 }
 
 export const TableActions = ({ 
@@ -17,7 +19,9 @@ export const TableActions = ({
   onPrint, 
   onDownload,
   canGoPrevious = true,
-  canGoNext = true 
+  canGoNext = true,
+  isDownloading = false,
+  isPrinting = false
 }: TableActionsProps) => {
   return (
     <div className={paginationStyles.container}>
@@ -41,17 +45,27 @@ export const TableActions = ({
       <div className={paginationStyles.actionsContainer}>
         <Button 
           onClick={onPrint}
+          disabled={isPrinting}
           className={paginationStyles.printButton}
         >
-          <Printer className={paginationStyles.buttonIcon} />
-          Print
+          {isPrinting ? (
+            <div className={paginationStyles.loadingSpinner}></div>
+          ) : (
+            <Printer className={paginationStyles.buttonIcon} />
+          )}
+          {isPrinting ? "Printing..." : "Print"}
         </Button>
         <Button 
           onClick={onDownload}
+          disabled={isDownloading}
           className={paginationStyles.downloadButton}
         >
-          <Download className={paginationStyles.buttonIcon} />
-          Download
+          {isDownloading ? (
+            <div className={paginationStyles.loadingSpinner}></div>
+          ) : (
+            <Download className={paginationStyles.buttonIcon} />
+          )}
+          {isDownloading ? "Generating..." : "Download"}
         </Button>
       </div>
     </div>

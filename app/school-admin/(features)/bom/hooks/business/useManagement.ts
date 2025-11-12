@@ -1,6 +1,7 @@
 export const useManagement = () => {
-  const handleAddMember = () => {
-    console.log("Add member functionality");
+  const handleAddMember = (memberData: any) => {
+    console.log("Adding member:", memberData);
+    return Promise.resolve();
   };
 
   const handleEditMember = (id: number) => {

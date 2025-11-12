@@ -1,6 +1,6 @@
-import { MaleIcon } from "@school-admin/(features)/bom/components/icons/MaleIcon";
-import { FemaleIcon } from "@school-admin/(features)/bom/components/icons/FemaleIcon";
-import { PeopleIcon } from "@school-admin/(features)/bom/components/icons/PeopleIcon";
+import { MaleIcon } from "@school-admin/(features)/bom/icons/MaleIcon";
+import { FemaleIcon } from "@school-admin/(features)/bom/icons/FemaleIcon";
+import { PeopleIcon } from "@school-admin/(features)/bom/icons/PeopleIcon";
 import { statsCardStyles } from "@school-admin/(features)/bom/styles/componentStyles";
 
 interface StatsCardProps {

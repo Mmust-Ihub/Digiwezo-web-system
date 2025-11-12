@@ -1,4 +1,4 @@
-import { StatsCard } from "@school-admin/(features)/bom/components/StatsCard";
+import { StatsCard } from "@school-admin/(features)/bom/components/ui/StatsCard";
 import { BomStats } from "@school-admin/(features)/bom/types/bomTypes";
 import { bomHeaderStyles } from "@school-admin/(features)/bom/styles/componentStyles";
 
