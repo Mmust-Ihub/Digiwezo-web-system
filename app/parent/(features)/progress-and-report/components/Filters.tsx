@@ -13,7 +13,7 @@ export const Filters = () => {
   const { grades, terms } = filterData;
 
   return (
-    <section className="bg-custom-white rounded-2xl shadow-sm p-6 w-full mt-6">
+    <section className="bg-custom-white rounded-2xl  p-6 w-full mt-6">
       <h3 className="text-xl font-bold mb-6 text-foreground">
         Filter Student Performance
       </h3>

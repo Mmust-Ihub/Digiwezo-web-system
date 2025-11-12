@@ -9,7 +9,7 @@ import { AssessmentTable } from "@parent/(features)/progress-and-report/componen
 export const ReportDetails = () => {
   return (
     <section className="w-full">
-      <div className="bg-custom-white p-6  h-full space-y-6"> 
+      <div className="bg-custom-white h-full space-y-6"> 
         <CompetencyTable />
         <AssessmentTable />
         

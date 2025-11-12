@@ -18,7 +18,7 @@ export const ReportCard = () => {
         <Filters />
       </div>
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div className="w-full bg-custom-white rounded-xl p-6 shadow-sm ">
+      <div className="w-full bg-custom-white rounded-xl p-6  ">
           <h2 className="text-xl font-semibold mb-4 ">
             Student Progress & Report – Term {student.term} ({student.grade})
           </h2>
@@ -97,7 +97,7 @@ export const ReportCard = () => {
         <Button className="flex items-center gap-2 mt-3"> <FaPrint /> Print </Button>
         </div>
 
-        <div className="w-full bg-custom-white rounded-xl p-6 shadow-sm ">
+        <div className="w-full bg-custom-white rounded-xl  ">
           <ReportDetails />
         </div>
       </div>
