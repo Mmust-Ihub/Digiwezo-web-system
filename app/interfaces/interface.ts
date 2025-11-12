@@ -36,13 +36,13 @@ export interface SocialLink {
   href: string;
 }
 export interface PersonalDetail {
-  label: string;
+  placeholder: string;
   value: string;
 }
 
 export interface EmergencyContact {
   label: string;
-  value: string;
+  placeholder: string;
 }
 export interface LoginPageProps {
   onClose: () => void;

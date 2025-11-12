@@ -2,11 +2,10 @@ import { NavigationLink,  SocialLink } from "@/interfaces/interface";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export const navlinks: NavigationLink[] = [
-  
   { name: "Services", href: "#services" },
-  { name: "Pricing", href: "/pricing" },
   { name: "Contact Us", href: "#contact" },
-  { name: "About Us", href: "#about" }
+  { name: "About Us", href: "#about-us" },
+  { name: "Pricing", href: "/pricing" },
 ];
 export const partnerLinks: NavigationLink[] = [
   { name: "Mmust", href: "https://mmust.ac.ke" },
