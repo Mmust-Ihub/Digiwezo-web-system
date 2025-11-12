@@ -1,5 +1,6 @@
-import { StatsCard } from "./StatsCard";
+import { StatsCard } from "@school-admin/(features)/bom/components/StatsCard";
 import { BomStats } from "@school-admin/(features)/bom/types/bomTypes";
+import { bomHeaderStyles } from "@school-admin/(features)/bom/styles/componentStyles";
 
 interface BomHeaderProps {
   stats: BomStats;
@@ -7,12 +8,12 @@ interface BomHeaderProps {
 
 export const BomHeader = ({ stats }: BomHeaderProps) => {
   return (
-    <div className="space-y-6">
+    <div className={bomHeaderStyles.container}>
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900">Board of Management</h1>
+        <h1 className={bomHeaderStyles.title}>Board of Management</h1>
       </div>
       
-      <div className="flex gap-6 flex-wrap">
+      <div className={bomHeaderStyles.statsContainer}>
         <StatsCard 
           type="total"
           count={stats.totalMembers}

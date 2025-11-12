@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import { searchInputStyles } from "@school-admin/(features)/bom/styles/componentStyles";
 
 interface SearchInputProps {
   placeholder?: string;
@@ -12,16 +13,16 @@ export const SearchInput = ({
   onChange 
 }: SearchInputProps) => {
   return (
-    <div className="relative w-[695px]">
+    <div className={searchInputStyles.container}>
       <input
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
-        className="w-full h-[58px] pl-4 pr-12 bg-white border border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+        className={searchInputStyles.input}
       />
-      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-        <Search className="w-5 h-5 text-gray-400" />
+      <div className={searchInputStyles.iconContainer}>
+        <Search className={searchInputStyles.icon} />
       </div>
     </div>
   );

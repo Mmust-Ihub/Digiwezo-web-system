@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import { SearchInput } from "./SearchInput";
+import { SearchInput } from "@school-admin/(features)/bom/components/SearchInput";
+import { managementSectionStyles } from "@school-admin/(features)/bom/styles/componentStyles";
 
 interface ManagementSectionProps {
   searchValue?: string;
@@ -14,19 +15,19 @@ export const ManagementSection = ({
   onAddMember 
 }: ManagementSectionProps) => {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-gray-900">Management Members</h2>
+    <div className={managementSectionStyles.container}>
+      <div className={managementSectionStyles.header}>
+        <h2 className={managementSectionStyles.title}>Management Members</h2>
         <Button 
           onClick={onAddMember}
-          className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+          className={managementSectionStyles.button}
         >
-          <Plus className="w-4 h-4" />
+          <Plus className={managementSectionStyles.buttonIcon} />
           Add Member
         </Button>
       </div>
       
-      <div>
+      <div className={managementSectionStyles.searchContainer}>
         <SearchInput 
           value={searchValue}
           onChange={onSearchChange}
