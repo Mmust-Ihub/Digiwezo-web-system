@@ -29,8 +29,7 @@ export const bomData: BomData = {
       id: 4,
       name: "Marlon Atieno",
       username: "marlonatieno@bookeracademy",
-      phone: "0712507885",
-      verified: true
+      phone: "0712507885"
     },
     {
       id: 5,
