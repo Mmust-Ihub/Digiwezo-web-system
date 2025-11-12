@@ -23,7 +23,6 @@ export const ReportCard = () => {
             Student Progress & Report – Term {student.term} ({student.grade})
           </h2>
 
-          {/* Student Info */}
           <div className="text-sm text-custom-grey mb-6 space-y-1">
             <p>
               <b>Student Name:</b> {student.name}

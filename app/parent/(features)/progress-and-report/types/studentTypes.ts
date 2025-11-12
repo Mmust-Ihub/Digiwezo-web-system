@@ -1,4 +1,4 @@
-export interface StudentProfile {
+export interface Student {
   name: string;
   email?: string;
   admissionNo: string;
@@ -16,3 +16,10 @@ export interface StudentProfile {
     level: string;
   }[];
 }
+
+export interface Subject {
+  area: string;
+  score: string;
+  level: string;
+}
+

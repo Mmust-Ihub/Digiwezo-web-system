@@ -3,8 +3,8 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useFilters } from "@parent/(features)/progress-and-report/hooks/useFilters";
-import { filterData } from "@parent/(features)/progress-and-report/data/filterData";
-import { FiltersProps } from "@parent/(features)/progress-and-report/types/filterTypes";
+import { filterData } from "@parent/(features)/progress-and-report/data/reportData";
+import { FiltersProps } from "@parent/(features)/progress-and-report/types/reportTypes";
 
 export const Filters = () => {
   const { grade, term, handleGradeChange, handleTermChange, handleSubmit } =
@@ -35,7 +35,6 @@ export const Filters = () => {
           </select>
         </div>
 
-        {/* Term Selector */}
         <div className="flex flex-col">
           <label className="font-medium mb-2 text-foreground">Term</label>
           <select
