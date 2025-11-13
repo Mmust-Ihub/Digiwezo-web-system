@@ -1,25 +1,6 @@
+import { subjects } from "@parent/data/constants";
 import { useState, useEffect } from "react";
-
-export interface Subject {
-  area: string;
-  score: string;
-  level: string;
-}
-
-export interface Student {
-  name: "Peter Johnson";
-  email?:"example@GiMailShirt.com";
-  admissionNo: "1234";
-  school?: "BOOKER ACADEMY";
-  image?: string;
-  class?: string;
-  term?: string;
-  year?: string;
-  overallScore?: string;
-  performanceLevel?: string;
-  comment?: string;
-  subjects?: Subject[];
-}
+import { Student } from "@parent/(features)/progress-and-report/types/studentTypes";
 
 export const useStudent = (studentId: string) => {
   const [student, setStudent] = useState<Student | null>(null);
@@ -48,3 +29,4 @@ export const useStudent = (studentId: string) => {
 
   return { student, loading, error };
 };
+

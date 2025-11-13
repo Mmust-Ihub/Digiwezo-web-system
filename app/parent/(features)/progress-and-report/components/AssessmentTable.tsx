@@ -2,8 +2,8 @@
 
 import React from "react";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-import { assessmentsData } from "@parent/(features)/progress-and-report/data/assessmentsData";
-import { Assessment } from "@parent/(features)/progress-and-report/types/assessmentTypes";
+import { assessmentsData } from "@parent/(features)/progress-and-report/data/reportData";
+import { Assessment } from "@parent/(features)/progress-and-report/types/reportTypes";
 
 export const AssessmentTable = () => {
   return (
@@ -26,9 +26,9 @@ export const AssessmentTable = () => {
                 <td className="border p-3">{task}</td>
                 <td className="border p-3 flex items-center gap-2">
                   {status === "Completed" ? (
-                    <FaCheckCircle className="text-green-500 shrink-0" />
+                    <FaCheckCircle className="text-success shrink-0" />
                   ) : (
-                    <FaTimesCircle className="text-red-500 shrink-0" />
+                    <FaTimesCircle className="text-error shrink-0" />
                   )}
                   <span>{status}</span>
                 </td>
