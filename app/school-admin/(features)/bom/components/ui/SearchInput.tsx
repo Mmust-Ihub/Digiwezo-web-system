@@ -1,3 +1,5 @@
+"use client";
+
 import { Search } from "lucide-react";
 import { searchInputStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
@@ -8,7 +10,9 @@ interface SearchInputProps {
 }
 
 export function SearchInput({
-  placeholder = "Search by Name", value = "", onChange
+  placeholder = "Search by Name",
+  value = "",
+  onChange,
 }: SearchInputProps) {
   return (
     <div className={searchInputStyles.container}>
@@ -16,10 +20,9 @@ export function SearchInput({
         type="text"
         placeholder={placeholder}
         value={value}
-        onChange={(e) => {
-          return onChange?.(e.target.value);
-        } }
-        className={searchInputStyles.input} />
+        onChange={(e) => onChange?.(e.target.value)}
+        className={searchInputStyles.input}
+      />
       <div className={searchInputStyles.iconContainer}>
         <Search className={searchInputStyles.icon} />
       </div>
