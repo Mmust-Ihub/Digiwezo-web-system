@@ -35,14 +35,14 @@ export interface SocialLink {
   label: string;
   href: string;
 }
-export interface PersonalDetail {
-  placeholder: string;
+export interface InputField {
+  label: string;
   value: string;
 }
 
-export interface EmergencyContact {
-  label: string;
-  placeholder: string;
+export interface Section {
+  title: string;
+  fields: InputField[];
 }
 export interface LoginPageProps {
   onClose: () => void;
@@ -54,4 +54,27 @@ export interface SocialLink {
   icon: React.ElementType;
   label: string;
   href: string;
+}
+export interface ProfileCardProps {
+  name: string;
+  username: string;
+  email: string;
+  avatarSrc?: string;
+};
+ export interface FormField {
+  name: string;
+  placeholder: string;
+  section: "personal" | "emergency";
+  type?: "text" | "select";
+  options?: string[];
+}
+export interface ProfileField {
+  label: string;
+  name: string;
+  type?: string;
+}
+
+export interface ProfileSection {
+  title: string;
+  fields: ProfileField[];
 }
