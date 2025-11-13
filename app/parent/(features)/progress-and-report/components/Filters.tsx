@@ -3,8 +3,8 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useFilters } from "@parent/(features)/progress-and-report/hooks/useFilters";
-import { filterData } from "@parent/(features)/progress-and-report/data/filterData";
-import { FiltersProps } from "@parent/(features)/progress-and-report/types/filterTypes";
+import { filterData } from "@parent/(features)/progress-and-report/data/reportData";
+import { FiltersProps } from "@parent/(features)/progress-and-report/types/reportTypes";
 
 export const Filters = () => {
   const { grade, term, handleGradeChange, handleTermChange, handleSubmit } =
