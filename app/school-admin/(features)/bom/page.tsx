@@ -10,6 +10,7 @@ import { useSearch } from "@school-admin/(features)/bom/hooks/ui/useSearch";
 import { useManagement } from "@school-admin/(features)/bom/hooks/business/useManagement";
 import { useTableActions } from "@school-admin/(features)/bom/hooks/ui/useTableActions";
 import { useModal } from "@school-admin/(features)/bom/hooks/ui/useModal";
+import { member } from "@school-admin/(features)/bom/utils";
 
 const MembersTable = dynamic(
   () => import("@school-admin/(features)/bom/components/ui/MembersTable").then(mod => ({ default: mod.MembersTable })),
@@ -33,13 +34,7 @@ export default function BomPage() {
   const { isOpen: isModalOpen, openModal, closeModal } = useModal();
 
   const filteredMembers = useMemo(() => {
-    if (!searchValue.trim()) return bomData.members;
-    
-    return bomData.members.filter(member =>
-      member.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-      member.username.toLowerCase().includes(searchValue.toLowerCase()) ||
-      member.phone.includes(searchValue)
-    );
+    return member.filterMembers(bomData.members, searchValue);
   }, [searchValue]);
 
   const { handlePrint, handleDownload, handlePrevious, handleNext, isDownloading, isPrinting } = useTableActions(filteredMembers, bomData.stats);

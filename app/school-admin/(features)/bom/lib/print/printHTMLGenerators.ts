@@ -1,11 +1,11 @@
 import { BomMember, BomStats } from "@school-admin/(features)/bom/types/bomTypes";
-import { DATE_FORMATS } from "@school-admin/(features)/bom/lib/pdf/pdfConstants";
+import { date } from "@school-admin/(features)/bom/utils";
 
 export const generateHeader = (): string => {
   return `
     <div class="header">
       <h1>Board of Management</h1>
-      <p class="print-date">Generated on: ${DATE_FORMATS.dateTime()}</p>
+      <p class="print-date">Generated on: ${date.DATE_FORMATS.dateTime()}</p>
     </div>
   `;
 };

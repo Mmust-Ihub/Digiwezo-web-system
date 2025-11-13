@@ -1,6 +1,7 @@
 import { jsPDF } from 'jspdf';
 import { BomStats } from "@school-admin/(features)/bom/types/bomTypes";
-import { PDF_CONFIG, DATE_FORMATS } from "@school-admin/(features)/bom/lib/pdf/pdfConstants";
+import { PDF_CONFIG } from "@school-admin/(features)/bom/lib/pdf/pdfConstants";
+import { date } from "@school-admin/(features)/bom/utils";
 
 export const addPDFHeader = (doc: jsPDF) => {
   const pageWidth = doc.internal.pageSize.getWidth();
@@ -12,7 +13,7 @@ export const addPDFHeader = (doc: jsPDF) => {
   
   doc.setFontSize(fonts.subtitle.size);
   doc.setFont('helvetica', fonts.subtitle.style);
-  doc.text(`Generated on: ${DATE_FORMATS.date()}`, pageWidth / 2, layout.subtitleY, { align: 'center' });
+  doc.text(`Generated on: ${date.DATE_FORMATS.date()}`, pageWidth / 2, layout.subtitleY, { align: 'center' });
 };
 
 export const addPDFStats = (doc: jsPDF, stats: BomStats) => {

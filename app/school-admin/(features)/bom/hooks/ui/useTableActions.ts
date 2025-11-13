@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { generatePDF, handlePrint as utilHandlePrint } from "@school-admin/(features)/bom/lib/pdf/pdfUtils";
+import { pdf } from "@school-admin/(features)/bom/lib";
 import { BomMember, BomStats } from "@school-admin/(features)/bom/types/bomTypes";
 
 export const useTableActions = (members: BomMember[], stats: BomStats) => {
@@ -9,7 +9,7 @@ export const useTableActions = (members: BomMember[], stats: BomStats) => {
   const handlePrint = useCallback(async () => {
     setIsPrinting(true);
     try {
-      utilHandlePrint(members, stats);
+      pdf.handlePrint(members, stats);
     } catch (error) {
       console.error("Print failed:", error);
     } finally {
@@ -20,7 +20,7 @@ export const useTableActions = (members: BomMember[], stats: BomStats) => {
   const handleDownload = useCallback(async () => {
     setIsDownloading(true);
     try {
-      await generatePDF(members, stats);
+      await pdf.generatePDF(members, stats);
     } catch (error) {
       console.error("PDF generation failed:", error);
     } finally {

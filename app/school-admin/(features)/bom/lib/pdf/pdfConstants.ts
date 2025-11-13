@@ -51,9 +51,3 @@ export const PRINT_STYLES = {
     marginBottom: '20px'
   }
 };
-
-export const DATE_FORMATS = {
-  date: () => new Date().toLocaleDateString(),
-  time: () => new Date().toLocaleTimeString(),
-  dateTime: () => `${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`
-};
