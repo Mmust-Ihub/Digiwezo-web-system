@@ -88,7 +88,7 @@ export default function  RootLayout ({
     <html lang="en">
       <body
       >
-        {children}
+        {/* {children} */}
         className={`${geistSans.variable} ${geistMono.variable} ${lora.className} antialiased`}
         <MainLayout>{children}</MainLayout>
       </body>
