@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 
 export const useSearch = (initialValue = "") => {
   const [searchValue, setSearchValue] = useState(initialValue);
 
-  const handleSearchChange = (value: string) => {
+  const handleSearchChange = useCallback((value: string) => {
     setSearchValue(value);
-  };
+  }, []);
 
-  const clearSearch = () => {
+  const clearSearch = useCallback(() => {
     setSearchValue("");
-  };
+  }, []);
+
+  const trimmedSearchValue = useMemo(() => searchValue.trim(), [searchValue]);
 
   return {
     searchValue,
+    trimmedSearchValue,
     handleSearchChange,
     clearSearch
   };

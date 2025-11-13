@@ -1,17 +1,34 @@
 import { BomMember } from "@school-admin/(features)/bom/types/bomTypes";
 
+const searchCache = new Map<string, BomMember[]>();
+
 export const filterMembers = (members: BomMember[], searchQuery: string): BomMember[] => {
-  if (!searchQuery.trim()) {
+  const trimmedQuery = searchQuery.trim();
+  
+  if (!trimmedQuery) {
     return members;
   }
 
-  const lowercaseQuery = searchQuery.toLowerCase();
+  const cacheKey = `${members.length}-${trimmedQuery}`;
+  if (searchCache.has(cacheKey)) {
+    return searchCache.get(cacheKey)!;
+  }
 
-  return members.filter(member =>
+  const lowercaseQuery = trimmedQuery.toLowerCase();
+
+  const filtered = members.filter(member =>
     member.name.toLowerCase().includes(lowercaseQuery) ||
     member.username.toLowerCase().includes(lowercaseQuery) ||
-    member.phone.includes(searchQuery)
+    member.phone.includes(trimmedQuery)
   );
+
+  if (searchCache.size > 50) {
+    const firstKey = searchCache.keys().next().value as string;
+    searchCache.delete(firstKey);
+  }
+  searchCache.set(cacheKey, filtered);
+
+  return filtered;
 };
 
 export const searchMembersByField = (

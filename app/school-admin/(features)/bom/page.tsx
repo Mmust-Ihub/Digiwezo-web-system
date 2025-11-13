@@ -5,6 +5,7 @@ import { Suspense, useMemo, useCallback } from "react";
 import { BomHeader } from "@school-admin/(features)/bom/components/layout/BomHeader";
 import { ManagementSection } from "@school-admin/(features)/bom/components/layout/ManagementSection";
 import { AddMemberModal } from "@school-admin/(features)/bom/components/modals/AddMemberModal";
+import { ErrorBoundary } from "@school-admin/(features)/bom/components/ui/ErrorBoundary";
 import { bomData } from "@school-admin/(features)/bom/data/bomData";
 import { useSearch } from "@school-admin/(features)/bom/hooks/ui/useSearch";
 import { useManagement } from "@school-admin/(features)/bom/hooks/business/useManagement";
@@ -29,13 +30,13 @@ const TableActions = dynamic(
 );
 
 export default function BomPage() {
-  const { searchValue, handleSearchChange } = useSearch();
+  const { searchValue, trimmedSearchValue, handleSearchChange } = useSearch();
   const { handleAddMember, handleViewMember } = useManagement();
   const { isOpen: isModalOpen, openModal, closeModal } = useModal();
 
   const filteredMembers = useMemo(() => {
-    return member.filterMembers(bomData.members, searchValue);
-  }, [searchValue]);
+    return member.filterMembers(bomData.members, trimmedSearchValue);
+  }, [trimmedSearchValue]);
 
   const { handlePrint, handleDownload, handlePrevious, handleNext, isDownloading, isPrinting } = useTableActions(filteredMembers, bomData.stats);
 
@@ -59,23 +60,27 @@ export default function BomPage() {
       />
         
         <div className="space-y-4">
-          <Suspense fallback={<div className="animate-pulse bg-gray-200 h-96 rounded-lg"></div>}>
-            <MembersTable 
-              members={filteredMembers}
-              onViewMember={handleViewMember}
-            />
-          </Suspense>
+          <ErrorBoundary fallback={<div className="text-center py-8 text-gray-500">Unable to load members table</div>}>
+            <Suspense fallback={<div className="animate-pulse bg-gray-200 h-96 rounded-lg"></div>}>
+              <MembersTable 
+                members={filteredMembers}
+                onViewMember={handleViewMember}
+              />
+            </Suspense>
+          </ErrorBoundary>
           
-          <Suspense fallback={<div className="animate-pulse bg-gray-200 h-16 rounded-lg"></div>}>
-            <TableActions 
-              onPrint={handlePrint}
-              onDownload={handleDownload}
-              onPrevious={handlePrevious}
-              onNext={handleNext}
-              isDownloading={isDownloading}
-              isPrinting={isPrinting}
-            />
-          </Suspense>
+          <ErrorBoundary fallback={<div className="text-center py-4 text-gray-500">Table actions unavailable</div>}>
+            <Suspense fallback={<div className="animate-pulse bg-gray-200 h-16 rounded-lg"></div>}>
+              <TableActions 
+                onPrint={handlePrint}
+                onDownload={handleDownload}
+                onPrevious={handlePrevious}
+                onNext={handleNext}
+                isDownloading={isDownloading}
+                isPrinting={isPrinting}
+              />
+            </Suspense>
+          </ErrorBoundary>
         </div>
         
         <AddMemberModal 
