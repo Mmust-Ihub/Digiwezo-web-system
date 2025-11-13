@@ -5,20 +5,26 @@ import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 bg-white border-b border-border flex items-center justify-between px-8 z-10">
+    <header className="relative h-full top-0 left-0 right-0  bg-white border-b border-border flex items-center  px-4 z-10">
+      <div className="w-64">
+
       <Link href="/" className="flex items-center gap-3">
-        <div className="right-20 relative w-[285px] h-[285px]">
+        
           <Image
             src="/logo.png"
             alt="DigiWezo Logo"
-            fill
-            className="object-contain"
+            width={1000}
+            height={1000}
+            className="object-cover w-48"
             priority
           />
-        </div>
-        <h1 className={` ${inter.className} text-2xl font-bold text-cyan-500`}>BOOKER ACADEMY</h1>
       </Link>
-      <div className="flex items-center gap-4">
+      </div>
+      <div className="flex flex-1">
+
+        <h1 className={` ${inter.className} items-start text-2xl font-bold text-cyan-500`}>BOOKER ACADEMY</h1>
+      </div>
+      <div className="flex items-center gap-4 ">
         <button title="notification" className="relative p-2 hover:bg-muted rounded-full transition-colors">
           <Bell className="w-5 h-5 text-primary fill" />
           <span className="absolute top-1 right-1 w-2 h-2 bg-secondary rounded-full" />
