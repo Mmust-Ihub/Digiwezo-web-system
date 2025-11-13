@@ -6,7 +6,7 @@ import { ModalLayout, ModalHeader, ModalFooter } from "@school-admin/(features)/
 import { AddMemberForm } from "@school-admin/(features)/bom/components/forms/AddMemberForm";
 import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
-export const AddMemberModal = ({ isOpen, onClose, onSubmit }: AddMemberModalProps) => {
+export function AddMemberModal({ isOpen, onClose, onSubmit }: AddMemberModalProps) {
   const {
     formData,
     isSubmitting,
@@ -44,4 +44,4 @@ export const AddMemberModal = ({ isOpen, onClose, onSubmit }: AddMemberModalProp
       />
     </ModalLayout>
   );
-};
+}

@@ -13,7 +13,7 @@ interface TableActionsProps {
   isPrinting?: boolean;
 }
 
-export const TableActions = ({ 
+export function TableActions({ 
   onPrevious, 
   onNext, 
   onPrint, 
@@ -22,7 +22,7 @@ export const TableActions = ({
   canGoNext = true,
   isDownloading = false,
   isPrinting = false
-}: TableActionsProps) => {
+}: TableActionsProps) {
   return (
     <div className={paginationStyles.container}>
       <div className={paginationStyles.navContainer}>
@@ -70,4 +70,4 @@ export const TableActions = ({
       </div>
     </div>
   );
-};
+}

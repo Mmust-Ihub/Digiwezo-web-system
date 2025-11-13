@@ -6,7 +6,7 @@ interface BomHeaderProps {
   stats: BomStats;
 }
 
-export const BomHeader = ({ stats }: BomHeaderProps) => {
+export function BomHeader({ stats }: BomHeaderProps) {
   return (
     <div className={bomHeaderStyles.container}>
       <div>
@@ -32,4 +32,4 @@ export const BomHeader = ({ stats }: BomHeaderProps) => {
       </div>
     </div>
   );
-};
+}

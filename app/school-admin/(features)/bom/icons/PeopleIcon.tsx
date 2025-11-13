@@ -2,7 +2,7 @@ interface IconProps {
   className?: string;
 }
 
-export const PeopleIcon = ({ className }: IconProps) => {
+export function PeopleIcon({ className }: IconProps) {
   return (
     <svg 
       width="96" 
@@ -35,4 +35,4 @@ export const PeopleIcon = ({ className }: IconProps) => {
       />
     </svg>
   );
-};
+}

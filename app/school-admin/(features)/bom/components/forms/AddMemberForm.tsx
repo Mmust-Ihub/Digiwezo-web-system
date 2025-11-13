@@ -14,12 +14,11 @@ const genderOptions = [
   { value: "other", label: "Other" }
 ];
 
-
-export const AddMemberForm = ({ 
+export function AddMemberForm({ 
   formData, 
   onChange, 
   onSubmit 
-}: AddMemberFormProps) => {
+}: AddMemberFormProps) {
   return (
     <form onSubmit={onSubmit} className={modalStyles.form}>
       <div className={modalStyles.formRow}>
@@ -83,4 +82,4 @@ export const AddMemberForm = ({
       />
     </form>
   );
-};
+}

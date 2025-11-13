@@ -10,7 +10,7 @@ interface MembersTableProps {
 
 const tableHeaders = ["#", "Name", "UserName", "Phone", "Action"];
 
-export const MembersTable = ({ members, onViewMember }: MembersTableProps) => {
+export function MembersTable({ members, onViewMember }: MembersTableProps) {
   return (
     <div className={tableStyles.container}>
       <table className={tableStyles.table}>
@@ -51,4 +51,4 @@ export const MembersTable = ({ members, onViewMember }: MembersTableProps) => {
       </table>
     </div>
   );
-};
+}

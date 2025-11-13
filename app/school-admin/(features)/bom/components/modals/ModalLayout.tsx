@@ -15,47 +15,51 @@ interface ModalFooterProps {
   isSubmitting: boolean;
 }
 
-export const ModalHeader = ({ title }: ModalHeaderProps) => (
-  <div className={modalStyles.header}>
-    <h2 className={modalStyles.title}>{title}</h2>
-  </div>
-);
+export function ModalHeader({ title }: ModalHeaderProps) {
+  return (
+    <div className={modalStyles.header}>
+      <h2 className={modalStyles.title}>{title}</h2>
+    </div>
+  );
+}
 
-export const ModalFooter = ({ 
+export function ModalFooter({ 
   onClose, 
   onSubmit, 
   isSubmitting 
-}: ModalFooterProps) => (
-  <div className={modalStyles.footer}>
-    <button
-      type="button"
-      onClick={onClose}
-      className={modalStyles.backButton}
-    >
-      <ArrowLeft className="w-4 h-4 mr-2 inline" />
-      Back
-    </button>
-    
-    <button
-      onClick={onSubmit}
-      disabled={isSubmitting}
-      className={modalStyles.submitButton}
-    >
-      {isSubmitting ? (
-        <div className="w-4 h-4 animate-spin border-2 border-current border-t-transparent rounded-full"></div>
-      ) : (
-        <PlusIcon className={modalStyles.submitIcon} />
-      )}
-      {isSubmitting ? "Adding..." : "Add Member"}
-    </button>
-  </div>
-);
+}: ModalFooterProps) {
+  return (
+    <div className={modalStyles.footer}>
+      <button
+        type="button"
+        onClick={onClose}
+        className={modalStyles.backButton}
+      >
+        <ArrowLeft className="w-4 h-4 mr-2 inline" />
+        Back
+      </button>
+      
+      <button
+        onClick={onSubmit}
+        disabled={isSubmitting}
+        className={modalStyles.submitButton}
+      >
+        {isSubmitting ? (
+          <div className="w-4 h-4 animate-spin border-2 border-current border-t-transparent rounded-full"></div>
+        ) : (
+          <PlusIcon className={modalStyles.submitIcon} />
+        )}
+        {isSubmitting ? "Adding..." : "Add Member"}
+      </button>
+    </div>
+  );
+}
 
-export const ModalLayout = ({ 
+export function ModalLayout({ 
   isOpen, 
   onClose, 
   children 
-}: ModalLayoutProps) => {
+}: ModalLayoutProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const { handleOverlayClick } = useModalBehavior({ isOpen, onClose });
 
@@ -75,4 +79,4 @@ export const ModalLayout = ({
       </div>
     </div>
   );
-};
+}

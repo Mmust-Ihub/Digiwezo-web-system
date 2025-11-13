@@ -9,11 +9,11 @@ interface ManagementSectionProps {
   onAddMember?: () => void;
 }
 
-export const ManagementSection = ({ 
+export function ManagementSection({ 
   searchValue = "", 
   onSearchChange,
   onAddMember 
-}: ManagementSectionProps) => {
+}: ManagementSectionProps) {
   return (
     <div className={managementSectionStyles.container}>
       <div className={managementSectionStyles.header}>
@@ -36,4 +36,4 @@ export const ManagementSection = ({
       </div>
     </div>
   );
-};
+}

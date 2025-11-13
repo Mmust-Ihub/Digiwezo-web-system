@@ -9,7 +9,7 @@ interface StatsCardProps {
   label: string;
 }
 
-export const StatsCard = ({ type, count, label }: StatsCardProps) => {
+export function StatsCard({ type, count, label }: StatsCardProps) {
   const getIcon = () => {
     switch(type) {
       case "total":
@@ -36,4 +36,4 @@ export const StatsCard = ({ type, count, label }: StatsCardProps) => {
       </div>
     </div>
   );
-};
+}
