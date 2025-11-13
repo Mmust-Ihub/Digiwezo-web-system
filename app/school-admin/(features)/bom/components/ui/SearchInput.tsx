@@ -18,7 +18,9 @@ export const SearchInput = ({
         type="text"
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange?.(e.target.value)}
+        onChange={(e) => {
+          return onChange?.(e.target.value);
+        }}
         className={searchInputStyles.input}
       />
       <div className={searchInputStyles.iconContainer}>
