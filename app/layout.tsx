@@ -89,11 +89,7 @@ export default function  RootLayout ({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lora.className} antialiased`}
       >
-        {/* <Navbar /> */}
 
-        {children}
-        {/* <Footer /> */}
-        className={`${geistSans.variable} ${geistMono.variable} ${lora.className} antialiased`}
         <MainLayout>{children}</MainLayout>
       </body>
     </html>
