@@ -1,13 +1,23 @@
-export default function SchoolAdminLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <section className="min-h-screen flex flex-col">
-      <header className="p-4 bg-gray-100 border-b">
-        <h1 className="text-xl font-semibold capitalize">school-admin Dashboard</h1>
-      </header>
+import { Header } from "@school-admin/components/Header";
+import { Sidebar } from "@school-admin/components/Sidebar";
 
-      <main className="flex-1 p-6">
-        {children}
-      </main>
-    </section>
+export default function SchoolAdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="w-screen h-screen flex flex-col overflow-hidden">
+      <div className="h-[12vh]">
+        <Header />
+      </div>
+
+      <div className="flex flex-row h-[88vh]">
+        <Sidebar />
+        <div className="h-full w-full bg-background  overflow-x-clip ml-65">
+          {children}
+        </div>
+      </div>
+    </div>
   );
 }
