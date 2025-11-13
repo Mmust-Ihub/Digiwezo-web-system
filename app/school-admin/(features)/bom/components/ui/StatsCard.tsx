@@ -1,3 +1,4 @@
+import { memo, useMemo } from "react";
 import { MaleIcon } from "@school-admin/(features)/bom/icons/MaleIcon";
 import { FemaleIcon } from "@school-admin/(features)/bom/icons/FemaleIcon";
 import { PeopleIcon } from "@school-admin/(features)/bom/icons/PeopleIcon";
@@ -9,8 +10,8 @@ interface StatsCardProps {
   label: string;
 }
 
-export function StatsCard({ type, count, label }: StatsCardProps) {
-  const getIcon = () => {
+export const StatsCard = memo(function StatsCard({ type, count, label }: StatsCardProps) {
+  const icon = useMemo(() => {
     switch(type) {
       case "total":
         return <PeopleIcon className={statsCardStyles.icon} />;
@@ -21,13 +22,13 @@ export function StatsCard({ type, count, label }: StatsCardProps) {
       default:
         return <PeopleIcon className={statsCardStyles.icon} />;
     }
-  };
+  }, [type]);
   
   return (
     <div className={statsCardStyles.container}>
       <div className={statsCardStyles.content}>
         <div className={statsCardStyles.iconContainer}>
-          {getIcon()}
+          {icon}
         </div>
         <div className={statsCardStyles.textContainer}>
           <div className={statsCardStyles.count}>{count}</div>
@@ -36,4 +37,4 @@ export function StatsCard({ type, count, label }: StatsCardProps) {
       </div>
     </div>
   );
-}
+});

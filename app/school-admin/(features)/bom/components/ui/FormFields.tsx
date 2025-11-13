@@ -1,7 +1,8 @@
 import { FormFieldProps } from "@school-admin/(features)/bom/types/addMemberTypes";
 import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
+import { memo, useCallback } from "react";
 
-export function FormInput({ 
+export const FormInput = memo(function FormInput({ 
   label, 
   name, 
   type, 
@@ -9,21 +10,25 @@ export function FormInput({
   onChange, 
   required = false 
 }: FormFieldProps) {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(name, e.target.value);
+  }, [name, onChange]);
+
   return (
     <div className={modalStyles.formGroup}>
       <label className={modalStyles.label}>{label}</label>
       <input
         type={type}
         value={value}
-        onChange={(e) => onChange(name, e.target.value)}
+        onChange={handleChange}
         className={modalStyles.input}
         required={required}
       />
     </div>
   );
-}
+});
 
-export function FormSelect({ 
+export const FormSelect = memo(function FormSelect({ 
   label, 
   name, 
   value, 
@@ -31,12 +36,16 @@ export function FormSelect({
   options = [], 
   required = false 
 }: FormFieldProps) {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    onChange(name, e.target.value);
+  }, [name, onChange]);
+
   return (
     <div className={modalStyles.formGroup}>
       <label className={modalStyles.label}>{label}</label>
       <select
         value={value}
-        onChange={(e) => onChange(name, e.target.value)}
+        onChange={handleChange}
         className={modalStyles.select}
         required={required}
       >
@@ -49,9 +58,9 @@ export function FormSelect({
       </select>
     </div>
   );
-}
+});
 
-export function FormTextarea({ 
+export const FormTextarea = memo(function FormTextarea({ 
   label, 
   name, 
   value, 
@@ -59,16 +68,20 @@ export function FormTextarea({
   rows = 3, 
   required = false 
 }: FormFieldProps) {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(name, e.target.value);
+  }, [name, onChange]);
+
   return (
     <div className={modalStyles.formGroup}>
       <label className={modalStyles.label}>{label}</label>
       <textarea
         value={value}
-        onChange={(e) => onChange(name, e.target.value)}
+        onChange={handleChange}
         className={modalStyles.textarea}
         rows={rows}
         required={required}
       />
     </div>
   );
-}
+});

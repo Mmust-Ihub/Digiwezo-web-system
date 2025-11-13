@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { FormData } from "@school-admin/(features)/bom/types/addMemberTypes";
 import { FormInput, FormSelect, FormTextarea } from "@school-admin/(features)/bom/components/ui/FormFields";
 import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
@@ -14,7 +15,7 @@ const genderOptions = [
   { value: "other", label: "Other" }
 ];
 
-export function AddMemberForm({ 
+export const AddMemberForm = memo(function AddMemberForm({ 
   formData, 
   onChange, 
   onSubmit 
@@ -82,4 +83,4 @@ export function AddMemberForm({
       />
     </form>
   );
-}
+});

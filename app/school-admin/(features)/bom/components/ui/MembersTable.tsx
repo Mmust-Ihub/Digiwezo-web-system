@@ -1,3 +1,4 @@
+import { memo, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 import { BomMember } from "@school-admin/(features)/bom/types/bomTypes";
@@ -10,7 +11,45 @@ interface MembersTableProps {
 
 const tableHeaders = ["#", "Name", "UserName", "Phone", "Action"];
 
-export function MembersTable({ members, onViewMember }: MembersTableProps) {
+const MemberRow = memo(function MemberRow({ 
+  member, 
+  index, 
+  onViewMember 
+}: { 
+  member: BomMember; 
+  index: number; 
+  onViewMember?: (id: number) => void;
+}) {
+  const handleView = useCallback(() => {
+    onViewMember?.(member.id);
+  }, [member.id, onViewMember]);
+
+  return (
+    <tr className={tableStyles.bodyRow}>
+      <td className={tableStyles.indexCell}>{index + 1}</td>
+      <td className={tableStyles.bodyCell}>{member.name}</td>
+      <td className={tableStyles.usernameCell}>
+        <div className="flex items-center">
+          {member.username}
+          {member.verified && (
+            <CheckCircle className={tableStyles.verifiedIcon} />
+          )}
+        </div>
+      </td>
+      <td className={tableStyles.bodyCell}>{member.phone}</td>
+      <td className={tableStyles.bodyCell}>
+        <Button 
+          onClick={handleView}
+          className={tableStyles.actionButton}
+        >
+          View
+        </Button>
+      </td>
+    </tr>
+  );
+});
+
+export const MembersTable = memo(function MembersTable({ members, onViewMember }: MembersTableProps) {
   return (
     <div className={tableStyles.container}>
       <table className={tableStyles.table}>
@@ -25,30 +64,15 @@ export function MembersTable({ members, onViewMember }: MembersTableProps) {
         </thead>
         <tbody className={tableStyles.body}>
           {members.map((member, index) => (
-            <tr key={member.id} className={tableStyles.bodyRow}>
-              <td className={tableStyles.indexCell}>{index + 1}</td>
-              <td className={tableStyles.bodyCell}>{member.name}</td>
-              <td className={tableStyles.usernameCell}>
-                <div className="flex items-center">
-                  {member.username}
-                  {member.verified && (
-                    <CheckCircle className={tableStyles.verifiedIcon} />
-                  )}
-                </div>
-              </td>
-              <td className={tableStyles.bodyCell}>{member.phone}</td>
-              <td className={tableStyles.bodyCell}>
-                <Button 
-                  onClick={() => onViewMember?.(member.id)}
-                  className={tableStyles.actionButton}
-                >
-                  View
-                </Button>
-              </td>
-            </tr>
+            <MemberRow
+              key={member.id}
+              member={member}
+              index={index}
+              onViewMember={onViewMember}
+            />
           ))}
         </tbody>
       </table>
     </div>
   );
-}
+});

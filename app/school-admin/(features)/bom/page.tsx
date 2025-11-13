@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Suspense, useMemo } from "react";
+import { Suspense, useMemo, useCallback } from "react";
 import { BomHeader } from "@school-admin/(features)/bom/components/layout/BomHeader";
 import { ManagementSection } from "@school-admin/(features)/bom/components/layout/ManagementSection";
 import { AddMemberModal } from "@school-admin/(features)/bom/components/modals/AddMemberModal";
@@ -39,14 +39,14 @@ export default function BomPage() {
 
   const { handlePrint, handleDownload, handlePrevious, handleNext, isDownloading, isPrinting } = useTableActions(filteredMembers, bomData.stats);
 
-  const handleAddMemberClick = () => {
+  const handleAddMemberClick = useCallback(() => {
     openModal();
-  };
+  }, [openModal]);
 
-  const handleModalSubmit = async (memberData: any) => {
+  const handleModalSubmit = useCallback(async (memberData: any) => {
     await handleAddMember(memberData);
     closeModal();
-  };
+  }, [handleAddMember, closeModal]);
 
   return (
     <div className="p-6 space-y-8 max-w-[95%]">

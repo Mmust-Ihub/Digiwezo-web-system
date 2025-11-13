@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { PlusIcon } from "@school-admin/(features)/bom/icons/PlusIcon";
 import { SearchInput } from "@school-admin/(features)/bom/components/ui/SearchInput";
@@ -9,7 +10,7 @@ interface ManagementSectionProps {
   onAddMember?: () => void;
 }
 
-export function ManagementSection({ 
+export const ManagementSection = memo(function ManagementSection({ 
   searchValue = "", 
   onSearchChange,
   onAddMember 
@@ -36,4 +37,4 @@ export function ManagementSection({
       </div>
     </div>
   );
-}
+});

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { StatsCard } from "@school-admin/(features)/bom/components/ui/StatsCard";
 import { BomStats } from "@school-admin/(features)/bom/types/bomTypes";
 import { bomHeaderStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
@@ -6,7 +7,7 @@ interface BomHeaderProps {
   stats: BomStats;
 }
 
-export function BomHeader({ stats }: BomHeaderProps) {
+export const BomHeader = memo(function BomHeader({ stats }: BomHeaderProps) {
   return (
     <div className={bomHeaderStyles.container}>
       <div>
@@ -32,4 +33,4 @@ export function BomHeader({ stats }: BomHeaderProps) {
       </div>
     </div>
   );
-}
+});
