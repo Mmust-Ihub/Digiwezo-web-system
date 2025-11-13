@@ -31,6 +31,7 @@ export const TableActions = memo(function TableActions({
           onClick={onPrevious}
           disabled={!canGoPrevious}
           className={paginationStyles.navButton}
+          aria-label="Previous page"
         >
           <ChevronLeft className={paginationStyles.navIcon} />
         </button>
@@ -38,6 +39,7 @@ export const TableActions = memo(function TableActions({
           onClick={onNext}
           disabled={!canGoNext}
           className={paginationStyles.navButton}
+          aria-label="Next page"
         >
           <ChevronRight className={paginationStyles.navIcon} />
         </button>

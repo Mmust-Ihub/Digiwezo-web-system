@@ -30,11 +30,11 @@ export const useTableActions = (members: BomMember[], stats: BomStats) => {
   }, [members, stats]);
 
   const handlePrevious = useCallback(() => {
-    console.log("Navigate to previous page");
+    
   }, []);
 
   const handleNext = useCallback(() => {
-    console.log("Navigate to next page");
+    
   }, []);
 
   return {

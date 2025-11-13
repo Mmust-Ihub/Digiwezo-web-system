@@ -22,6 +22,8 @@ export function SearchInput({
         value={value}
         onChange={(e) => onChange?.(e.target.value)}
         className={searchInputStyles.input}
+        aria-label={placeholder}
+        role="searchbox"
       />
       <div className={searchInputStyles.iconContainer}>
         <Search className={searchInputStyles.icon} />
