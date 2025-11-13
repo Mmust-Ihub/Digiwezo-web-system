@@ -32,3 +32,4 @@ export const useModalBehavior = ({ isOpen, onClose }: UseModalBehaviorProps) => 
 
   return { handleOverlayClick };
 };
+

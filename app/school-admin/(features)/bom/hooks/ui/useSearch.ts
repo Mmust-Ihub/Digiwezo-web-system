@@ -1,10 +1,12 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, startTransition } from "react";
 
 export const useSearch = (initialValue = "") => {
   const [searchValue, setSearchValue] = useState(initialValue);
 
   const handleSearchChange = useCallback((value: string) => {
-    setSearchValue(value);
+    startTransition(() => {
+      setSearchValue(value);
+    });
   }, []);
 
   const clearSearch = useCallback(() => {
@@ -20,3 +22,4 @@ export const useSearch = (initialValue = "") => {
     clearSearch
   };
 };
+

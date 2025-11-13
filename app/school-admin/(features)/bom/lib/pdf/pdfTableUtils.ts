@@ -62,3 +62,4 @@ export const calculateTableDimensions = (memberCount: number) => {
     rowsPerPage: Math.floor((297 - layout.tableStartY - layout.bottomMargin) / layout.rowHeight)
   };
 };
+

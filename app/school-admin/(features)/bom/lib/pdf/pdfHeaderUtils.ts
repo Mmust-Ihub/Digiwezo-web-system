@@ -64,3 +64,4 @@ export const addTableHeader = (doc: jsPDF, startY: number) => {
   
   return currentY + 10;
 };
+

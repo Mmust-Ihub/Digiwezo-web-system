@@ -58,3 +58,4 @@ export const sortMembersByName = (members: BomMember[]): BomMember[] => {
 export const sortMembersByNameDesc = (members: BomMember[]): BomMember[] => {
   return [...members].sort((a, b) => b.name.localeCompare(a.name));
 };
+

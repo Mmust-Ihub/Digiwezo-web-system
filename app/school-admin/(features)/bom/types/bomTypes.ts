@@ -17,3 +17,4 @@ export interface BomData {
   stats: BomStats;
   members: BomMember[];
 }
+

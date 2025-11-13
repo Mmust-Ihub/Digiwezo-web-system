@@ -29,3 +29,4 @@ export interface ModalLayoutProps {
   onClose: () => void;
   children: React.ReactNode;
 }
+

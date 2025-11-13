@@ -77,3 +77,4 @@ export const modalStyles = {
   submitButton: "bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg flex items-center gap-2 font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl",
   submitIcon: "w-4 h-4"
 };
+

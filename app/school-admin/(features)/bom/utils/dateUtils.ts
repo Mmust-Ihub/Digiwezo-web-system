@@ -17,3 +17,4 @@ export const DATE_FORMATS = {
   time: formatTime,
   dateTime: formatDateTime
 };
+

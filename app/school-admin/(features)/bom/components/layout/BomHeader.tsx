@@ -34,3 +34,4 @@ export const BomHeader = memo(function BomHeader({ stats }: BomHeaderProps) {
     </div>
   );
 });
+

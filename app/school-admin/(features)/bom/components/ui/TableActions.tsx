@@ -72,3 +72,4 @@ export const TableActions = memo(function TableActions({
     </div>
   );
 });
+

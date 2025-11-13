@@ -36,3 +36,4 @@ export function PeopleIcon({ className }: IconProps) {
     </svg>
   );
 }
+

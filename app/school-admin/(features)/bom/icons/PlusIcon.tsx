@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 interface IconProps {
   className?: string;
 }
 
-export function PlusIcon({ className }: IconProps) {
+export const PlusIcon = memo(function PlusIcon({ className }: IconProps) {
   return (
     <svg 
       width="32" 
@@ -18,4 +20,5 @@ export function PlusIcon({ className }: IconProps) {
       />
     </svg>
   );
-}
+});
+

@@ -45,3 +45,4 @@ export function AddMemberModal({ isOpen, onClose, onSubmit }: AddMemberModalProp
     </ModalLayout>
   );
 }
+

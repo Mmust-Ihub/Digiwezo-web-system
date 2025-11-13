@@ -13,7 +13,7 @@ const genderOptions = [
   { value: "male", label: "Male" },
   { value: "female", label: "Female" },
   { value: "other", label: "Other" }
-];
+] satisfies readonly { value: string; label: string; }[];
 
 export const AddMemberForm = memo(function AddMemberForm({ 
   formData, 
@@ -84,3 +84,4 @@ export const AddMemberForm = memo(function AddMemberForm({
     </form>
   );
 });
+

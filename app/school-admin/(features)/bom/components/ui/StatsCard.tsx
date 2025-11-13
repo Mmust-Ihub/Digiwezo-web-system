@@ -38,3 +38,4 @@ export const StatsCard = memo(function StatsCard({ type, count, label }: StatsCa
     </div>
   );
 });
+

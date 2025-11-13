@@ -28,3 +28,4 @@ export const generatePrintHTML = (members: BomMember[], stats: BomStats): string
     </html>
   `;
 };
+

@@ -23,3 +23,4 @@ export const handlePrint = (members: BomMember[], stats: BomStats) => {
   printWindow.document.write(htmlContent);
   printWindow.document.close();
 };
+

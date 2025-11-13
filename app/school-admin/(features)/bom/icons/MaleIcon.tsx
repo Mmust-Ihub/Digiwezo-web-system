@@ -19,3 +19,4 @@ export function MaleIcon({ className }: IconProps) {
     </svg>
   );
 }
+

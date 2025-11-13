@@ -9,7 +9,7 @@ interface MembersTableProps {
   onViewMember?: (id: number) => void;
 }
 
-const tableHeaders = ["#", "Name", "UserName", "Phone", "Action"];
+const tableHeaders = ["#", "Name", "UserName", "Phone", "Action"] as const;
 
 const MemberRow = memo(function MemberRow({ 
   member, 
@@ -76,3 +76,4 @@ export const MembersTable = memo(function MembersTable({ members, onViewMember }
     </div>
   );
 });
+

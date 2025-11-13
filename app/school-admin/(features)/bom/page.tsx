@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Suspense, useMemo, useCallback } from "react";
+import { Suspense, useMemo, useCallback, startTransition } from "react";
 import { BomHeader } from "@school-admin/(features)/bom/components/layout/BomHeader";
 import { ManagementSection } from "@school-admin/(features)/bom/components/layout/ManagementSection";
 import { AddMemberModal } from "@school-admin/(features)/bom/components/modals/AddMemberModal";
@@ -91,3 +91,4 @@ export default function BomPage() {
       </div>
   );
 }
+
