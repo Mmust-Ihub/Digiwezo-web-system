@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { ArrowLeft } from "lucide-react";
 import { PlusIcon } from "@school-admin/(features)/bom/icons/PlusIcon";
 import { ModalLayoutProps } from "@school-admin/(features)/bom/types/addMemberTypes";
-import { modalStyles } from "@school-admin/(features)/bom/styles/componentStyles";
+import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 import { useModalBehavior } from "@school-admin/(features)/bom/hooks/ui/useModalBehavior";
 
 interface ModalHeaderProps {

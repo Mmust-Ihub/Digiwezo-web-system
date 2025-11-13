@@ -1,6 +1,6 @@
 import { FormData } from "@school-admin/(features)/bom/types/addMemberTypes";
 import { FormInput, FormSelect, FormTextarea } from "@school-admin/(features)/bom/components/ui/FormFields";
-import { modalStyles } from "@school-admin/(features)/bom/styles/componentStyles";
+import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
 interface AddMemberFormProps {
   formData: FormData;

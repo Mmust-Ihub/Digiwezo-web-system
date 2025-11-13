@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Printer, Download } from "lucide-react";
-import { paginationStyles } from "@school-admin/(features)/bom/styles/componentStyles";
+import { paginationStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
 interface TableActionsProps {
   onPrevious?: () => void;

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 import { BomMember } from "@school-admin/(features)/bom/types/bomTypes";
-import { tableStyles } from "@school-admin/(features)/bom/styles/componentStyles";
+import { tableStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
 interface MembersTableProps {
   members: BomMember[];

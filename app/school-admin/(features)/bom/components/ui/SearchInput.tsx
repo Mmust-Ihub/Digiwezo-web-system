@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { searchInputStyles } from "@school-admin/(features)/bom/styles/componentStyles";
+import { searchInputStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
 interface SearchInputProps {
   placeholder?: string;

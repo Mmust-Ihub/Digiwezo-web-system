@@ -1,7 +1,7 @@
 import { MaleIcon } from "@school-admin/(features)/bom/icons/MaleIcon";
 import { FemaleIcon } from "@school-admin/(features)/bom/icons/FemaleIcon";
 import { PeopleIcon } from "@school-admin/(features)/bom/icons/PeopleIcon";
-import { statsCardStyles } from "@school-admin/(features)/bom/styles/componentStyles";
+import { statsCardStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
 interface StatsCardProps {
   type: "total" | "male" | "female";

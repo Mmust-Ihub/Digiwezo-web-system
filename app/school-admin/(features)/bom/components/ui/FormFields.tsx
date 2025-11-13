@@ -1,5 +1,5 @@
 import { FormFieldProps } from "@school-admin/(features)/bom/types/addMemberTypes";
-import { modalStyles } from "@school-admin/(features)/bom/styles/componentStyles";
+import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
 export const FormInput = ({ 
   label, 
