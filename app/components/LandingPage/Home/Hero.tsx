@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Hero() {
   return (
-    <section id="hero" className="relative w-screen lg:h-screen flex-col flex lg:flex-row gap-6 px-20 py-6 justify-center items-center text-custom-white bg-primary">
+    <section id="hero" className="relative w-screen lg:h-screen flex-col flex lg:flex-row gap-6 px-8 lg:px-20 py-3 lg:py-6 justify-center items-center text-custom-white bg-primary">
       <motion.div
         className="lg:pt-0 flex flex-1 flex-col pt-[100px]"
         initial={{ x: "-100%", opacity: 0 }}
