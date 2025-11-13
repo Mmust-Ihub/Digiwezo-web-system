@@ -10,7 +10,7 @@ export const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="fixed left-0 top-[12vh] h-[88vh] w-64 bg-primary flex flex-col justify-between py-0">
+    <div className="fixed left-0 top-[12vh] h-[88vh] w-64 bg-primary flex flex-col justify-between py-0 pt-2">
       <div className="flex-1 overflow-y-auto px-4 custom-scrollbar">
         {sideItems.map((item, index) => {
            const isActive =
@@ -25,8 +25,8 @@ export const Sidebar = () => {
               href={item.path}
               className={cn(
                 "flex items-center gap-6 px-4 py-3 rounded-lg transition-colors mb-1",
-                "hover:bg-white/10 text-white/90",
-                isActive && "bg-white text-gray-900 font-medium"
+                "hover:bg-white/10 text-white hover:text-white/90",
+                isActive && "bg-white text-primary font-medium"
               )}
             >
               <item.icon className="w-5 h-5" />

@@ -14,7 +14,7 @@ export default function SchoolAdminLayout({
 
       <div className="flex flex-row h-[88vh]">
         <Sidebar />
-        <div className="h-full w-full bg-background overflow-y-auto overflow-x-clip ml-64">
+        <div className="h-full w-full bg-background  overflow-x-clip ml-65">
           {children}
         </div>
       </div>
