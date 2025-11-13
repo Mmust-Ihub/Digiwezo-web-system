@@ -7,11 +7,9 @@ interface SearchInputProps {
   onChange?: (value: string) => void;
 }
 
-export const SearchInput = ({ 
-  placeholder = "Search by Name", 
-  value = "", 
-  onChange 
-}: SearchInputProps) => {
+export function SearchInput({
+  placeholder = "Search by Name", value = "", onChange
+}: SearchInputProps) {
   return (
     <div className={searchInputStyles.container}>
       <input
@@ -20,12 +18,11 @@ export const SearchInput = ({
         value={value}
         onChange={(e) => {
           return onChange?.(e.target.value);
-        }}
-        className={searchInputStyles.input}
-      />
+        } }
+        className={searchInputStyles.input} />
       <div className={searchInputStyles.iconContainer}>
         <Search className={searchInputStyles.icon} />
       </div>
     </div>
   );
-};
+}
