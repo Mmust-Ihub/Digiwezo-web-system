@@ -13,9 +13,9 @@ const Input = React.forwardRef<
   return (
     <input
       type={type}
-      min={type === 'number' ? 0 : undefined}
+      min={type === "number" ? 0 : undefined}
       className={cn(
-        'flex h-10 lg:h-12 w-full rounded-md text-custom-grey  bg-custom-white px-3 py-2 text-sm lg:text-md ring-offset-primary file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-custom-grey/50 focus:outline-none focus:ring-0 focus:border focus:border-primary disabled:cursor-not-allowed disabled:opacity-50 lg:placeholder:text-md',
+        "border border-custom-grey flex h-10 lg:h-12 w-full rounded-md text-custom-grey  bg-custom-white px-3 py-2 text-sm lg:text-md ring-offset-primary file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-custom-grey/50 focus:outline-none focus:ring-0 focus:border focus:border-primary disabled:cursor-not-allowed disabled:opacity-50 lg:placeholder:text-md",
         className
       )}
       ref={ref}
