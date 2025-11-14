@@ -42,7 +42,7 @@ function Calendar({
 
   return (
     <div className={cardClasses}>
-      <div className="text-center mb-3">
+      <div className="text-center mb-3 ">
         <h3 className="text-lg font-semibold text-custom">
           {name} {year}
         </h3>

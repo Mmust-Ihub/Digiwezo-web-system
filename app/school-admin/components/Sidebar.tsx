@@ -15,7 +15,7 @@ export const Sidebar = () => {
                     <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                         <div className="w-6 h-6 bg-primary rounded-full" />
                     </div>
-                    <span className="text-white font-bold text-lg">DigiWezo</span>
+                    <span className="text-custom-white font-bold text-lg">DigiWezo</span>
                 </div>
             </div>
             <nav className="flex-1 px-4 space-y-1">
@@ -27,8 +27,8 @@ export const Sidebar = () => {
                             href={item.path}
                             className={cn(
                                 "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
-                                "hover:bg-white/10 text-white/90",
-                                isActive && "bg-white text-gray-900 font-medium"
+                                "hover:bg-white/10 text-custom-white/90",
+                                isActive && "bg-custom-white text-custom-grey font-medium"
                             )}
                         >
                             <item.icon className="w-5 h-5" />
