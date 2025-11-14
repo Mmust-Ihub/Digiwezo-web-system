@@ -35,3 +35,29 @@ export interface SocialLink {
   label: string;
   href: string;
 }
+export interface InputField {
+  label: string;
+  value: string;
+}
+
+export interface Section {
+  title: string;
+  fields: InputField[];
+}
+export interface LoginPageProps {
+  onClose: () => void;
+}export interface NavigationLink {
+  name: string;
+  href: string;
+}
+export interface SocialLink {
+  icon: React.ElementType;
+  label: string;
+  href: string;
+}
+export interface ProfileCardProps {
+  name: string;
+  username: string;
+  email: string;
+  avatarSrc?: string;
+};

@@ -1,18 +1,15 @@
 import { useState } from "react";
-
 export function useAuth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
   const [open, setOpen] = useState(false);
   const [isLogin, setIsLogin] = useState<boolean>(true);
+  const [loginOpen, setLoginOpen] = useState(false);
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
-  
-   }
-
-  return {
+ }
+ return {
     handleSubmit,
     email,
     setEmail,
@@ -24,6 +21,8 @@ export function useAuth() {
     setIsLogin,
     open,
     setOpen,
+    setLoginOpen,
+    loginOpen,
     
   };
 }
