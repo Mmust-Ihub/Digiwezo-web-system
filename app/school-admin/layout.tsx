@@ -7,10 +7,17 @@ export default function SchoolAdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background">
-      <Sidebar />
-      <Header />
-      <main className="ml-64 mt-16 p-8">{children}</main>
+    <div className="w-screen h-screen flex flex-col overflow-hidden">
+      <div className="h-[12vh]">
+        <Header />
+      </div>
+
+      <div className="flex flex-row h-[88vh]">
+        <Sidebar />
+        <div className="h-full w-full bg-background  overflow-x-clip ml-65">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }

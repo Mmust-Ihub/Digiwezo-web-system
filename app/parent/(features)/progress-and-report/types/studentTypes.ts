@@ -1,0 +1,25 @@
+export interface Student {
+  name: string;
+  email?: string;
+  admissionNo: string;
+  school?: string;
+  image?: string;
+  class?: string;
+  term?: string;
+  year?: string;
+  overallScore?: string;
+  performanceLevel?: string;
+  comment?: string;
+  subjects?: {
+    area: string;
+    score: string;
+    level: string;
+  }[];
+}
+
+export interface Subject {
+  area: string;
+  score: string;
+  level: string;
+}
+
