@@ -1,39 +1,25 @@
 "use client";
 
-export default function CalendarSection({ size }: { size?: "small" | "large" }) {
-  const month = { name: "November", year: 2025, days: 30, start: 6 }; 
+import { calendarMonth } from "@school-admin/data/dashboardData";
+import { CalendarMonth, CalendarSize } from "@school-admin/types/dashboardTypes";
+import { useCalendar } from "@school-admin/hooks/useCalendar";
 
+export default function CalendarSection({ size }: { size?: CalendarSize }) {
   return (
     <div className="flex justify-center mt-6">
-      <Calendar {...month} size={size} />
+      <Calendar month={calendarMonth} size={size} />
     </div>
   );
 }
 
 function Calendar({
-  name,
-  year,
-  days,
-  start,
+  month,
   size = "small",
 }: {
-  name: string;
-  year: number;
-  days: number;
-  start: number;
-  size?: "small" | "large";
+  month: CalendarMonth;
+  size?: CalendarSize;
 }) {
-  const weeks: (number | string)[][] = [];
-  let day = 1 - start;
-
-  for (let i = 0; i < 6; i++) {
-    const week: (number | string)[] = [];
-    for (let j = 0; j < 7; j++) {
-      week.push(day > 0 && day <= days ? day : "");
-      day++;
-    }
-    weeks.push(week);
-  }
+  const { name, year, weeks } = useCalendar(month);
 
   const cardClasses =
     size === "large"
@@ -42,21 +28,26 @@ function Calendar({
 
   return (
     <div className={cardClasses}>
-      <div className="text-center mb-3 ">
+      <div className="text-center mb-3">
         <h3 className="text-lg font-semibold text-custom">
           {name} {year}
         </h3>
       </div>
+
       <table className="w-full text-center border-collapse">
         <thead>
           <tr>
             {["S", "M", "T", "W", "T", "F", "S"].map((d) => (
-              <th key={d} className="text-custom-grey text-sm py-1 font-medium">
+              <th
+                key={d}
+                className="text-custom-grey text-sm py-1 font-medium"
+              >
                 {d}
               </th>
             ))}
           </tr>
         </thead>
+
         <tbody>
           {weeks.map((row, i) => (
             <tr key={i}>
@@ -64,7 +55,9 @@ function Calendar({
                 <td
                   key={j}
                   className={`py-2 text-sm rounded-lg ${
-                    d ? "text-custom-grey hover:bg-primary cursor-pointer" : "text-transparent"
+                    d
+                      ? "text-custom-grey hover:bg-primary cursor-pointer"
+                      : "text-transparent"
                   }`}
                 >
                   {d}
