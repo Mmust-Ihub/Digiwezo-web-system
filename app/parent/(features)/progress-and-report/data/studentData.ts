@@ -1,5 +1,4 @@
-import { Student } from "@parent/(features)/progress-and-report/types/studentTypes";
-
+import { Student} from "@parent/(features)/progress-and-report/types/studentTypes";
 export const studentData: Student = {
   name: "Peter Johnson",
   email: "2734boo@bacademy",

@@ -35,6 +35,7 @@ export const Filters = () => {
           </select>
         </div>
 
+        {/* Term Selector */}
         <div className="flex flex-col">
           <label className="font-medium mb-2 text-foreground">Term</label>
           <select
