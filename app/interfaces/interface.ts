@@ -61,20 +61,3 @@ export interface ProfileCardProps {
   email: string;
   avatarSrc?: string;
 };
- export interface FormField {
-  name: string;
-  placeholder: string;
-  section: "personal" | "emergency";
-  type?: "text" | "select";
-  options?: string[];
-}
-export interface ProfileField {
-  label: string;
-  name: string;
-  type?: string;
-}
-
-export interface ProfileSection {
-  title: string;
-  fields: ProfileField[];
-}

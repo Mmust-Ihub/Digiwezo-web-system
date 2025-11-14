@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import { studentSections } from "../data/studentData";
-import { ProfileCard } from "./ProfileCard";
+import { ProfileCard } from "@school-admin/(features)/Profile/components/ProfileCard";
+import { studentProfile } from "@/school-admin/(features)/Profile/data/studentData";
+import { Button } from "@/components/ui/button";
 
 export default function StudentProfile() {
   const [formData, setFormData] = useState<Record<string, string>>({
@@ -21,86 +22,62 @@ export default function StudentProfile() {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Separate left and right fields
-  const leftFields = [
-    "admissionNo",
-    "grade",
-    "gender",
-    "residence",
-    "upi",
-  ];
-  const rightFields = [
-    "emergencyName",
-    "relationship",
-    "primaryContact",
-    "secondaryContact",
-  ];
-
-  // Helper to get field data from studentSections
-  const getFieldLabel = (name: string) => {
-    for (const section of studentSections) {
-      const field = section.fields.find((f) => f.name === name);
-      if (field) return field.label;
-    }
-    return name;
-  };
+  const leftFields = studentProfile.fields.slice(0, 5);
+  const rightFields = studentProfile.fields.slice(5);
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-white">
-      <div className="bg-white border border-gray-200 rounded-lg shadow-sm w-3/4">
-        <div className="flex">
-          {/* Left Profile Column */}
-          <div className="w-1/4 border-r border-gray-200 flex justify-center items-start py-10">
+    <div className="min-h-screen flex justify-center items-start pt-20 pb-20 p-4 sm:p-8 bg-background">
+      <div className=" mb-4">
+        <h2 className="text-primary font-normal text-lg pl-4">Profile</h2>
+      </div>
+      <div className="bg-white max-w-5xl w-full border-0 rounded-xl shadow-2xl">
+        <div className="flex pt-4 pb-12 h-full">
+          <div className="w-[25%] flex flex-col items-center pt-8">
             <ProfileCard name="Peter Johnson" imageSrc="/profile-avatar.png" />
           </div>
 
-          {/* Right Form Column */}
-          <div className="flex-1 px-10 py-8">
-            <h3 className="text-sky-600 font-semibold text-sm mb-6">Profile</h3>
+          <div className="w-[75%] pr-10 pl-4 overflow-y-auto max-h-[70vh] pb-6">
+            <h3 className="text-primary font-medium text-lg mb-8">
+              Personal Information
+            </h3>
 
-            <div className="flex gap-x-8">
-              {/* Left Column */}
-              <div className="flex-1 flex flex-col space-y-5">
-                {leftFields.map((name) => (
-                  <div key={name}>
-                    <label className="block text-xs text-gray-700 mb-1">
-                      {getFieldLabel(name)}
+            <div className="flex gap-x-12">
+              <div className="flex-1 space-y-8">
+                {leftFields.map((field) => (
+                  <div key={field.name}>
+                    <label className="block text-mb text-foreground mb-1">
+                      {field.label}
                     </label>
                     <input
-                      type="text"
-                      name={name}
-                      value={formData[name] || ""}
+                      name={field.name}
+                      value={formData[field.name]}
                       onChange={handleChange}
-                      className="w-full border border-sky-300 rounded-md px-3 py-2 text-sm italic focus:outline-none focus:ring-1 focus:ring-sky-400"
+                      className="w-full border border-primary rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
                 ))}
               </div>
-
-              {/* Right Column */}
-              <div className="flex-1 flex flex-col space-y-5">
-                {rightFields.map((name) => (
-                  <div key={name}>
-                    <label className="block text-xs text-gray-700 mb-1">
-                      {getFieldLabel(name)}
+              <div className="flex-1 space-y-8">
+                {rightFields.map((field) => (
+                  <div className="-mt-1" key={field.name}>
+                    <label className="block text-mb text-foreground mb-1">
+                      {field.label}
                     </label>
                     <input
-                      type="text"
-                      name={name}
-                      value={formData[name] || ""}
+                      name={field.name}
+                      value={formData[field.name]}
                       onChange={handleChange}
-                      className="w-full border border-sky-300 rounded-md px-3 py-2 text-sm italic focus:outline-none focus:ring-1 focus:ring-sky-400"
+                      className="w-full border border-primary rounded-lg px-3 py-2 text-base focus:outline-none focus:ring-1 focus:ring-sky-400"
                     />
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Update Button */}
-            <div className="flex justify-start mt-8">
-              <button className="bg-yellow-300 hover:bg-yellow-400 text-gray-800 font-medium text-sm px-8 py-2 rounded shadow-sm">
+            <div className="pt-4">
+              <Button className="bg-secondary text-foreground font-bold text-base px-8 py-3 rounded-lg shadow-lg ">
                 Update
-              </button>
+              </Button>
             </div>
           </div>
         </div>

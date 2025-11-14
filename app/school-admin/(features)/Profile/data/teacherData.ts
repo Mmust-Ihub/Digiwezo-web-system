@@ -1,4 +1,4 @@
-import { ProfileSection } from "@/interfaces/interface";
+import { ProfileSection } from "@/school-admin/(features)/Profile/interface/profile";
 
 export const teacherSections: ProfileSection[] = [
   {
@@ -7,11 +7,11 @@ export const teacherSections: ProfileSection[] = [
       { label: "TSC No.", name: "tscNo" },
       { label: "Name", name: "name" },
       { label: "Gender", name: "gender" },
-      { label: "National ID", name: "nationalId" },
-      { label: "Date Of Birth", name: "dob", type: "date" },
+      { label: "National ID.", name: "nationalId" },
+      { label: "Date Of Birth", name: "dob" },
       { label: "Nationality", name: "nationality" },
       { label: "Religion", name: "religion" },
-      { label: "Email", name: "email", type: "email" },
+      { label: "Email", name: "email" },
       { label: "Language", name: "language" },
       { label: "Disability", name: "disability" },
       { label: "Telephone Number", name: "phone" },
