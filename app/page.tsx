@@ -1,5 +1,7 @@
 "use client";
 
+import Footer from "@/components/LandingPage/common/Footer";
+import Header from "@/components/LandingPage/common/Header";
 import AboutSection from "@/components/LandingPage/Home/AboutSection";
 import BookADemo from "@/components/LandingPage/Home/BookADemo";
 import Hero from "@/components/LandingPage/Home/Hero";

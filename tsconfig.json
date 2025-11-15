@@ -18,10 +18,12 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@parent/*": ["./app/parent/*"],
-      "@/*": ["./app/*"]
-    }
+  "@parent/*": ["./app/parent/*"],
+  "@school-admin/*": ["./app/school-admin/*"],
+  "@/*": ["./app/*"]
+}
   },
   "include": [
     "next-env.d.ts",
