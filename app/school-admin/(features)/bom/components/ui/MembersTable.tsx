@@ -7,6 +7,7 @@ import { tableStyles } from "@school-admin/(features)/bom/styles/components/comp
 interface MembersTableProps {
   members: BomMember[];
   onViewMember?: (id: number) => void;
+  startIndex?: number;
 }
 
 const tableHeaders = ["#", "Name", "UserName", "Phone", "Action"] as const;
@@ -14,11 +15,13 @@ const tableHeaders = ["#", "Name", "UserName", "Phone", "Action"] as const;
 const MemberRow = memo(function MemberRow({ 
   member, 
   index, 
-  onViewMember 
+  onViewMember,
+  startIndex = 0
 }: { 
   member: BomMember; 
   index: number; 
   onViewMember?: (id: number) => void;
+  startIndex?: number;
 }) {
   const handleView = useCallback(() => {
     onViewMember?.(member.id);
@@ -26,7 +29,7 @@ const MemberRow = memo(function MemberRow({
 
   return (
     <tr className={tableStyles.bodyRow}>
-      <td className={tableStyles.indexCell}>{index + 1}</td>
+      <td className={tableStyles.indexCell}>{startIndex + index + 1}</td>
       <td className={tableStyles.bodyCell}>{member.name}</td>
       <td className={tableStyles.usernameCell}>
         <div className="flex items-center">
@@ -49,7 +52,7 @@ const MemberRow = memo(function MemberRow({
   );
 });
 
-export const MembersTable = memo(function MembersTable({ members, onViewMember }: MembersTableProps) {
+export const MembersTable = memo(function MembersTable({ members, onViewMember, startIndex = 0 }: MembersTableProps) {
   return (
     <div className={tableStyles.container}>
       <table className={tableStyles.table}>
@@ -69,6 +72,7 @@ export const MembersTable = memo(function MembersTable({ members, onViewMember }
               member={member}
               index={index}
               onViewMember={onViewMember}
+              startIndex={startIndex}
             />
           ))}
         </tbody>

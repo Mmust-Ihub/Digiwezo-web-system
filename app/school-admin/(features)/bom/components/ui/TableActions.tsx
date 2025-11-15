@@ -12,6 +12,8 @@ interface TableActionsProps {
   canGoNext?: boolean;
   isDownloading?: boolean;
   isPrinting?: boolean;
+  currentPage?: number;
+  totalPages?: number;
 }
 
 export const TableActions = memo(function TableActions({ 
@@ -22,7 +24,9 @@ export const TableActions = memo(function TableActions({
   canGoPrevious = true,
   canGoNext = true,
   isDownloading = false,
-  isPrinting = false
+  isPrinting = false,
+  currentPage = 1,
+  totalPages = 1
 }: TableActionsProps) {
   return (
     <div className={paginationStyles.container}>
@@ -35,6 +39,11 @@ export const TableActions = memo(function TableActions({
         >
           <ChevronLeft className={paginationStyles.navIcon} />
         </button>
+        
+        <div className="flex items-center px-4 py-2 text-sm text-gray-600 bg-gray-50 rounded-md">
+          Page {currentPage} of {totalPages}
+        </div>
+        
         <button
           onClick={onNext}
           disabled={!canGoNext}
