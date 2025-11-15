@@ -20,7 +20,7 @@ export interface FormFieldProps {
   value: string;
   onChange: (field: keyof FormData, value: string) => void;
   required?: boolean;
-  options?: { value: string; label: string }[];
+  options?: readonly { readonly value: string; readonly label: string }[];
   rows?: number;
 }
 
@@ -28,5 +28,16 @@ export interface ModalLayoutProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+}
+
+
+export interface PersonalInfoRowProps {
+  formData: FormData;
+  onChange: (field: keyof FormData, value: string) => void;
+}
+
+export interface ContactInfoRowProps {
+  formData: FormData;
+  onChange: (field: keyof FormData, value: string) => void;
 }
 

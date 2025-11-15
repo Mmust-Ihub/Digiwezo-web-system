@@ -48,7 +48,7 @@ export const tableStyles = {
 export const paginationStyles = {
   container: "flex items-center justify-between mt-6",
   navContainer: "flex items-center gap-2",
-  navButton: "p-3 bg-white border border-white rounded-full hover:bg-gray-50",
+  navButton: "p-3 bg-white border border-white rounded-full hover:bg-gray-50 cursor-pointer disabled:cursor-default disabled:opacity-50",
   navIcon: "w-5 h-5 text-primary",
   actionsContainer: "flex items-center gap-3",
   printButton: "bg-secondary hover:bg-secondary/90 text-gray-900 px-4 py-2 rounded-lg flex items-center gap-2 font-medium disabled:opacity-50 disabled:cursor-not-allowed",

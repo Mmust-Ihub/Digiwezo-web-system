@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Printer, Download } from "lucide-react";
+import { PaginationControls } from "@school-admin/(features)/bom/components/ui/PaginationControls";
+import { TableExportActions } from "@school-admin/(features)/bom/components/ui/TableExportActions";
 import { paginationStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
 interface TableActionsProps {
@@ -12,6 +12,8 @@ interface TableActionsProps {
   canGoNext?: boolean;
   isDownloading?: boolean;
   isPrinting?: boolean;
+  currentPage?: number;
+  totalPages?: number;
 }
 
 export const TableActions = memo(function TableActions({ 
@@ -22,55 +24,27 @@ export const TableActions = memo(function TableActions({
   canGoPrevious = true,
   canGoNext = true,
   isDownloading = false,
-  isPrinting = false
+  isPrinting = false,
+  currentPage = 1,
+  totalPages = 1
 }: TableActionsProps) {
   return (
     <div className={paginationStyles.container}>
-      <div className={paginationStyles.navContainer}>
-        <button
-          onClick={onPrevious}
-          disabled={!canGoPrevious}
-          className={paginationStyles.navButton}
-          aria-label="Previous page"
-        >
-          <ChevronLeft className={paginationStyles.navIcon} />
-        </button>
-        <button
-          onClick={onNext}
-          disabled={!canGoNext}
-          className={paginationStyles.navButton}
-          aria-label="Next page"
-        >
-          <ChevronRight className={paginationStyles.navIcon} />
-        </button>
-      </div>
+      <PaginationControls
+        onPrevious={onPrevious}
+        onNext={onNext}
+        canGoPrevious={canGoPrevious}
+        canGoNext={canGoNext}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
       
-      <div className={paginationStyles.actionsContainer}>
-        <Button 
-          onClick={onPrint}
-          disabled={isPrinting}
-          className={paginationStyles.printButton}
-        >
-          {isPrinting ? (
-            <div className={paginationStyles.loadingSpinner}></div>
-          ) : (
-            <Printer className={paginationStyles.buttonIcon} />
-          )}
-          {isPrinting ? "Printing..." : "Print"}
-        </Button>
-        <Button 
-          onClick={onDownload}
-          disabled={isDownloading}
-          className={paginationStyles.downloadButton}
-        >
-          {isDownloading ? (
-            <div className={paginationStyles.loadingSpinner}></div>
-          ) : (
-            <Download className={paginationStyles.buttonIcon} />
-          )}
-          {isDownloading ? "Generating..." : "Download"}
-        </Button>
-      </div>
+      <TableExportActions
+        onPrint={onPrint}
+        onDownload={onDownload}
+        isDownloading={isDownloading}
+        isPrinting={isPrinting}
+      />
     </div>
   );
 });
