@@ -33,7 +33,7 @@ export const BOM_CONSTANTS = {
     ADDING: "Adding..."
   },
   
-  // Table headers
+
   TABLE_HEADERS: {
     INDEX: "#",
     NAME: "Name", 

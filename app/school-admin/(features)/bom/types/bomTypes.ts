@@ -39,7 +39,7 @@ export interface TableExportActionsProps {
   isPrinting?: boolean;
 }
 
-// Page Layout Component Props
+
 export interface BomPageHeaderProps {
   stats: BomStats;
   searchValue: string;
@@ -63,7 +63,7 @@ export interface BomPageContentProps {
   totalPages: number;
 }
 
-// Table Component Props
+
 export interface MemberRowProps {
   member: BomMember;
   index: number;
@@ -71,7 +71,7 @@ export interface MemberRowProps {
   startIndex?: number;
 }
 
-// Modal Component Props
+
 export interface ModalBackButtonProps {
   onClick: () => void;
 }
@@ -81,7 +81,7 @@ export interface ModalSubmitButtonProps {
   isSubmitting: boolean;
 }
 
-// Stats Component Props
+
 export interface StatsIconProviderProps {
   type: "total" | "male" | "female";
 }
