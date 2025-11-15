@@ -15,8 +15,6 @@ export const sideItems = [
   { title: "Settings", icon: Settings, path: "/school-admin/settings" },
 ];
 
-<<<<<<< HEAD
-=======
 const calendarData = {
   April: [
     [null, null, 1, 2, 3, 4, 5],
@@ -41,4 +39,3 @@ const calendarData = {
   ],
 };
 
->>>>>>> aboutUs

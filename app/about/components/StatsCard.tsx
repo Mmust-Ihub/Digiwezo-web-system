@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 "use client";
 
 import useStatsCounter from "@/about/hooks/useStatsCounter";
@@ -24,4 +22,3 @@ export default function StatsCard({
     </div>
   );
 }
->>>>>>> aboutUs
