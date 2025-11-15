@@ -2,18 +2,13 @@ import { memo } from "react";
 import { FormData } from "@school-admin/(features)/bom/types/addMemberTypes";
 import { FormInput, FormSelect, FormTextarea } from "@school-admin/(features)/bom/components/ui/FormFields";
 import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
+import { genderOptions } from "@school-admin/(features)/bom/utils/memberUtils";
 
 interface AddMemberFormProps {
   formData: FormData;
   onChange: (field: keyof FormData, value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
-
-const genderOptions = [
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
-  { value: "other", label: "Other" }
-] satisfies readonly { value: string; label: string; }[];
 
 export const AddMemberForm = memo(function AddMemberForm({ 
   formData, 

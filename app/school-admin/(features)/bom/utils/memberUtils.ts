@@ -59,3 +59,11 @@ export const sortMembersByNameDesc = (members: BomMember[]): BomMember[] => {
   return [...members].sort((a, b) => b.name.localeCompare(a.name));
 };
 
+export const genderOptions = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "other", label: "Other" }
+] as const;
+
+export const tableHeaders = ["#", "Name", "UserName", "Phone", "Action"] as const;
+

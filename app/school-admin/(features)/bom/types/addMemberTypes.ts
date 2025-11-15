@@ -20,7 +20,7 @@ export interface FormFieldProps {
   value: string;
   onChange: (field: keyof FormData, value: string) => void;
   required?: boolean;
-  options?: { value: string; label: string }[];
+  options?: readonly { readonly value: string; readonly label: string }[];
   rows?: number;
 }
 

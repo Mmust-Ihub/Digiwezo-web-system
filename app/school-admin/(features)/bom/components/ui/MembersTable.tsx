@@ -3,14 +3,13 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 import { BomMember } from "@school-admin/(features)/bom/types/bomTypes";
 import { tableStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
+import { tableHeaders } from "@school-admin/(features)/bom/utils/memberUtils";
 
 interface MembersTableProps {
   members: BomMember[];
   onViewMember?: (id: number) => void;
   startIndex?: number;
 }
-
-const tableHeaders = ["#", "Name", "UserName", "Phone", "Action"] as const;
 
 const MemberRow = memo(function MemberRow({ 
   member, 
