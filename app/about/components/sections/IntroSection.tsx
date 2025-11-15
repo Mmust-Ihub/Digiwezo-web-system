@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export default function IntroSection() {
@@ -10,9 +11,12 @@ export default function IntroSection() {
         <span className="text-foreground">Dijiwezo</span>
       </h2>
 
-      <Button className="mt-8 bg-primary text-slate hover:bg-primary/90 px-8 py-3 rounded-none transition font-semibold">
-        ▦ Dashboard
-      </Button>
+      <div className="flex justify-center">
+        <Button className="mt-8 bg-primary text-slate hover:bg-primary/90 px-8 py-3 rounded-none transition font-semibold flex items-center gap-2">
+          <Image src="/assets/dashboard.png" alt="Dashboard" width={20} height={20} />
+          Dashboard
+        </Button>
+      </div>
     </section>
   );
 }

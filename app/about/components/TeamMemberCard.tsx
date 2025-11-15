@@ -16,9 +16,8 @@ export default function TeamMemberCard({ name, role, image }: TeamMemberCardProp
         className="object-cover object-center"
       />
 
-      {/* overlay box positioned at bottom-left so it never overflows the card */}
       <div className="absolute left-5 bottom-5 z-30">
-  <div className="w-[300px] h-[72px] rounded-md p-2 box-border card-overlay card-overlay-border">
+        <div className="w-[300px] h-[72px] rounded-lg p-2 box-border card-overlay card-overlay-border">
           <div className="flex items-center gap-3 h-full px-2">
             <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 relative">
               <Image src={image} alt={name} width={48} height={48} className="object-cover object-center" />
