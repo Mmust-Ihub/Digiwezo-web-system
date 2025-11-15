@@ -16,7 +16,7 @@ export const Sidebar = () => {
            const isActive =
              pathname === item.path ||
              (item.path === "/school-admin"
-               ? false
+               ? false 
                : pathname.startsWith(`${item.path}/`));
 
           return (
