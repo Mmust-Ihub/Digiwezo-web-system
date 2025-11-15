@@ -12,11 +12,11 @@ export default function StatsCard({
   const animatedValue = useStatsCounter(value);
 
   return (
-   <div className="bg-primary text-foreground p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center">
-      <h3 className="text-3xl font-extrabold tracking-tight">
+  <div className="bg-secondary text-card-foreground p-8 rounded-none shadow-md hover:shadow-lg transition-all duration-300 text-center font-bold h-full">
+      <h3 className="text-4xl font-extrabold tracking-tight">
         {animatedValue}+
       </h3>
-      <p className="mt-2 text-foreground/90 font-medium">
+      <p className="mt-3 text-card-foreground font-bold text-lg">
         {label}
       </p>
     </div>

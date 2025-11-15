@@ -17,6 +17,12 @@
    --color-success: #16a34a; 
   --color-error: #dc2626;   
 
+  --color-card-overlay: rgba(29,25,25,0.85);
+  --color-card-overlay-border: rgba(0,0,0,0.96);
+  --color-accent-1: rgba(190,24,93,1);
+  --color-accent-2: rgba(234,88,12,1);
+  --color-drop-shadow: rgba(0,0,0,0.45);
+
   --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 
@@ -74,6 +80,10 @@ body {
   direction: ltr; 
 }
 
- html {
+html {
 
 scroll-behavior: smooth; }
+
+.card-overlay { background: var(--color-card-overlay); }
+.card-overlay-border { border: 1px solid var(--color-card-overlay-border); }
+.text-card-overlay { color: var(--color-card-overlay); }

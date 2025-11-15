@@ -19,9 +19,9 @@ export const statsData: Stat[] = [
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Calvin Muemah",
+    name: "jane-doe",
     role: "Lead Developer",
-    image: "/team/calvin-muemah.jpg",
+    image: "/team/jane-doe.jpg",
   },
   {
     name: "Jane Doe",
@@ -31,21 +31,21 @@ export const teamMembers: TeamMember[] = [
   {
     name: "John Smith",
     role: "UI/UX Designer",
-    image: "/team/john-smith.jpg",
+    image: "/team/jane-doe.jpg",
   },
   {
     name: "Sarah Johnson",
     role: "Project Manager",
-    image: "/team/sarah-johnson.jpg",
+    image: "/team/jane-doe.jpg",
   },
   {
     name: "Michael Lee",
     role: "Backend Engineer",
-    image: "/team/michael-lee.jpg",
+    image: "/team/jane-doe.jpg",
   },
   {
     name: "Lisa Kim",
     role: "Frontend Developer",
-    image: "/team/lisa-kim.jpg",
+    image: "/team/jane-doe.jpg",
   },
 ];
