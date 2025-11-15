@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { ArrowLeft } from "lucide-react";
-import { PlusIcon } from "@school-admin/(features)/bom/icons/PlusIcon";
 import { ModalLayoutProps } from "@school-admin/(features)/bom/types/addMemberTypes";
+import { ModalBackButton } from "@school-admin/(features)/bom/components/ui/ModalBackButton";
+import { ModalSubmitButton } from "@school-admin/(features)/bom/components/ui/ModalSubmitButton";
 import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 import { useModalBehavior } from "@school-admin/(features)/bom/hooks/ui/useModalBehavior";
 
@@ -30,27 +30,11 @@ export function ModalFooter({
 }: ModalFooterProps) {
   return (
     <div className={modalStyles.footer}>
-      <button
-        type="button"
-        onClick={onClose}
-        className={modalStyles.backButton}
-      >
-        <ArrowLeft className="w-4 h-4 mr-2 inline" />
-        Back
-      </button>
-      
-      <button
-        onClick={onSubmit}
-        disabled={isSubmitting}
-        className={modalStyles.submitButton}
-      >
-        {isSubmitting ? (
-          <div className="w-4 h-4 animate-spin border-2 border-current border-t-transparent rounded-full"></div>
-        ) : (
-          <PlusIcon className={modalStyles.submitIcon} />
-        )}
-        {isSubmitting ? "Adding..." : "Add Member"}
-      </button>
+      <ModalBackButton onClick={onClose} />
+      <ModalSubmitButton 
+        onClick={onSubmit} 
+        isSubmitting={isSubmitting} 
+      />
     </div>
   );
 }

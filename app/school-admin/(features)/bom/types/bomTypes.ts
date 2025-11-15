@@ -39,3 +39,50 @@ export interface TableExportActionsProps {
   isPrinting?: boolean;
 }
 
+// Page Layout Component Props
+export interface BomPageHeaderProps {
+  stats: BomStats;
+  searchValue: string;
+  onSearchChange: (value: string) => void;
+  onAddMember: () => void;
+}
+
+export interface BomPageContentProps {
+  filteredMembers: BomMember[];
+  onViewMember: (id: number) => void;
+  startIndex: number;
+  onPrint: () => void;
+  onDownload: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
+  canGoNext: boolean;
+  canGoPrevious: boolean;
+  isDownloading: boolean;
+  isPrinting: boolean;
+  currentPage: number;
+  totalPages: number;
+}
+
+// Table Component Props
+export interface MemberRowProps {
+  member: BomMember;
+  index: number;
+  onViewMember?: (id: number) => void;
+  startIndex?: number;
+}
+
+// Modal Component Props
+export interface ModalBackButtonProps {
+  onClick: () => void;
+}
+
+export interface ModalSubmitButtonProps {
+  onClick: () => void;
+  isSubmitting: boolean;
+}
+
+// Stats Component Props
+export interface StatsIconProviderProps {
+  type: "total" | "male" | "female";
+}
+

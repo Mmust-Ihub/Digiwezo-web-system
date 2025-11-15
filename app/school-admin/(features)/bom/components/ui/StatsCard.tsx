@@ -1,7 +1,5 @@
-import { memo, useMemo } from "react";
-import { MaleIcon } from "@school-admin/(features)/bom/icons/MaleIcon";
-import { FemaleIcon } from "@school-admin/(features)/bom/icons/FemaleIcon";
-import { PeopleIcon } from "@school-admin/(features)/bom/icons/PeopleIcon";
+import { memo } from "react";
+import { StatsIconProvider } from "@school-admin/(features)/bom/components/ui/StatsIconProvider";
 import { statsCardStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
 interface StatsCardProps {
@@ -11,24 +9,11 @@ interface StatsCardProps {
 }
 
 export const StatsCard = memo(function StatsCard({ type, count, label }: StatsCardProps) {
-  const icon = useMemo(() => {
-    switch(type) {
-      case "total":
-        return <PeopleIcon className={statsCardStyles.icon} />;
-      case "male":
-        return <MaleIcon className={statsCardStyles.icon} />;
-      case "female":
-        return <FemaleIcon className={statsCardStyles.icon} />;
-      default:
-        return <PeopleIcon className={statsCardStyles.icon} />;
-    }
-  }, [type]);
-  
   return (
     <div className={statsCardStyles.container}>
       <div className={statsCardStyles.content}>
         <div className={statsCardStyles.iconContainer}>
-          {icon}
+          <StatsIconProvider type={type} />
         </div>
         <div className={statsCardStyles.textContainer}>
           <div className={statsCardStyles.count}>{count}</div>

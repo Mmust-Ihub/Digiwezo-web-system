@@ -1,9 +1,8 @@
-import { memo, useCallback } from "react";
-import { Button } from "@/components/ui/button";
-import { CheckCircle } from "lucide-react";
+import { memo } from "react";
 import { BomMember } from "@school-admin/(features)/bom/types/bomTypes";
+import { MemberRow } from "@school-admin/(features)/bom/components/ui/MemberRow";
+import { TableHeader } from "@school-admin/(features)/bom/components/ui/TableHeader";
 import { tableStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
-import { tableHeaders } from "@school-admin/(features)/bom/utils/memberUtils";
 
 interface MembersTableProps {
   members: BomMember[];
@@ -11,59 +10,11 @@ interface MembersTableProps {
   startIndex?: number;
 }
 
-const MemberRow = memo(function MemberRow({ 
-  member, 
-  index, 
-  onViewMember,
-  startIndex = 0
-}: { 
-  member: BomMember; 
-  index: number; 
-  onViewMember?: (id: number) => void;
-  startIndex?: number;
-}) {
-  const handleView = useCallback(() => {
-    onViewMember?.(member.id);
-  }, [member.id, onViewMember]);
-
-  return (
-    <tr className={tableStyles.bodyRow}>
-      <td className={tableStyles.indexCell}>{startIndex + index + 1}</td>
-      <td className={tableStyles.bodyCell}>{member.name}</td>
-      <td className={tableStyles.usernameCell}>
-        <div className="flex items-center">
-          {member.username}
-          {member.verified && (
-            <CheckCircle className={tableStyles.verifiedIcon} />
-          )}
-        </div>
-      </td>
-      <td className={tableStyles.bodyCell}>{member.phone}</td>
-      <td className={tableStyles.bodyCell}>
-        <Button 
-          onClick={handleView}
-          className={tableStyles.actionButton}
-        >
-          View
-        </Button>
-      </td>
-    </tr>
-  );
-});
-
 export const MembersTable = memo(function MembersTable({ members, onViewMember, startIndex = 0 }: MembersTableProps) {
   return (
     <div className={tableStyles.container}>
       <table className={tableStyles.table}>
-        <thead className={tableStyles.header}>
-          <tr className={tableStyles.headerRow}>
-            {tableHeaders.map((header) => (
-              <th key={header} className={tableStyles.headerCell}>
-                {header}
-              </th>
-            ))}
-          </tr>
-        </thead>
+        <TableHeader />
         <tbody className={tableStyles.body}>
           {members.map((member, index) => (
             <MemberRow
