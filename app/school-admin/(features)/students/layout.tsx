@@ -12,11 +12,7 @@ export default function SchoolAdminLayout({
   const { activeTab, switchTab } = useTabs(tabs,"/school-admin/students");
 
   return (
-<<<<<<< HEAD
-    <div className="flex flex-col overflow-clip top-[12.5vh] mt-1 mr-1 ">
-=======
     <div className="flex flex-col overflow-hidden top-[12.5vh] mt-1 mr-1">
->>>>>>> aboutUs
       <div className="h-[6vh] flex items-center  justify-start w-full bg-primary/40 py-2 rounded-md ">
         <Tabs value={activeTab} onValueChange={switchTab}>
           <TabsList>
@@ -30,15 +26,10 @@ export default function SchoolAdminLayout({
         </Tabs>
       </div>
 
-<<<<<<< HEAD
-      <div className="flex flex-row h-[88vh] bg-custom-white  m-4 rounded-md overflow-hidden">
-        <div className="min-h-full w-full overflow-y-auto">{children}</div>
-=======
       <div className="flex flex-row h-[88vh] overflow-y-auto bg-custom-white  m-4 rounded-md">
         <div className="h-full w-full  overflow-y-auto overflow-x-clip ">
           {children}
         </div>
->>>>>>> aboutUs
       </div>
     </div>
   );
