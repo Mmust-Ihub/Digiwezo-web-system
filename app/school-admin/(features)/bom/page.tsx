@@ -32,33 +32,43 @@ export default function BomPage() {
   } = useBomPage();
 
   return (
-    <div className="p-6 flex flex-col gap-3 pb-24 min-h-screen">
-      <BomHeader stats={stats} />
-      
-      <ManagementSection 
-        searchValue={searchValue}
-        onSearchChange={handleSearchChange}
-        onAddMember={handleAddMemberClick}
-      />
+    <div className="h-full flex flex-col">
+      <div className="flex-shrink-0">
+        <div className="p-6 pb-0">
+          <BomHeader stats={stats} />
+        </div>
         
-      <MembersTableSection 
-        members={filteredMembers}
-        onViewMember={handleViewMember}
-        startIndex={startIndex}
-      />
+        <div className="p-6 pt-3 pb-4">
+          <ManagementSection 
+            searchValue={searchValue}
+            onSearchChange={handleSearchChange}
+            onAddMember={handleAddMemberClick}
+          />
+        </div>
+      </div>
       
-      <TableActionsSection 
-        onPrint={handlePrint}
-        onDownload={handleDownload}
-        onPrevious={handlePrevious}
-        onNext={handleNext}
-        canGoNext={canGoNext}
-        canGoPrevious={canGoPrevious}
-        isDownloading={isDownloading}
-        isPrinting={isPrinting}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
+      <div className="flex-1 overflow-y-auto overflow-x-hidden">
+        <div className="p-6 pt-6 flex flex-col gap-3 pb-24">
+          <MembersTableSection 
+            members={filteredMembers}
+            onViewMember={handleViewMember}
+            startIndex={startIndex}
+          />
+          
+          <TableActionsSection 
+            onPrint={handlePrint}
+            onDownload={handleDownload}
+            onPrevious={handlePrevious}
+            onNext={handleNext}
+            canGoNext={canGoNext}
+            canGoPrevious={canGoPrevious}
+            isDownloading={isDownloading}
+            isPrinting={isPrinting}
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
+        </div>
+      </div>
         
       <AddMemberModal 
         isOpen={isModalOpen}

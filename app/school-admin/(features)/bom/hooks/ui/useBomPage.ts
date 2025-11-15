@@ -18,7 +18,7 @@ export function useBomPage() {
 
   const pagination = usePagination({ 
     data: filteredMembers, 
-    itemsPerPage: 4 
+    itemsPerPage: 15 
   });
 
   const { handlePrint, handleDownload, handlePrevious, handleNext, canGoNext, canGoPrevious, isDownloading, isPrinting } = useTableActions({
