@@ -16,7 +16,7 @@ import { member } from "@school-admin/(features)/bom/utils";
 const MembersTable = dynamic(
   () => import("@school-admin/(features)/bom/components/ui/MembersTable").then(mod => ({ default: mod.MembersTable })),
   {
-    loading: () => <div className="animate-pulse bg-gray-200 h-96 rounded-lg"></div>,
+    loading: () => <div className="animate-pulse bg-gray-200  rounded-lg"></div>,
     ssr: false
   }
 );
@@ -50,7 +50,7 @@ export default function BomPage() {
   }, [handleAddMember, closeModal]);
 
   return (
-    <div className="p-6 space-y-8 max-w-[95%]">
+    <div className="p-6  flex flex-col gap-3 pb-24  overflow-y-auto   h-full ">
       <BomHeader stats={bomData.stats} />
       
       <ManagementSection 
@@ -59,7 +59,7 @@ export default function BomPage() {
         onAddMember={handleAddMemberClick}
       />
         
-        <div className="space-y-4">
+        <div className="">
           <ErrorBoundary fallback={<div className="text-center py-8 text-gray-500">Unable to load members table</div>}>
             <Suspense fallback={<div className="animate-pulse bg-gray-200 h-96 rounded-lg"></div>}>
               <MembersTable 
