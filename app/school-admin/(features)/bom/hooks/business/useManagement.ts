@@ -1,7 +1,8 @@
 import { useCallback } from "react";
+import { FormData } from "@school-admin/(features)/bom/types/addMemberTypes";
 
 export const useManagement = () => {
-  const handleAddMember = useCallback((memberData: any) => {
+  const handleAddMember = useCallback((memberData: FormData) => {
     return Promise.resolve();
   }, []);
 

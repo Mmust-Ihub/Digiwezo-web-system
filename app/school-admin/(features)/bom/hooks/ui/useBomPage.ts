@@ -6,6 +6,7 @@ import { useTableActions } from "@school-admin/(features)/bom/hooks/ui/useTableA
 import { useModal } from "@school-admin/(features)/bom/hooks/ui/useModal";
 import { usePagination } from "@school-admin/(features)/bom/hooks/ui/usePagination";
 import { member } from "@school-admin/(features)/bom/utils";
+import { FormData } from "@school-admin/(features)/bom/types/addMemberTypes";
 
 export function useBomPage() {
   const { searchValue, trimmedSearchValue, handleSearchChange } = useSearch();
@@ -34,7 +35,7 @@ export function useBomPage() {
     openModal();
   }, [openModal]);
 
-  const handleModalSubmit = useCallback(async (memberData: any) => {
+  const handleModalSubmit = useCallback(async (memberData: FormData) => {
     await handleAddMember(memberData);
     closeModal();
   }, [handleAddMember, closeModal]);

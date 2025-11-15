@@ -1,5 +1,33 @@
 import { PRINT_STYLES } from "@school-admin/(features)/bom/lib/pdf/pdfConstants";
 
+interface TableStyles {
+  borderCollapse: string;
+  width: string;
+  marginTop: string;
+}
+
+interface CellStyles {
+  border: string;
+  padding: string;
+  textAlign: string;
+}
+
+interface HeaderStyles {
+  backgroundColor: string;
+  fontWeight: string;
+}
+
+interface EvenRowStyles {
+  backgroundColor: string;
+}
+
+interface StatsBoxStyles {
+  backgroundColor: string;
+  padding: string;
+  borderRadius: string;
+  marginBottom: string;
+}
+
 export const generatePrintStyles = (): string => {
   const { fontFamily, lineHeight, table, cell, header, evenRow, statsBox } = PRINT_STYLES;
   
@@ -32,7 +60,7 @@ export const generateBodyStyles = (fontFamily: string, lineHeight: number): stri
   `;
 };
 
-export const generateTableStyles = (table: any, cell: any, header: any, evenRow: any): string => {
+export const generateTableStyles = (table: TableStyles, cell: CellStyles, header: HeaderStyles, evenRow: EvenRowStyles): string => {
   return `
     table { 
       width: ${table.width}; 
@@ -54,7 +82,7 @@ export const generateTableStyles = (table: any, cell: any, header: any, evenRow:
   `;
 };
 
-export const generateLayoutStyles = (statsBox: any): string => {
+export const generateLayoutStyles = (statsBox: StatsBoxStyles): string => {
   return `
     .header { 
       text-align: center; 
