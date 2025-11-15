@@ -18,3 +18,24 @@ export interface BomData {
   members: BomMember[];
 }
 
+
+export interface BomStatsGridProps {
+  stats: BomStats;
+}
+
+export interface PaginationControlsProps {
+  onPrevious?: () => void;
+  onNext?: () => void;
+  canGoPrevious?: boolean;
+  canGoNext?: boolean;
+  currentPage?: number;
+  totalPages?: number;
+}
+
+export interface TableExportActionsProps {
+  onPrint?: () => void;
+  onDownload?: () => void;
+  isDownloading?: boolean;
+  isPrinting?: boolean;
+}
+

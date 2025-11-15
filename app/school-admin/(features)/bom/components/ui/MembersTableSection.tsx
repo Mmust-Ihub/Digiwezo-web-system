@@ -8,9 +8,11 @@ interface MembersTableSectionProps {
   startIndex?: number;
 }
 
+import { BOM_CONSTANTS } from "@school-admin/(features)/bom/constants/bomConstants";
+
 export function MembersTableSection({ members, onViewMember, startIndex = 0 }: MembersTableSectionProps) {
   return (
-    <ErrorBoundary fallback={<div className="text-center py-8 text-gray-500">Unable to load members table</div>}>
+    <ErrorBoundary fallback={<div className="text-center py-8 text-gray-500">{BOM_CONSTANTS.ERRORS.TABLE_LOAD_ERROR}</div>}>
       <MembersTable 
         members={members}
         onViewMember={onViewMember}

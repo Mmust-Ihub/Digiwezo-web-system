@@ -30,3 +30,14 @@ export interface ModalLayoutProps {
   children: React.ReactNode;
 }
 
+
+export interface PersonalInfoRowProps {
+  formData: FormData;
+  onChange: (field: keyof FormData, value: string) => void;
+}
+
+export interface ContactInfoRowProps {
+  formData: FormData;
+  onChange: (field: keyof FormData, value: string) => void;
+}
+

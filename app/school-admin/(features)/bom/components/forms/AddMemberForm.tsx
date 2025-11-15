@@ -1,6 +1,9 @@
 import { memo } from "react";
 import { FormData } from "@school-admin/(features)/bom/types/addMemberTypes";
-import { FormInput, FormSelect, FormTextarea } from "@school-admin/(features)/bom/components/ui/FormFields";
+import { FormSelect, FormTextarea } from "@school-admin/(features)/bom/components/ui/FormFields";
+import { PersonalInfoRow } from "@school-admin/(features)/bom/components/ui/PersonalInfoRow";
+import { ContactInfoRow } from "@school-admin/(features)/bom/components/ui/ContactInfoRow";
+import { BOM_CONSTANTS } from "@school-admin/(features)/bom/constants/bomConstants";
 import { modalStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 import { genderOptions } from "@school-admin/(features)/bom/utils/memberUtils";
 
@@ -17,28 +20,14 @@ export const AddMemberForm = memo(function AddMemberForm({
 }: AddMemberFormProps) {
   return (
     <form onSubmit={onSubmit} className={modalStyles.form}>
-      <div className={modalStyles.formRow}>
-        <FormInput
-          label="Full Name"
-          name="fullName"
-          type="text"
-          value={formData.fullName}
-          onChange={onChange}
-          required
-        />
-        <FormInput
-          label="Email Address"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={onChange}
-          required
-        />
-      </div>
+      <PersonalInfoRow 
+        formData={formData}
+        onChange={onChange}
+      />
 
       <div className={modalStyles.formRow}>
         <FormSelect
-          label="Gender"
+          label={BOM_CONSTANTS.FORM_LABELS.GENDER}
           name="gender"
           type="select"
           value={formData.gender}
@@ -48,27 +37,13 @@ export const AddMemberForm = memo(function AddMemberForm({
         />
       </div>
 
-      <div className={modalStyles.formRow}>
-        <FormInput
-          label="Phone"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={onChange}
-          required
-        />
-        <FormInput
-          label="ID Number"
-          name="idNumber"
-          type="text"
-          value={formData.idNumber}
-          onChange={onChange}
-          required
-        />
-      </div>
+      <ContactInfoRow 
+        formData={formData}
+        onChange={onChange}
+      />
 
       <FormTextarea
-        label="Address"
+        label={BOM_CONSTANTS.FORM_LABELS.ADDRESS}
         name="address"
         type="textarea"
         value={formData.address}

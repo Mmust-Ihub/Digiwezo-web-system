@@ -1,5 +1,6 @@
 import { memo } from "react";
-import { StatsCard } from "@school-admin/(features)/bom/components/ui/StatsCard";
+import { BomHeaderTitle } from "@school-admin/(features)/bom/components/ui/BomHeaderTitle";
+import { BomStatsGrid } from "@school-admin/(features)/bom/components/ui/BomStatsGrid";
 import { BomStats } from "@school-admin/(features)/bom/types/bomTypes";
 import { bomHeaderStyles } from "@school-admin/(features)/bom/styles/components/componentStyles";
 
@@ -10,27 +11,8 @@ interface BomHeaderProps {
 export const BomHeader = memo(function BomHeader({ stats }: BomHeaderProps) {
   return (
     <div className={bomHeaderStyles.container}>
-      <div>
-        <h1 className={bomHeaderStyles.title}>Board of Management</h1>
-      </div>
-      
-      <div className={bomHeaderStyles.statsContainer}>
-        <StatsCard 
-          type="total"
-          count={stats.totalMembers}
-          label="Total Members"
-        />
-        <StatsCard 
-          type="male"
-          count={stats.maleMembers}
-          label="Male"
-        />
-        <StatsCard 
-          type="female"
-          count={stats.femaleMembers}
-          label="Female"
-        />
-      </div>
+      <BomHeaderTitle />
+      <BomStatsGrid stats={stats} />
     </div>
   );
 });
