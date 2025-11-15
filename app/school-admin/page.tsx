@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import SummaryCards from "./components/SummaryCards";
 import QuickActions from "./components/QuickActions";
 import CalendarSection from "./components/CalendarSection";
@@ -20,3 +21,15 @@ export default function SchoolAdminPage() {
     </div>
   );
 }
+=======
+
+
+export default function SchoolAdminPage() {
+  return (
+    <div className="p-4">
+     
+    
+    </div>
+  );
+}
+>>>>>>> aboutUs

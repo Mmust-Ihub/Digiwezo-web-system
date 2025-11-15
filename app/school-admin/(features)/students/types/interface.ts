@@ -5,6 +5,7 @@ export interface Tab {
   value: string;
   icon?: LucideIcon;
 }
+<<<<<<< HEAD
 
 export interface Option {
   label: string;
@@ -41,3 +42,5 @@ export interface FormFieldConfig {
   helperText?: string;
   accept?: string;
 }
+=======
+>>>>>>> aboutUs

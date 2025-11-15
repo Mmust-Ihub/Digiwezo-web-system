@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ADD_TYPES } from "@school-admin/(features)/students/data/constants";
@@ -34,4 +35,12 @@ export default function AddStudentPage() {
       
     </div>
   );
+=======
+import React from 'react'
+
+export default function page() {
+  return (
+    <div>Add Student</div>
+  )
+>>>>>>> aboutUs
 }

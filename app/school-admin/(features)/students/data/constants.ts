@@ -1,6 +1,10 @@
 import { Tab } from "@school-admin/(features)/students/types/interface";
 import { ArrowLeftRight, Search, UserRoundPlus } from "lucide-react";
+<<<<<<< HEAD
 import { SearchType, studentAddType } from "@school-admin/(features)/students/types/enum";
+=======
+import { SearchType } from "@school-admin/(features)/students/types/enum";
+>>>>>>> aboutUs
 
 
 export const tabs: Tab[] = [
@@ -26,6 +30,7 @@ export const SEARCH_TYPES: { label: string; value: SearchType }[] = [
   { label: "UPI", value: SearchType.UPI },
   { label: "Index No", value: SearchType.INDEX_NO },
 ];
+<<<<<<< HEAD
 export const ADD_TYPES: { label: string; value: studentAddType }[] = [
   { label: "Key in student details", value: studentAddType.key },
   { label: "Upload students from a spreadsheet", value: studentAddType.upload },
@@ -95,3 +100,5 @@ export const RESIDENCE_OPTIONS = [
   { label: 'Off Campus', value: Residence.OFF_CAMPUS },
   { label: 'Day Scholar', value: Residence.DAY_SCHOLAR }
 ]; 
+=======
+>>>>>>> aboutUs

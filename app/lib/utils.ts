@@ -8,8 +8,8 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getRandomBgColor(seed: number) {
   const colors = [
-    'bg-[rgba(190,24,93,1)]',
-    'bg-[rgba(234,88,12,1)]',
+    'bg-[var(--color-accent-1)]',
+    'bg-[var(--color-accent-2)]',
   ];
   return colors[seed % colors.length];
 }
