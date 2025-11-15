@@ -34,36 +34,36 @@ export const metadata: Metadata = {
   },
   description:
     "Digiwezo is a school management system with CBC first incooperation approach seeking to manage and help school running more efficient",
-  keywords: "CBC, School, Ana",
-  authors: [{ name: "Ken Best Logistics" }],
-  creator: "Ken Best Logistics",
-  publisher: "Ken Best Logistics",
-  metadataBase: new URL("https://www.kenbestlogistics.com.au"), // Replace with your actual domain
+  keywords: "CBC, School, Analytics,School Management, MMUST iHub.",
+  authors: [{ name: "MMUST iHub" }],
+  creator: "MMUST iHub",
+  publisher: "MMUST iHub",
+  metadataBase: new URL("https://digiwezo.tech"), 
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.kenbestlogistics.com.au",
-    siteName: "Ken Best Logistics",
-    title: "Ken Best Logistics - Your Trusted Logistics Partner",
+    url: "https://digiwezo.tech/",
+    siteName: "Digiwezo - CBC school management system",
+    title: "Digiwezo - CBC school management system",
     description:
-      "Ken Best Logistics offers reliable and efficient logistics solutions.",
+      "Digiwezo is a school management system with CBC first incooperation approach seeking to manage and help school running more efficient.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Ken Best Logistics",
+        alt: "Digiwezo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ken Best Logistics - Your Trusted Logistics Partner",
+    title: "Digiwezo - CBC school management system",
     description:
-      "Ken Best Logistics offers reliable and efficient logistics solutions.",
+      "Digiwezo is a school management system with CBC first incooperation approach seeking to manage and help school running more efficient.",
     images: ["/twitter-image.jpg"],
   },
   robots: {
